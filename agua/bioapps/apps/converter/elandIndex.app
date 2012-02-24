@@ -1,0 +1,66 @@
+{
+   "owner" : "agua",
+   "location" : "bin/converters/elandIndex.pl",
+   "executor" : "/usr/bin/perl",
+   "installdir" : "/agua/0.6/t/bin/Agua/Ops/Install/outputs/bioapps",
+   "version" : "0.6.0",
+   "name" : "elandIndex",
+   "localonly" : "0",
+   "description" : "Convert FASTA files into squashed/indexed ELAND reference files",
+   "package" : "bioapps",
+   "parameters" : [
+      {
+         "locked" : "0",
+         "value" : "%project%/%workflow%/reference/fasta",
+         "args" : "input.referencedir.value,input.outputdir.value,input.inputdir.value",
+         "description" : "Location of directory containing *.fa files",
+         "discretion" : "essential",
+         "inputParams" : "referencedir,outputdir,inputdir",
+         "ordinal" : "0",
+         "argument" : "--inputdir",
+         "format" : "",
+         "paramtype" : "input",
+         "valuetype" : "directory",
+         "category" : "inputdir",
+         "param" : "inputdir",
+         "paramFunction" : "if ( referencedir != null && referencedir != ) return referencedir; if ( outputdir != null && outputdir != ) return outputdir; if ( inputdir != null && inputdir != ) return inputdir; "
+      },
+      {
+         "locked" : "0",
+         "value" : "%project%/%workflow%/reference/eland",
+         "args" : "input.referencedir.value,input.outputdir.value,input.inputdir.value",
+         "description" : "Print indexed files to this directory",
+         "discretion" : "essential",
+         "inputParams" : "referencedir,outputdir,inputdir",
+         "ordinal" : "1",
+         "argument" : "--outputdir",
+         "format" : "",
+         "paramtype" : "input",
+         "valuetype" : "directory",
+         "category" : "outputdir",
+         "param" : "outputdir",
+         "paramFunction" : "if ( referencedir != null && referencedir != ) return referencedir; if ( outputdir != null && outputdir != ) return outputdir; if ( inputdir != null && inputdir != ) return inputdir; "
+      },
+      {
+         "locked" : "0",
+         "value" : "",
+         "args" : "input.subdirs.value",
+         "description" : "",
+         "discretion" : "optional",
+         "inputParams" : "",
+         "ordinal" : "1",
+         "argument" : "--subdirs",
+         "format" : "",
+         "paramtype" : "input",
+         "valuetype" : "flag",
+         "category" : "subdirs",
+         "param" : "subdirs",
+         "paramFunction" : ""
+      }
+   ],
+   "ordinal" : null,
+   "notes" : " ",
+   "url" : "http://www.aguadev.org/confluence/display/howto/Bioapps+API",
+   "type" : "converter"
+}
+

@@ -1,0 +1,35 @@
+{
+    "name"              :   "bioapps",
+    "version"           :   "0.7.2",
+    "description"       :   "Bioinformatics applications for the Agua cloud workflow platform",
+    "type"              :   "application",
+    "source"            :   "git",
+    "keywords"          :   ["bioinformatics", "workflows", "cloud", "next-generation", "sequencing", "analysis", "alignment", "variation", "SNP"],
+    "url"               :   "http://www.aguadev.org",
+    "installtype"       :   "ops",
+    "opsfile"           :   "https://api.github.com/repos/agua/biorepository/agua/bioapps/bioapps.ops",
+    "installfile"       :   "https://api.github.com/repos/agua/biorepository/agua/bioapps/bioapps.pm",
+    "appdir"            :   "https://api.github.com/repos/agua/biorepository/agua/bioapps/apps",
+    "licensefile"       :   "https://api.github.com/repos/agua/biorepository/agua/bioapps/LICENSE",
+    "readmefile"        :   "https://api.github.com/repos/agua/biorepository/agua/bioapps/README",
+    "installtype"       :   "ops",
+    "author"            :   [{
+        "name": "Stuart",
+        "surname": "Young",
+        "email": "stuartpyoung@gmail.com",
+        "url": "http://www.aguadev.org"
+    }],
+    "publication"       :   [],
+    "organisation"      :   [],
+    "ISA"               :   {},
+    "acknowledgements"  :   [],
+    "citations"         :   [],
+    "resources"         :   {
+        "datavolume"         :   {
+                "id"            :   "snap-6341b301",
+                "name"          :   "aquarius-8",
+                "description"   :   "Bioinformatics data volume: Bioapps SNP SQLite database, NextGen aligner reference sequences and JBrowse feature data"
+        },
+        "configfile"    :   "conf/default.conf"
+    }
+}
