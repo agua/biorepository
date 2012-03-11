@@ -76,6 +76,10 @@ method postInstall {
 	#### RUN INSTALL TO SET PERMISSIONS, ETC.
 	$self->logDebug("Doing loadProjects()");
 	$self->loadProjects();
+	
+	#### SET ACCESS
+	$self->logDebug("Doing setAccess()");
+	$self->setAccess();
 
 	return "Completed postInstall";
 }
@@ -93,10 +97,6 @@ method loadProjects {
 	### SET WORKFLOW DIR
 	my $workflowdir = 	$self->setWorkflowDir($opsdir, "agua");
 	$self->logDebug("workflowdir", $workflowdir);
-
-
-#my $message = "Sync agua workflows: loadProjects";
-#$self->_syncWorkflows($type, $message);
 
 	my $username = $self->username();
 	$self->logDebug("username", $username);
@@ -122,7 +122,44 @@ method loadProjects {
 	$loader->owner("agua");
 	
 	my $package = "workflows";
-	$loader->loadProjectFiles ("agua", $package, $installdir, $workflowdir)  
+	$loader->loadProjectFiles ("agua", $package, $installdir, $workflowdir);
+}
+
+method setAccess {
+
+	#### ADD TO access
+	my $table = "access";
+	my $required = ["owner", "groupname"];
+	my $hash = {
+		owner   =>  "agua",
+		groupname   =>  "projects",
+		groupwrite  =>  1,
+		groupcopy   =>  1,
+		groupview   =>  1,
+		worldwrite  =>  1,
+		worldcopy   =>  1,
+		worldview   =>  1
+	};
+	#### insert into access values ('agua','projects', 1,1,1,1,1,1);
+	$self->_addToTable($table, $hash, $required);
+
+	#### ADD TO groupmember
+	$table = "groupmember";
+	$required = ["owner", "groupname"];
+
+	foreach my $projectobject ( @$projectobjects ) {
+		$hash = {
+			owner		=>	"agua",
+			groupname	=>	"workflows",
+			groupdesc	=>	"Open-source bioinformatics workflows",
+			type		=>	"project",
+			name		=>	$projectobject->name(),
+			description	=>	$projectobject->description(),
+			location	=>	''
+		};
+		#### insert into groupmember values('agua','projects','Description of ','Project2','project', '','');
+		$self->_addToTable($table, $hash, $required);
+	}
 }
 
 1;
