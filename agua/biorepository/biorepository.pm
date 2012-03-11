@@ -72,7 +72,7 @@ method checkInputs {
 #### POST-INSTALL
 method postInstall {
 	$self->logDebug("");
-	
+
 	#### RUN INSTALL TO SET PERMISSIONS, ETC.
 	$self->logDebug("Doing loadProjects()");
 	$self->loadProjects();
@@ -120,7 +120,7 @@ method loadProjects {
 	#### SET agua AS USERNAME AND OWNER
 	$loader->username("agua");
 	$loader->owner("agua");
-	
+
 	my $package = "workflows";
 	$loader->loadProjectFiles ("agua", $package, $installdir, $workflowdir);
 }
@@ -143,14 +143,17 @@ method setAccess {
 	#### insert into access values ('agua','projects', 1,1,1,1,1,1);
 	$self->_addToTable($table, $hash, $required);
 
+	#### GET PROJECT OBJECTS
+	my $projectobjects = $self->getProjectObjects();
+	$self->logDebug("no. projectobjects", scalar(@$projectobjects));
+	
 	#### ADD TO groupmember
 	$table = "groupmember";
 	$required = ["owner", "groupname"];
-
 	foreach my $projectobject ( @$projectobjects ) {
 		$hash = {
 			owner		=>	"agua",
-			groupname	=>	"workflows",
+			groupname	=>	"projects",
 			groupdesc	=>	"Open-source bioinformatics workflows",
 			type		=>	"project",
 			name		=>	$projectobject->name(),
@@ -160,6 +163,57 @@ method setAccess {
 		#### insert into groupmember values('agua','projects','Description of ','Project2','project', '','');
 		$self->_addToTable($table, $hash, $required);
 	}
+	
+	
+	
+}
+
+method 	getProjectObjects {
+	my $username = $self->username();
+	$self->logDebug("username", $username);
+
+	my $package = "workflows";
+	my $installdir  =   $self->conf()->getKey("biorepository", "INSTALLDIR");
+	my $basedir 	=	$self->conf()->getKey("agua", "INSTALLDIR");
+	$self->logDebug("installdir", $installdir);
+	$self->logDebug("basedir", $basedir);
+
+	#### SET OPSDIR FOR APPDIR AND TO RETRIEVE DB ENTRY
+	my $opsdir = "$basedir/repos/public/agua/biorepository";
+	$self->logDebug("opsdir", $opsdir);
+	
+	### SET WORKFLOW DIR
+	my $workflowdir = 	$self->setWorkflowDir($opsdir, "agua");
+	$self->logDebug("workflowdir", $workflowdir);
+
+	require Agua::CLI::Project;
+	$self->logDebug("username", $username);
+	$self->logDebug("workflowdir", $workflowdir);
+
+	#### GET PROJECT DIRECTORIES
+	my $projects = $self->getDirs("$workflowdir/projects");
+	$self->logDebug("projects", $projects);
+	
+	my $projectobjects = [];
+	foreach my $project ( @$projects ) {
+		
+		my $projectfile = "$workflowdir/projects/$project/$project.proj";
+		$self->logDebug("projectfile", $projectfile);
+		$self->logCritical("projectfile not found", $projectfile) if not -f $projectfile;
+	
+		$self->logDebug("Doing Agua::CLI::Project->new()");	
+		my $projectobject = Agua::CLI::Project->new(
+			inputfile	=>	$projectfile,
+			logfile		=>	$self->logfile(),
+			SHOWLOG		=>	$self->SHOWLOG(),
+			PRINTLOG	=>	$self->PRINTLOG()
+		);
+		$projectobject->workflows([]);
+
+		push @$projectobjects, $projectobject;	
+	}
+	
+	return $projectobjects;
 }
 
 1;
