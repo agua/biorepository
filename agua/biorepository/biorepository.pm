@@ -1,9 +1,11 @@
-package agua;
+package biorepository;
 use Moose::Role;
 use Method::Signatures::Simple;
 
 use Data::Dumper;
+use Agua::Package;
 
+has 'sessionId'	=> ( isa => 'Str|Undef', is => 'rw', required	=>	0	);
 has 'installdir'=> ( isa => 'Str|Undef', is => 'rw', default	=>	'/agua'	);
 has 'version'	=> ( isa => 'Str|Undef', is => 'rw', required	=>	0	);
 has 'repo'		=> ( isa => 'Str|Undef', is => 'rw', default	=> 'github'	);
@@ -18,21 +20,23 @@ method preInstall {
 
 	#### SET VARIABLES
     $self->owner("agua");
-	$self->repository("agua");
-	$self->package("agua");
+	$self->repository("biorepository");
+	$self->package("biorepository");
 	$self->repotype("github");
 	$self->private(0);
 
 	#### CHECK INPUTS
 	$self->checkInputs();
 
-	#### COPY CONF FILE
-	$self->copyConf();
+	#### START LOGGING TO HTML FILE
+	my  $package 		= $self->package();
+	my 	$version 		= $self->version();
+	my  $random 		= $self->random();
+	$self->logDebug("version", $version);
+	$self->logDebug("random", $random);
 
 	#### REPORT PROGRESSS
 	$self->updateReport(["Doing preInstall"]);
-	my 	$aguaversion 	= $self->conf()->getKey('agua', 'VERSION');
-	$self->updateReport(["Current version: $aguaversion"]);
 	
 	return "Completed preInstall";
 }
@@ -65,87 +69,60 @@ method checkInputs {
 	$self->logDebug("private", $private);
 	$self->logDebug("version", $version);
 }
-
-method copyConf () {
-	my $conffile 	=	$self->setConfFile();
-	my $tempconf	=	$self->setTempConfFile();
-	my $command = "cp -f $conffile $tempconf; chmod 600 $tempconf";
-	$self->logDebug("command", $command);
-	
-	$self->runCommand($command);
-}
-
-method restoreConf {
-	my $conffile 	=	$self->setConfFile();
-	my $tempconf	=	$self->setTempConfFile();
-	my $apacheuser	=	$self->conf()->getKey("agua", "APACHEUSER");
-	my $command 	= "mv $tempconf $conffile; chown root:$apacheuser $conffile; chmod 660 $conffile";
-	$self->logDebug("command", $command);
-
-	$self->runCommand($command);
-}
-
-method setConfFile {
-	return $self->conffile() if defined $self->conffile();
-	my $installdir 	= 	$self->installdir();
-	my $conffile 	=	"$installdir/conf/default.conf";
-	$self->conffile($conffile);
-	
-	return $conffile;
-}
-
-method setTempConfFile {
-	return $self->tempconffile() if defined $self->tempconffile();
-	my $tempconffile 	=	"/tmp/agua-default.conf";
-	$self->tempconffile($tempconffile);
-	
-	return $tempconffile;
-}
-
 #### POST-INSTALL
 method postInstall {
 	$self->logDebug("");
 	
-	#### RESTORE CONFIG FILE
-	$self->restoreConf();
-	
-	#### UPDATE AGUA VERSION IN CONFIG
-	my $version = $self->version();
-	$self->logDebug("version", $version);
-	$self->conf()->setKey("agua", "VERSION", $version);
-
 	#### RUN INSTALL TO SET PERMISSIONS, ETC.
-	$self->runUpgrade();
+	$self->logDebug("Doing loadProjects()");
+	$self->loadProjects();
 
 	return "Completed postInstall";
 }
 
-method runUpgrade {
-	my $installdir	=	$self->installdir();
-	$installdir = "/agua" if not defined $installdir;
+method loadProjects {
+	my $installdir  =   $self->conf()->getKey("biorepository", "INSTALLDIR");
+	my $basedir 	=	$self->conf()->getKey("agua", "INSTALLDIR");
 	$self->logDebug("installdir", $installdir);
+	$self->logDebug("basedir", $basedir);
+
+	#### SET OPSDIR FOR APPDIR AND TO RETRIEVE DB ENTRY
+	my $opsdir = "$basedir/repos/public/agua/biorepository";
+	$self->logDebug("opsdir", $opsdir);
+	
+	### SET WORKFLOW DIR
+	my $workflowdir = 	$self->setWorkflowDir($opsdir, "agua");
+	$self->logDebug("workflowdir", $workflowdir);
 
 
-#### DEBUG 
-#### DEBUG 
-#### DEBUG 
-	my $permsfile = "$installdir/bin/scripts/resources/agua/permissions.txt";
-	`mv $permsfile $permsfile.safe`;
-	`echo "#### DEBUG EMPTY PERMISSIONS" > $permsfile`;
-#### DEBUG 
-#### DEBUG 
-#### DEBUG 
+#my $message = "Sync agua workflows: loadProjects";
+#$self->_syncWorkflows($type, $message);
 
-	my $logfile = $self->logfile();
-	$self->changeDir("$installdir/bin/scripts");
-	my $command = qq{$installdir/bin/scripts/install.pl \\
---mode upgrade \\
---installdir $installdir \\
---logfile $logfile
-};
-	$self->logDebug("command", $command);
+	my $username = $self->username();
+	$self->logDebug("username", $username);
+	my $sessionId = $self->sessionId();
+	$self->logDebug("sessionId", $sessionId);
 
-	$self->runCommand($command);
+	my $loader = Agua::Package->new({
+		logfile		=>	$self->logfile(),
+		SHOWLOG		=>	$self->SHOWLOG(),
+		PRINTLOG	=>	$self->PRINTLOG(),
+		
+		username	=>	$self->username(),
+		sessionId	=>	$self->sessionId(),
+		installdir	=>	$installdir,
+			
+		opsdir		=>	$opsdir,
+		workflowdir	=>	$workflowdir,
+		conf		=>	$self->conf()
+	});
+	
+	#### SET agua AS USERNAME AND OWNER
+	$loader->username("agua");
+	$loader->owner("agua");
+	
+	my $package = "workflows";
+	$loader->loadProjectFiles ("agua", $package, $installdir, $workflowdir)  
 }
 
 1;

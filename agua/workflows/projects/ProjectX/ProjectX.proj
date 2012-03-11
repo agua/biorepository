@@ -1,0 +1,57 @@
+{
+   "owner" : "agua",
+   "number" : null,
+   "provenance" : "",
+   "status" : "",
+   "name" : "ProjectX",
+   "duration" : "",
+   "description" : "",
+   "stopped" : "",
+   "notes" : "",
+   "started" : "",
+   "workflows" : [
+      {
+         "owner" : "agua",
+         "number" : "1",
+         "provenance" : "",
+         "status" : "",
+         "project" : "ProjectX",
+         "apps" : [],
+         "name" : "Workflow1",
+         "duration" : "",
+         "description" : "",
+         "stopped" : "",
+         "notes" : "",
+         "started" : ""
+      },
+      {
+         "owner" : "agua",
+         "number" : "2",
+         "provenance" : "",
+         "status" : "",
+         "project" : "ProjectX",
+         "apps" : [],
+         "name" : "Workflow2",
+         "duration" : "",
+         "description" : "",
+         "stopped" : "",
+         "notes" : "",
+         "started" : ""
+      },
+      {
+         "owner" : "agua",
+         "number" : "3",
+         "provenance" : "",
+         "status" : "",
+         "project" : "ProjectX",
+         "apps" : [],
+         "name" : "Workflow3",
+         "duration" : "",
+         "description" : "",
+         "stopped" : "",
+         "notes" : "",
+         "started" : ""
+      }
+   ]
+}
+

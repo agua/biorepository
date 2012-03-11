@@ -10,9 +10,25 @@ has 'repotype'	=> ( isa => 'Str|Undef', is => 'rw', default	=> 'github'	);
 
 method preInstall {
 	$self->logDebug("");
+
+	#### SET DEFAULTS
+    $self->owner("agua") if not defined $self->owner();
+	$self->repository("agua") if not defined $self->repository();
+	$self->package("bioapps") if not defined $self->package();
+	$self->repotype("github") if not defined $self->repotype();
+	$self->private(0);
+
+	#### CHECK INPUTS
 	$self->checkInputs();
-	my $pwd = $self->pwd();
 	
+	$self->updateReport(["Completed preInstall"]);
+
+	return;
+}
+
+method checkInputs {
+	$self->logDebug("");
+
 	my 	$username 		= $self->username();
 	my 	$version 		= $self->version();
 	my  $package 		= $self->package();
@@ -20,36 +36,30 @@ method preInstall {
 	my 	$owner 			= $self->owner();
 	my 	$private 		= $self->private();
 	my  $repository 	= $self->repository();
+	my  $installdir 	= $self->installdir();
 	my  $random 		= $self->random();
 
 	if ( not defined $package or not $package ) {
 		$package = $self->repository();
 		$self->package($package);
 	}
-	
 	$self->logError("owner not defined") and exit if not defined $owner;
 	$self->logError("package not defined") and exit if not defined $package;
+	$self->logError("version not defined") and exit if not defined $version;
 	$self->logError("username not defined") and exit if not defined $username;
 	$self->logError("repotype not defined") and exit if not defined $repotype;
 	$self->logError("repository not defined") and exit if not defined $repository;
+	$self->logError("installdir not defined") and exit if not defined $installdir;
 	
 	$self->logDebug("owner", $owner);
 	$self->logDebug("package", $package);
 	$self->logDebug("username", $username);
 	$self->logDebug("repotype", $repotype);
 	$self->logDebug("repository", $repository);
+	$self->logDebug("installdir", $installdir);
 	$self->logDebug("private", $private);
 	$self->logDebug("version", $version);
 	$self->logDebug("random", $random);
-
-	#### START LOGGING TO HTML FILE
-	my $logfile = $self->setHtmlLogFile($package, $random);
-	$self->logDebug("logfile", $logfile);
-	$self->startHtmlLog($package, $version, $logfile);
-
-	$self->updateReport(["Completed preInstall"]);
-
-	return;
 }
 
 method postInstall {
@@ -109,17 +119,6 @@ method postInstall {
 method getVolume ($snapshot) {
 	my $query = qq{SELECT * FROM volume WHERE snapshot='$snapshot'};
 	return $self->dbobject()->queryhash($query);
-}
-
-method  checkInputs {
-	$self->logDebug("self->username", $self->username());
-	$self->logDebug("self->version", $self->version());
-
-	$self->logCritical("self->username not defined") and return 0 if not defined $self->username();
-	$self->logCritical("self->owner not defined") and return 0 if not defined $self->owner();
-	$self->logCritical("self->repository not defined") and return 0 if not defined $self->repository();
-	$self->logCritical("self->version not defined") and return 0 if not defined $self->version();
-	$self->logCritical("self->installdir not defined") and return 0 if not defined $self->installdir();
 }
 
 1;
