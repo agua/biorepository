@@ -1,0 +1,28 @@
+{
+    "name"              :   "starcluster-0.92rc2",
+    "version"           :   "0.0.92-rc2",
+    "description"       :   "StarCluster is an open source cluster-computing toolkit  designed to automate and simplify the process of building, configuring, and managing clusters of virtual machines on Amazon’s EC2 cloud. StarCluster allows anyone to easily create a cluster computing environment in the cloud suited for distributed and parallel computing applications and systems.",
+    "type"              :   "application",
+    "source"            :   "git",
+    "keywords"          :   ["clusters", "cloud", "computing", "automation", "MIT"],
+    "url"               :   "http://http://star.mit.edu/cluster",
+    "installtype"       :   "ops",
+    "opsfile"           :   "https://api.github.com/repos/agua/biorepository/agua/starcluster/starcluster.ops",
+    "installfile"       :   "https://api.github.com/repos/agua/biorepository/agua/starcluster/starcluster.pm",
+    "licensefile"       :   "https://api.github.com/repos/agua/biorepository/agua/starcluster/LICENSE",
+    "readmefile"        :   "https://api.github.com/repos/agua/biorepository/agua/starcluster/README",
+    "versionfile"        :   "https://api.github.com/repos/agua/biorepository/agua/starcluster/STARCLUSTER-VERSION",
+    "installtype"       :   "ops",
+    "author"            :   [{
+        "name": "Justin",
+        "surname": "Riley",
+        "email": "ustin.t.riley@gmail.com",
+        "url": "http://star.mit.edu/cluster"
+    }],
+    "publication"       :   [],
+    "organisation"      :   [],
+    "ISA"               :   {},
+    "acknowledgements"  :   [],
+    "citations"         :   [],
+    "resources"         :   {}
+}

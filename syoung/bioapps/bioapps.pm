@@ -16,7 +16,10 @@ method preInstall {
 	$self->repository("agua") if not defined $self->repository();
 	$self->package("bioapps") if not defined $self->package();
 	$self->repotype("github") if not defined $self->repotype();
-	$self->private(0);
+	$self->privacy("public");
+
+	#### SET DATABASE HANDLE
+	$self->setDbObject() if not defined $self->db();
 
 	#### CHECK INPUTS
 	$self->checkInputs();
@@ -34,7 +37,7 @@ method checkInputs {
 	my  $package 		= $self->package();
 	my  $repotype 		= $self->repotype();
 	my 	$owner 			= $self->owner();
-	my 	$private 		= $self->private();
+	my 	$privacy 		= $self->privacy();
 	my  $repository 	= $self->repository();
 	my  $installdir 	= $self->installdir();
 	my  $random 		= $self->random();
@@ -57,7 +60,7 @@ method checkInputs {
 	$self->logDebug("repotype", $repotype);
 	$self->logDebug("repository", $repository);
 	$self->logDebug("installdir", $installdir);
-	$self->logDebug("private", $private);
+	$self->logDebug("privacy", $privacy);
 	$self->logDebug("version", $version);
 	$self->logDebug("random", $random);
 }
@@ -118,7 +121,7 @@ method postInstall {
 
 method getVolume ($snapshot) {
 	my $query = qq{SELECT * FROM volume WHERE snapshot='$snapshot'};
-	return $self->dbobject()->queryhash($query);
+	return $self->db()->queryhash($query);
 }
 
 1;
