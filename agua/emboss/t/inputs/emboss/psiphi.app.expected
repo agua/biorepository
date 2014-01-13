@@ -1,0 +1,5 @@
+{
+	"version":"6.4.0.0",
+	"name":"psiphi",
+	"description":"Calculates phi and psi torsion angles from protein coordinates"
+}

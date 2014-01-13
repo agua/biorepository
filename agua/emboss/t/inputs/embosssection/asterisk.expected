@@ -1,0 +1,19 @@
+[{
+	"argument":"-entry",
+	"paramtype":"input",
+	"value":"",
+	"name":"entry",
+	"category":"string",
+	"valuetype":"string",
+	"description":"ID or Accession number (Any string)"
+}
+,
+{
+	"argument":"-outfile",
+	"paramtype":"input",
+	"value":"*.whichdb",
+	"name":"outfile",
+	"category":"outfile",
+	"valuetype":"file",
+	"description":"Output file name"
+}]

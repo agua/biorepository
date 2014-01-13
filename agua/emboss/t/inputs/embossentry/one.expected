@@ -1,0 +1,9 @@
+{
+    "argument":"-one",
+    "paramtype":"input",
+    "value":"",
+    "name":"one",
+    "category":"outfile",
+    "valuetype":"file",
+    "description":"No default description of abc and rest of ABC description"
+}

@@ -1,6 +1,7 @@
 {
-    "name"              :   "bioapps",
+    "package"           :   "bioapps",
     "version"           :   "0.8.0",
+    "privacy"           :   "private",
     "description"       :   "Bioinformatics applications for the Agua cloud workflow platform",
     "type"              :   "application",
     "source"            :   "git",

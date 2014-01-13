@@ -15,7 +15,7 @@
          "stagejobid" : "0",
          "completed" : "2012-02-26 04:36:30",
          "owner" : "agua",
-         "stderrfile" : "/nethome/admin/agua/Project1/Workflow1/stdout/1-FTP.stderr",
+         "stderrfile" : "/home/admin/agua/Project1/Workflow1/stdout/1-FTP.stderr",
          "location" : "bin/utils/deepvac.pl",
          "version" : "0.6.0",
          "installdir" : "/agua/bioapps",
@@ -24,7 +24,7 @@
          "duration" : "",
          "description" : "",
          "package" : "bioapps",
-         "stdoutfile" : "/nethome/admin/agua/Project1/Workflow1/stdout/1-FTP.stdout",
+         "stdoutfile" : "/home/admin/agua/Project1/Workflow1/stdout/1-FTP.stdout",
          "parameters" : [
             {
                "locked" : "0",
@@ -127,7 +127,7 @@
          "stagejobid" : "0",
          "completed" : "2012-02-27 03:39:27",
          "owner" : "agua",
-         "stderrfile" : "/nethome/admin/agua/Project1/Workflow1/stdout/2-unzipFiles.stderr",
+         "stderrfile" : "/home/admin/agua/Project1/Workflow1/stdout/2-unzipFiles.stderr",
          "location" : "bin/utils/unzipFiles.pl",
          "version" : "0.6.0",
          "installdir" : "/agua/bioapps",
@@ -136,7 +136,7 @@
          "duration" : "",
          "description" : "",
          "package" : "bioapps",
-         "stdoutfile" : "/nethome/admin/agua/Project1/Workflow1/stdout/2-unzipFiles.stdout",
+         "stdoutfile" : "/home/admin/agua/Project1/Workflow1/stdout/2-unzipFiles.stdout",
          "parameters" : [
             {
                "locked" : "0",

@@ -67,6 +67,7 @@ method checkInputs {
 
 method postInstall {
 	my $username 	= 	$self->username();
+	my $login 		= 	$self->login();
 	my $package		=	$self->package();
 	my $installdir	=	$self->installdir();
 	my $opsdir		=	$self->opsdir();
@@ -76,14 +77,12 @@ method postInstall {
 	$self->logDebug("package", $package);
 	$self->logDebug("installdir", $installdir);
 
-	my $appdir = "$opsdir/apps";
-	$self->logDebug("appdir", $appdir);
-	
-	$self->updateReport(["Loading apps in appdir: $appdir"]);
-	$self->logDebug("Doing loadAppFiles");
-	$self->loadAppFiles($username, $package, $installdir, $appdir);
-	$self->logDebug("Completed loadAppFiles");
+	#### LOAD app AND parameter TABLE ENTRIES	
+	$self->loadApps($login, $package, $installdir, $opsdir);
 
+	#### LOAD feature TABLE ENTRIES
+	$self->loadFeatures ($installdir);
+	
 	$self->logDebug("self->opsinfo", $self->opsinfo());
 	my $resources 	= $self->opsinfo()->resources();
 	my $version = $self->opsinfo()->version();
@@ -99,24 +98,61 @@ method postInstall {
 	$self->logDebug("id", $id);
 	$self->logDebug("description", $description);
 	
-	#### NOTE: SKIP BECAUSE LOADED BY DEFAULT
-	#$self->loadSnapshot($name, $id, $description);
+	#### LOAD SNAPSHOT IF NOT ALREADY LOADED
+	my $snapshotid = $self->loadSnapshot($name, $id, $description);
 
-	#### GET DATA VOLUME MOUNT POINT
-	my $volumeobject = $self->getVolume($snapshot);
-	$self->logDebug("volumeobject", $volumeobject);
-	my $mountpoint = $volumeobject->{mountpoint};
-	$self->logDebug("mountpoint", $mountpoint);
-	
-	#### LOAD CONFIG FILE
-	my $config = $resources->{configfile};
-	my $configfile = "$mountpoint/$config";
+	#### SET MOUNTPOINT	
+	my $mountpoint = $self->mountpoint() || "/bioapps-$snapshotid";
+
+	##### SET CONFIG FILE
+	my $configfile = "$opsdir/conf/bioapps.conf";
 	$self->logDebug("configfile", $configfile);
-	
 	return if not -f $configfile;
-	$self->loadConfig($configfile, $mountpoint);
+	
+	#### LOAD CONFIG
+	$self->loadConfig($configfile, $mountpoint, $installdir);
 	
 	return;
+}
+
+method loadApps ($login, $package, $installdir, $opsdir) {
+#### LOAD app AND parameter TABLE ENTRIES
+	$self->logDebug("login", $login);
+	$self->logDebug("package", $package);
+
+	my $appdir = "$opsdir/apps";
+	$self->logDebug("appdir", $appdir);
+
+	$self->updateReport(["Loading apps in appdir: $appdir"]);
+
+	$self->logDebug("Doing loadAppFiles");
+	$self->loadAppFiles($login, $package, $installdir, $appdir);
+	$self->logDebug("Completed loadAppFiles");
+
+	$self->updateReport(["Completed loading apps"]);
+}
+
+method loadFeatures ($installdir) {
+#### LOAD feature TABLE ENTRIES
+
+	my $featurefile = "$installdir/conf/tsv/feature.tsv";
+
+	$self->updateReport(["Loading JBrowse features in featurefile: $featurefile"]);
+
+	my $newfeaturefile = $featurefile . ".new";
+	my $loadfeaturefile = $featurefile . ".load";
+	`cp $featurefile $newfeaturefile`;
+	my $datadir = $self->conf()->getKey("agua", "DATADIR");
+	$datadir =~ s/\//\\\//g;
+	my $command = "sed 's/<DATADIR>/$datadir/g' $newfeaturefile > $loadfeaturefile";
+	$self->logDebug("command", $command);
+	`$command`;
+
+	#### LOAD FEATURES
+	$self->logDebug("Doing loadTsvFile");
+	$self->loadTsvFile("feature", $loadfeaturefile);
+
+	$self->updateReport(["Completed loading features"]);
 }
 
 method getVolume ($snapshot) {

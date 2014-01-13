@@ -1,0 +1,5 @@
+{
+	"version":"6.5.7.0",
+	"name":"transeq",
+	"description":"Translate nucleic acid sequences"
+}

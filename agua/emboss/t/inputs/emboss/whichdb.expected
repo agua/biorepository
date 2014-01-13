@@ -1,0 +1,43 @@
+[{
+	"value":"",
+	"name":"entry",
+	"discretion":"required",
+	"description":"ID or Accession number (Any string)",
+	"argument":"-entry",
+	"paramtype":"input",
+	"valuetype":"string",
+	"category":"string"
+}
+,
+{
+	"value":"*.whichdb",
+	"name":"outfile",
+	"discretion":"required",
+	"description":"Output file name",
+	"argument":"-outfile",
+	"paramtype":"input",
+	"valuetype":"file",
+	"category":"outfile"
+}
+,
+{
+	"value":"N",
+	"name":"get",
+	"discretion":"optional",
+	"description":"Retrieve sequences",
+	"argument":"-get",
+	"paramtype":"input",
+	"valuetype":"string",
+	"category":"toggle"
+}
+,
+{
+	"value":"N",
+	"name":"showall",
+	"discretion":"optional",
+	"description":"Show failed attempts",
+	"argument":"-showall",
+	"paramtype":"input",
+	"valuetype":"boolean",
+	"category":"boolean"
+}]
