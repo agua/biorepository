@@ -5,6 +5,7 @@ use Method::Signatures::Simple;
 has 'installdir'=> ( isa => 'Str|Undef', is => 'rw', required	=>	0	);
 has 'version'	=> ( isa => 'Str|Undef', is => 'rw', required	=>	0	);
 has 'repotype'	=> ( isa => 'Str|Undef', is => 'rw', default	=> 'github'	);
+has 'mountpoint'=> ( isa => 'Str|Undef', is => 'rw', required	=>	0	);
 
 ####///}}}}
 
@@ -13,6 +14,7 @@ method preInstall {
 
 	#### SET DEFAULTS
     $self->owner("agua") if not defined $self->owner();
+    $self->login("agua") if not defined $self->login();
 	$self->repository("agua") if not defined $self->repository();
 	$self->package("bioapps") if not defined $self->package();
 	$self->repotype("github") if not defined $self->repotype();
