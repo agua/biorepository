@@ -1,0 +1,1 @@
+   -finishresiduenumber integer    [1] Last residue in chain for which torsion angles should be calculated (1 = last  residue) (Any integer value)

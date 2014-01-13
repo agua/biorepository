@@ -1,0 +1,25 @@
+ Calculates phi and psi torsion angles from protein coordinates
+Version: EMBOSS:6.4.0.0
+
+   Standard (Mandatory) qualifiers:
+  [-infile]            infile     Clean protein structure coordinates file
+   -chainnumber        integer    [1] Number of the chain for which torsion
+                                  angles should be calculated (Integer 1 or
+                                  more)
+   -startresiduenumber integer    [1] First residue in chain for which torsion
+                                  angles should be calculated (Integer 1 or
+                                  more)
+   -finishresiduenumber integer    [1] Last residue in chain for which torsion
+                                  angles should be calculated (1 = last
+                                  residue) (Any integer value)
+  [-outfile]           report     [*.psiphi] Output report file name (default
+                                  -rformat table)
+
+   Additional (Optional) qualifiers: (none)
+   Advanced (Unprompted) qualifiers: (none)
+   General qualifiers:
+   -help               boolean    Report command line options and exit. More
+                                  information on associated and general
+                                  qualifiers can be found with -help -verbose
+
+

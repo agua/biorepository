@@ -1,0 +1,9 @@
+{
+    "argument":"-two",
+	"paramtype":"input",
+	"value":"default cde",
+	"name":"two",
+    "category":"outfile",
+    "valuetype":"file",
+    "description":"Description of cde and rest of CDE description"
+}

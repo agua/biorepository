@@ -1,0 +1,5 @@
+{
+	"version":"6.5.7.0",
+	"name":"whichdb",
+	"description":"Search all sequence databases for an entry and retrieve it"
+}

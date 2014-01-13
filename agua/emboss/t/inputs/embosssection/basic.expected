@@ -1,0 +1,21 @@
+[{
+	"value":"",
+	"name":"one",
+	"discretion":"required",
+	"description":"o default description of abc and rest of ABC description",
+	"argument":"-one",
+	"paramtype":"input",
+	"valuetype":"string",
+	"category":"string"
+}
+,
+{
+	"value":"",
+	"name":"two",
+	"discretion":"required",
+	"description":"default cde] Description of cde and rest of CDE description",
+	"argument":"-two",
+	"paramtype":"input",
+	"valuetype":"string",
+	"category":"string"
+}]

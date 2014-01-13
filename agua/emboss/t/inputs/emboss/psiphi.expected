@@ -1,0 +1,54 @@
+[{
+	"value":"",
+	"name":"infile",
+	"discretion":"required",
+	"description":"Clean protein structure coordinates file",
+	"argument":"-infile",
+	"paramtype":"input",
+	"valuetype":"file",
+	"category":"infile"
+}
+,
+{
+	"value":"1",
+	"name":"chainnumber",
+	"discretion":"required",
+	"description":"Number of the chain for which torsion angles should be calculated (Integer 1 or more)",
+	"argument":"-chainnumber",
+	"paramtype":"input",
+	"valuetype":"integer",
+	"category":"integer"
+}
+,
+{
+	"value":"1",
+	"name":"startresiduenumber",
+	"discretion":"required",
+	"description":"First residue in chain for which torsion angles should be calculated (Integer 1 or more)",
+	"argument":"-startresiduenumber",
+	"paramtype":"input",
+	"valuetype":"integer",
+	"category":"integer"
+}
+,
+{
+	"value":"",
+	"name":"finishresiduenumber",
+	"discretion":"required",
+	"description":" [1] Last residue in chain for which torsion angles should be calculated (1 = last residue) (Any integer value)",
+	"argument":"-finishresiduenumber",
+	"paramtype":"input",
+	"valuetype":"integer",
+	"category":"integer"
+}
+,
+{
+	"value":"*.psiphi",
+	"name":"outfile",
+	"discretion":"required",
+	"description":"Output report file name (default -rformat table)",
+	"argument":"-outfile",
+	"paramtype":"input",
+	"valuetype":"file",
+	"category":"outfile"
+}]
