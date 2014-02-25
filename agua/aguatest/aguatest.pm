@@ -77,11 +77,11 @@ method checkInputs {
 }
 
 #### POST-INSTALL
-method postInstall {
-	$self->logDebug("");
+method postInstall ($installdir, $version) {
+	$self->logDebug("installdir", $installdir);
+	$self->logDebug("version", $version);
 
 	#### LINK DIRS
-	my $installdir = $self->conf()->getKey("agua", "INSTALLDIR");
 	$self->logDebug("installdir", $installdir);
 	my $command = "ln -s $installdir/t/cgi-bin $installdir/cgi-bin/t";
 	$self->logDebug("command", $command);

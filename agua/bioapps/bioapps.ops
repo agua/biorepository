@@ -8,23 +8,12 @@
     "keywords"          :   ["bioinformatics", "workflows", "cloud", "next-generation", "sequencing", "analysis", "alignment", "variation", "SNP"],
     "url"               :   "http://www.aguadev.org",
     "installtype"       :   "ops",
-    "opsfile"           :   "https://api.github.com/repos/agua/biorepository/agua/bioapps/bioapps.ops",
-    "installfile"       :   "https://api.github.com/repos/agua/biorepository/agua/bioapps/bioapps.pm",
-    "appdir"            :   "https://api.github.com/repos/agua/biorepository/agua/bioapps/apps",
-    "licensefile"       :   "https://api.github.com/repos/agua/biorepository/agua/bioapps/LICENSE",
-    "readmefile"        :   "https://api.github.com/repos/agua/biorepository/agua/bioapps/README",
+    "licensefile"       :   "LICENSE",
+    "readmefile"        :   "README",
     "installtype"       :   "ops",
-    "author"            :   [{
-        "name": "Stuart",
-        "surname": "Young",
-        "email": "stuartpyoung@gmail.com",
-        "url": "http://www.aguadev.org"
-    }],
-    "publication"       :   [],
-    "organisation"      :   [],
-    "ISA"               :   {},
-    "acknowledgements"  :   [],
-    "citations"         :   [],
+    "authors"           :   ["Young Stuart"],
+    "website"           :   "http://www.aguadev.org",
+    "publication"       :   {},
     "resources"         :   {
         "datavolume"         :   {
                 "id"            :   "snap-6341b301",

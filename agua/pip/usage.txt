@@ -1,0 +1,3 @@
+#/usr/local/bin/pip-3.3
+Usage: pip COMMAND [OPTIONS]
+You must give a command (use "pip help" to see a list of commands)

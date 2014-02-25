@@ -31,10 +31,12 @@ method preInstall {
 	return;
 }
 
-method postInstall {
+method postInstall ($installdir, $version) {
+	$self->logDebug("installdir", $installdir);
+	$self->logDebug("version", $version);
+
 	my $username 	= 	$self->username();
 	my $package		=	$self->package();
-	my $installdir	=	$self->installdir();
 	my $opsdir		=	$self->opsdir();
 	$self->logDebug("installdir", $installdir);
 
@@ -42,9 +44,9 @@ method postInstall {
 
 	#### GET STARCLUSTER VERSION
 	my $versionfile = "$installdir/STARCLUSTER-VERSION";
-	my $version = `cat $versionfile`;
+	$version = `cat $versionfile`;
 	$version =~ s/\s+$//;
-	$self->logDebug("version", $version);
+	$self->logDebug("FROM VERSION FILE version", $version);
 
 	#### INSTALL (ASSUMES PYTHON 2.6)	
 	$self->updateReport(["Installing StarCluster version $version"]);

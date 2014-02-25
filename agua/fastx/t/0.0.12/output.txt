@@ -1,0 +1,46 @@
+#fasta_formatter -h
+usage: fasta_formatter [-h] [-i INFILE] [-o OUTFILE] [-w N] [-t] [-e]
+Part of FASTX Toolkit 0.0.12 by gordon@cshl.edu
+
+   [-h]         = This helpful help screen.
+   [-i INFILE]  = FASTA/Q input file. default is STDIN.
+   [-o OUTFILE] = FASTA/Q output file. default is STDOUT.
+   [-w N]       = max. sequence line width for output FASTA file.
+                  When ZERO (the default), sequence lines will NOT be wrapped -
+                  all nucleotides of each sequences will appear on a single 
+                  line (good for scripting).
+   [-t]         = Output tabulated format (instead of FASTA format).
+                  Sequence-Identifiers will be on first column,
+                  Nucleotides will appear on second column (as single line).
+   [-e]         = Output empty sequences (default is to discard them).
+                  Empty sequences are ones who have only a sequence identifier,
+                  but not actual nucleotides.
+
+Input Example:
+   >MY-ID
+   AAAAAGGGGG
+   CCCCCTTTTT
+   AGCTN
+
+Output example with unlimited line width [-w 0]:
+   >MY-ID
+   AAAAAGGGGGCCCCCTTTTTAGCTN
+
+Output example with max. line width=7 [-w 7]:
+   >MY-ID
+   AAAAAGG
+   GGGTTTT
+   TCCCCCA
+   GCTN
+
+Output example with tabular output [-t]:
+   MY-ID	AAAAAGGGGGCCCCCTTTTAGCTN
+
+example of empty sequence:
+(will be discarded unless [-e] is used)
+  >REGULAR-SEQUENCE-1
+  AAAGGGTTTCCC
+  >EMPTY-SEQUENCE
+  >REGULAR-SEQUENCE-2
+  AAGTAGTAGTAGTAGT
+  GTATTTTATAT

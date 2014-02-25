@@ -1,0 +1,18 @@
+{
+    "package":        "m4",
+    "version":        "1.4.17",
+    "build":          "",
+    "type":           "application",
+    "installtype":    "ops",
+    "source":         "url",
+    "url":            "ftp://gnu.mirror.iweb.com/m4/m4-$version.tar.bz2",
+    "unzipped":       "m4-$version",
+    "checkurl":       "false",
+    "keywords":       ["m4", "make"],
+    "description":    "Process macros in files to replace unquoted occurrences of symbolic names with corresponding string values",
+    "website":        "http://en.wikipedia.org/wiki/M4_(computer_language)",
+    "licensefile":    "LICENSE",
+    "readmefile":     "README",
+    "authors":         ["Kernighan Brian", "Ritchie Dennis"],
+    "publication":    {}
+}

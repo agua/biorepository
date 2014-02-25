@@ -1,9 +1,9 @@
 {
-   "owner" : "agua",
+   "owner" : "admin",
    "location" : "bin/edamisformat",
    "executor" : "",
    "installdir" : "/aguadev/apps/emboss",
-   "version" : "6.4.0.0",
+   "version" : "6.6.0.0",
    "name" : "edamisformat",
    "localonly" : "0",
    "description" : "Find EDAM ontology terms by is_format_of relation",
@@ -115,7 +115,7 @@
    "linkurl" : "http://emboss.sourceforge.net/apps/release/6.4/emboss/apps/edamisformat.html",
    "ordinal" : 0,
    "notes" : "",
-   "url" : "http://www.ebi.ac.uk/Tools/emboss",
+   "url" : "http://archive.ubuntu.com/ubuntu/pool/universe/e/emboss/emboss_$version.orig.tar.gz",
    "type" : "EDAM"
 }
 

@@ -1,0 +1,24 @@
+{
+    "package":        "varscan",
+    "version":        "2.3.6",
+    "build":          "",
+    "type":           "application",
+    "installtype":    "ops",
+    "source":         "url",
+    "url":            "http://sourceforge.net/projects/varscan/files/VarScan.v$version.jar",
+    "downloaded":     "varscan.jar",
+    "keywords":       ["variant detection", "mutation caller", "varscan"],
+    "description":    "Variant detection in massively parallel sequencing data",
+    "website":        "http://varscan.sourceforge.net",
+    "installtype":    "ops",
+    "licensefile":    "LICENSE",
+    "readmefile":     "README",
+    "authors":         ["Koboldt DC", "Chen K", "Wylie T", "Larson DE", "McLellan MD", "Mardis ER", "Weinstock GM", "Wilson RK", "Ding L"],
+    "publication":    {
+        "title":   "VarScan: variant detection in massively parallel sequencing of individual and pooled samples",
+        "journal":  "Bioinformatics (Oxford, England), 25 (17), 2283-5",
+        "year":     2009
+    }
+}
+
+

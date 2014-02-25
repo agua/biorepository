@@ -1,12 +1,12 @@
 {
-   "owner" : "agua",
+   "owner" : "admin",
    "location" : "bin/showpep",
    "executor" : "",
    "installdir" : "/aguadev/apps/emboss",
-   "version" : "6.4.0.0",
+   "version" : "6.6.0.0",
    "name" : "showpep",
    "localonly" : "0",
-   "description" : "Displays protein sequences with features in pretty format",
+   "description" : "Display protein sequences with features in pretty format",
    "package" : "emboss",
    "parameters" : [
       {
@@ -404,7 +404,7 @@
    "linkurl" : "http://emboss.sourceforge.net/apps/release/6.4/emboss/apps/showpep.html",
    "ordinal" : 0,
    "notes" : "",
-   "url" : "http://www.ebi.ac.uk/Tools/emboss",
+   "url" : "http://archive.ubuntu.com/ubuntu/pool/universe/e/emboss/emboss_$version.orig.tar.gz",
    "type" : "display"
 }
 

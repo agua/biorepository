@@ -1,9 +1,9 @@
 {
-   "owner" : "agua",
+   "owner" : "admin",
    "location" : "bin/iep",
    "executor" : "",
    "installdir" : "/aguadev/apps/emboss",
-   "version" : "6.4.0.0",
+   "version" : "6.6.0.0",
    "name" : "iep",
    "localonly" : "0",
    "description" : "Calculate the isoelectric point of proteins",
@@ -147,6 +147,23 @@
       },
       {
          "locked" : null,
+         "value" : "Epk.dat",
+         "args" : "",
+         "chained" : 0,
+         "description" : "Values of pKa for amino acids",
+         "discretion" : "optional",
+         "inputParams" : "",
+         "ordinal" : 0,
+         "argument" : "-pkdata",
+         "format" : "",
+         "paramtype" : "input",
+         "valuetype" : "file",
+         "category" : "infile",
+         "param" : "pkdata",
+         "paramFunction" : ""
+      },
+      {
+         "locked" : null,
          "value" : "N",
          "args" : "",
          "chained" : 0,
@@ -200,7 +217,7 @@
    "linkurl" : "http://emboss.sourceforge.net/apps/release/6.4/emboss/apps/iep.html",
    "ordinal" : 0,
    "notes" : "",
-   "url" : "http://www.ebi.ac.uk/Tools/emboss",
+   "url" : "http://archive.ubuntu.com/ubuntu/pool/universe/e/emboss/emboss_$version.orig.tar.gz",
    "type" : "protein"
 }
 

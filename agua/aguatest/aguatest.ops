@@ -6,7 +6,7 @@
     "source":         "git",
     "keywords":       ["tests", "agua", "bioinformatics", "workflows", "cloud", "next-generation", "sequencing", "analysis"],
     "description":    "Tests for Agua cloud workflow platform",
-    "website ":       "http://www.aguadev.org",
+    "website":        "http://www.aguadev.org",
     "installtype":    "ops",
     "opsfile":        "https://api.github.com/repos/syoung/biorepository/syoung/aguatest/aguatest.ops",
     "installfile":    "https://api.github.com/repos/syoung/biorepository/syoung/aguatest/aguatest.pm",

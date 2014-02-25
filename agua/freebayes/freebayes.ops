@@ -1,0 +1,31 @@
+{
+    "package"           :   "freebayes",
+    "repository"        :   "freebayes",
+    "version"           :   "v9.9.13",
+    "privacy"           :   "public",
+    "description"       :   "Bayesian haplotype-based polymorphism discovery and genotyping.",
+    "type"              :   "application",
+    "source"            :   "git",
+    "repotype"          :   "github",
+    "owner"             :   "ekg",
+    "login"             :   "ekg",
+    "keywords"          :   ["NGS", "genotyping", "Bayesian", "polymorphism", "variation"],
+    "url"               :   "git://github.com/ekg/freebayes.git",
+    "installtype"       :   "ops",
+    "licensefile"       :   "LICENSE",
+    "readmefile"        :   "README",
+    "authors"           :   ["Garrison Erik"],
+    "email"             :   "erik.garrison@bc.edu",           
+    "website"           :   "https://github.com/ekg/freebayes",
+    "publication"       :   {
+        "title"         :   "Haplotype-based variant detection from short-read sequencing",
+        "year"          :   "2012",
+        "journal"       :   "arXiv:1207.3907"
+    },
+    "dependencies"	    : 	[
+		{
+			"package"   :   "cmake",
+			"version"   :   "2.8.12.1"
+		}
+	]
+}

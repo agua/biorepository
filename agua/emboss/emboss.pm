@@ -28,12 +28,6 @@ method preInstall {
 		$self->package($package);
 	}
 	
-	#$self->logError("owner not defined") and exit if not defined $owner;
-	#$self->logError("package not defined") and exit if not defined $package;
-	#$self->logError("username not defined") and exit if not defined $username;
-	#$self->logError("repotype not defined") and exit if not defined $repotype;
-	#$self->logError("repository not defined") and exit if not defined $repository;
-	
 	$self->logDebug("owner", $owner);
 	$self->logDebug("package", $package);
 	$self->logDebug("username", $username);
@@ -50,62 +44,72 @@ method preInstall {
 	return;
 }
 
-method runInstall {
-	$self->logDebug("OVERRIDING Install::runInstall");
+method doInstall ($installdir, $version) {
 
-	#### PRE-INSTALL
-	$self->preInstall();
+	$self->logDebug("Doing self->zipInstall()");
+	$self->updateReport(["Downloading EMBOSS"]);	
+	$version = $self->zipInstall($installdir, $version);
 
-	#### SET USER AND REPO NAMES
-	my $selectedversion	=	$self->version();
-	my $installdir		=	$self->installdir();
-	my $package			=	$self->package();
+	$self->logDebug("Doing self->installDependencies()");
+	$self->updateReport(["Installing dependencies"]);
+	$self->installDependencies();
 
-	#### CREATE INSTALLDIR (E.G., /agua/apps/emboss)
-	`mkdir -p $installdir` if not -d $installdir;
-	$self->logError("Can't create installdir: $installdir") and exit if not -d $installdir;
+	$self->logDebug("Doing self->configInstall()");
+	$self->updateReport(["Doing make"]);
+	$self->configInstall($installdir, $version);
 
-	#### DOWNLOAD EMBOSS .tar.gz
-	$self->updateReport(["Downloading EMBOSS"]);
-	my $download 	=	$self->opsinfo()->download();
-	$self->logDebug("download", $download);
-	my $tempdir = "/tmp/emboss";
-	#print `mkdir -p $tempdir`;
-	#print `rm -fr $tempdir/*`;
-	#print `cd $tempdir; wget $download`;
-	#
-	##### UNZIP AND CD
-	#print `cd $tempdir; tar xvfz *.tar.gz`;
-	my ($directory) = $download =~ /([^\/]+)\.orig\.tar\.gz$/;
-	$directory =~ s/_/-/;
-	$self->logDebug("directory", $directory);
+	return $version;
+}
+
+method configInstall ($installdir, $version) {
+	$self->logDebug("version", $version);
+	$self->logDebug("installdir", $installdir);
+
+	#### CHANGE DIR
+    $self->changeDir("$installdir/$version");
+	
+	my $logfile	=	"/tmp/emboss-$$-make.log";
+	$self->logDebug("logfile", $logfile);
+	
+	#### MAKE
+	my $log	=	"";
+	my ($output, $error) 	=	$self->runCommand("./configure --prefix=$installdir/$version");
+	$log .= "CONFIGURE OUTPUT:\n$output\n";
+	$log .= "CONFIGURE ERROR:\n$error\n";
+
+	($output, $error) 	=	$self->runCommand("make");
+	$log .= "MAKE OUTPUT:\n$output\n";
+	$log .= "MAKE ERROR:\n$error\n";
+
+	($output, $error) 	=	$self->runCommand("make install");
+	$log .= "MAKE INSTALL OUTPUT:\n$output\n";
+	$log .= "MAKE INSTALL ERROR:\n$error\n";
+
+	$self->printToFile($logfile, $log);
+}
+
+method installDependencies {
+
+	$self->logDebug("");
 
 	#### INSTALL X11 DEV LIBRARIES
 	$self->updateReport(["Installing X11 development libraries for EMBOSS"]);
-	#print `cd $tempdir/$directory; apt-get -y install libx11-dev;`;
 	
-	#### INSTALL EMBOSS
-	$self->updateReport(["Installing EMBOSS"]);
-	$self->updateReport(["Running: ./configure --prefix=$installdir"]);
-	#print `cd $tempdir/$directory; ./configure --prefix=$installdir;`;
-	$self->updateReport(["Running make"]);
-	#print `cd $tempdir/$directory; make;`;
-	$self->updateReport(["Running make install"]);
-	#print `cd $tempdir/$directory; make install;`;
-	
-	#### POST-INSTALL
-	$self->postInstall();
-
-	return;
+	my $arch = $self->getArch();
+	$self->logDebug("arch", $arch);
+	$self->runCommand("apt-get -y install libx11-dev") if $arch eq "ubuntu";
+	$self->runCommand("yum -y install libx11-devel") if $arch eq "centos";
 }
 
-method postInstall {
+method postInstall ($installdir, $version) {
+	$self->logDebug("installdir", $installdir);
+	$self->logDebug("version", $version);
+
 	require Agua::CLI::App;
 
 	my $owner 		= 	$self->owner();
 	my $username 	= 	$self->username();
 	my $package		=	$self->package();
-	my $installdir	=	$self->installdir();
 	my $opsdir		=	$self->opsdir();
 	my $appdir 		= 	"$opsdir/apps";
 
@@ -121,7 +125,7 @@ method postInstall {
 	my $paramtypes = $self->loadParamTypes("$opsdir/tsv/paramtypes.tsv");
 	
 	#### CREATE APP FILES
-	my $bindir 	= 	"$installdir/bin";
+	my $bindir 	= 	"$installdir/$version/bin";
 	$self->logDebug("bindir", $bindir);
 	my $files 	=	$self->getFiles("$bindir");
 	#$self->logDebug("files", $files);
@@ -143,9 +147,9 @@ method postInstall {
 	
 	#### UPDATE PACKAGE TABLE
 	$self->updateReport(["Updating 'package' table"]);
-	$self->updatePackageTable($username, $package, $installdir, $opsdir, $appdir);
 	
-	return;
+	#### NO REPORT
+	return undef;
 }
 method loadAppTypes ($tsvfile) {
 	$self->logDebug("tsvfile", $tsvfile);
@@ -193,7 +197,9 @@ method createAppFiles ($owner, $package, $installdir, $apptypes, $paramtypes, $a
 	
 	foreach my $file ( @$files ) {
 		$self->logDebug("file", $file);
-
+		
+		next if $file ne "infoassembly";
+		
 		#### SKIP NON-COMMAND LINE APPLICATIONS
 		next if $file eq "acdgalaxy" or $file eq "runJemboss.csh" or $file eq "jembossctl";
 
@@ -260,39 +266,6 @@ method setLink ($linkurl, $appname, $apptype) {
 	$link		=~ s/<APPTYPE>/$apptype/;
 	
 	return $link;
-}
-
-method updatePackageTable ($username, $package, $installdir, $opsdir, $appdir) {	
-	$self->logDebug("username", $username);
-	$self->logDebug("package", $package);
-	$self->logDebug("installdir", $installdir);
-	$self->logDebug("appdir", $appdir);
-		
-	#### GET FIRST APP
-	my $typedirs = $self->getDirs($appdir);
-	@$typedirs = sort @$typedirs;
-	$self->logDebug("typedirs", $typedirs);
-	my $typedir = $$typedirs[0];
-	my $subdir = "$appdir/$typedir";
-	my $appfiles = $self->getFiles($subdir);
-	@$appfiles 	=	sort @$appfiles;
-	$self->logDebug("typedir '$typedir' appfiles: @$appfiles") if defined $appfiles;	
-	my $appfile = 	"$subdir/$$appfiles[0]";
-	my $app		=	$self->jsonFileToObject($appfile);
-	#$self->logDebug("app", $app);
-
-	#### SET PACKAGE TO APP
-	$app->{username}	=	$username;
-	$app->{opsdir}		=	$opsdir;
-	$app->{url}			=	$self->opsinfo()->url();
-	$app->{description}	=	$self->opsinfo()->description();
-	$app->{status}		=	"ready";
-
-	$self->logDebug("FINAL APP to load as PACKAGE", $app);
-	
-	$self->_removePackage($app);
-	
-	$self->_addPackage($app);
 }
 
 method getVolume ($snapshot) {

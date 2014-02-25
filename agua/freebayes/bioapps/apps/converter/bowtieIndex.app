@@ -1,0 +1,66 @@
+{
+   "owner" : "agua",
+   "location" : "bin/converters/bowtieIndex.pl",
+   "executor" : "/usr/bin/perl",
+   "installdir" : "/agua/0.6/t/bin/Agua/Ops/Install/outputs/bioapps",
+   "version" : "0.6.0",
+   "name" : "bowtieIndex",
+   "localonly" : "0",
+   "description" : "Run bowtie-build to convert FASTA files into *ebwt indexed files",
+   "package" : "bioapps",
+   "parameters" : [
+      {
+         "locked" : "0",
+         "value" : "",
+         "args" : "input.referencedir.value, input.outputdir.value, input.inputdir.value",
+         "description" : "Location of directory containing *.fa files",
+         "discretion" : "essential",
+         "inputParams" : "refdir,outputdir,inputdir",
+         "ordinal" : "1",
+         "argument" : "--inputdir",
+         "format" : "",
+         "paramtype" : "input",
+         "valuetype" : "directory",
+         "category" : "inputdir",
+         "param" : "inputdir",
+         "paramFunction" : ""
+      },
+      {
+         "locked" : "0",
+         "value" : "",
+         "args" : "input.referencedir.value, input.outputdir.value, input.inputdir.value",
+         "description" : "Print indexed files to this directory",
+         "discretion" : "required",
+         "inputParams" : "",
+         "ordinal" : "1",
+         "argument" : "--outputdir",
+         "format" : "",
+         "paramtype" : "input",
+         "valuetype" : "directory",
+         "category" : "inputdir",
+         "param" : "outputdir",
+         "paramFunction" : ""
+      },
+      {
+         "locked" : "1",
+         "value" : "1",
+         "args" : "input.subdirs.value",
+         "description" : "",
+         "discretion" : "optional",
+         "inputParams" : "",
+         "ordinal" : "1",
+         "argument" : "--subdirs",
+         "format" : "",
+         "paramtype" : "input",
+         "valuetype" : "flag",
+         "category" : "subdirs",
+         "param" : "subdirs",
+         "paramFunction" : ""
+      }
+   ],
+   "ordinal" : null,
+   "notes" : "",
+   "url" : "http://www.aguadev.org/confluence/display/howto/Bioapps+API",
+   "type" : "converter"
+}
+

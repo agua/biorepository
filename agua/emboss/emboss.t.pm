@@ -61,10 +61,9 @@ $self->logDebug("DEBUG EXIT") and exit;
 	$self->updateReport(["Current version: $currentversion"]);	
 }
 
-method postInstall {
+method postInstall ($installdir, $version){
 	my $username = 	$self->username();
 	my $package	=	$self->package();
-	my $installdir	=	$self->installdir();
 	my $opsdir		=	$self->opsdir();
 
 	$package = $self->repository() if not defined $package;
@@ -82,7 +81,6 @@ method postInstall {
 	#$self->logDebug("self->opsinfo", $self->opsinfo());
 	$self->logDebug("self->opsinfo: ". $self->opsinfo());
 	my $resources 	= $self->opsinfo()->resources();
-	my $version = $self->opsinfo()->version();
 	$self->logDebug("version", $version);
 	
 	#### LOAD SNAPSHOT IF NOT FOUND

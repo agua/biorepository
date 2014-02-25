@@ -1,9 +1,9 @@
 {
-   "owner" : "agua",
+   "owner" : "admin",
    "location" : "bin/rebaseextract",
    "executor" : "",
    "installdir" : "/aguadev/apps/emboss",
-   "version" : "6.4.0.0",
+   "version" : "6.6.0.0",
    "name" : "rebaseextract",
    "localonly" : "0",
    "description" : "Process the REBASE database for use by restriction enzyme applications",
@@ -64,7 +64,7 @@
    "linkurl" : "http://emboss.sourceforge.net/apps/release/6.4/emboss/apps/rebaseextract.html",
    "ordinal" : 0,
    "notes" : "",
-   "url" : "http://www.ebi.ac.uk/Tools/emboss",
+   "url" : "http://archive.ubuntu.com/ubuntu/pool/universe/e/emboss/emboss_$version.orig.tar.gz",
    "type" : "restriction"
 }
 

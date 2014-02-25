@@ -1,0 +1,74 @@
+#bin/cmake 
+cmake version 2.8.12.1
+Usage
+
+  cmake [options] <path-to-source>
+  cmake [options] <path-to-existing-build>
+
+Options
+  -C <initial-cache>          = Pre-load a script to populate the cache.
+  -D <var>:<type>=<value>     = Create a cmake cache entry.
+  -U <globbing_expr>          = Remove matching entries from CMake cache.
+  -G <generator-name>         = Specify a build system generator.
+  -T <toolset-name>           = Specify toolset name if supported by
+                                generator.
+  -Wno-dev                    = Suppress developer warnings.
+  -Wdev                       = Enable developer warnings.
+  -E                          = CMake command mode.
+  -i                          = Run in wizard mode.
+  -L[A][H]                    = List non-advanced cached variables.
+  --build <dir>               = Build a CMake-generated project binary tree.
+  -N                          = View mode only.
+  -P <file>                   = Process script mode.
+  --find-package              = Run in pkg-config like mode.
+  --graphviz=[file]           = Generate graphviz of dependencies, see
+                                CMakeGraphVizOptions.cmake for more.
+  --system-information [file] = Dump information about this system.
+  --debug-trycompile          = Do not delete the try_compile build tree.
+                                Only useful on one try_compile at a time.
+  --debug-output              = Put cmake in a debug mode.
+  --trace                     = Put cmake in trace mode.
+  --warn-uninitialized        = Warn about uninitialized values.
+  --warn-unused-vars          = Warn about unused variables.
+  --no-warn-unused-cli        = Don't warn about command line options.
+  --check-system-vars         = Find problems with variable usage in system
+                                files.
+  --help-command cmd [file]   = Print help for a single command and exit.
+  --help-command-list [file]  = List available listfile commands and exit.
+  --help-commands [file]      = Print help for all commands and exit.
+  --help-compatcommands [file]= Print help for compatibility commands.
+  --help-module module [file] = Print help for a single module and exit.
+  --help-module-list [file]   = List available modules and exit.
+  --help-modules [file]       = Print help for all modules and exit.
+  --help-custom-modules [file]= Print help for all custom modules and exit.
+  --help-policy cmp [file]    = Print help for a single policy and exit.
+  --help-policies [file]      = Print help for all policies and exit.
+  --help-property prop [file] = Print help for a single property and exit.
+  --help-property-list [file] = List available properties and exit.
+  --help-properties [file]    = Print help for all properties and exit.
+  --help-variable var [file]  = Print help for a single variable and exit.
+  --help-variable-list [file] = List documented variables and exit.
+  --help-variables [file]     = Print help for all variables and exit.
+  --copyright [file]          = Print the CMake copyright and exit.
+  --help,-help,-usage,-h,-H,/?= Print usage information and exit.
+  --help-full [file]          = Print full help and exit.
+  --help-html [file]          = Print full help in HTML format.
+  --help-man [file]           = Print full help as a UNIX man page and exit.
+  --version,-version,/V [file]= Show program name/version banner and exit.
+
+Generators
+
+The following generators are available on this platform:
+  Unix Makefiles              = Generates standard UNIX makefiles.
+  Ninja                       = Generates build.ninja files (experimental).
+  CodeBlocks - Ninja          = Generates CodeBlocks project files.
+  CodeBlocks - Unix Makefiles = Generates CodeBlocks project files.
+  Eclipse CDT4 - Ninja        = Generates Eclipse CDT 4.0 project files.
+  Eclipse CDT4 - Unix Makefiles
+                              = Generates Eclipse CDT 4.0 project files.
+  KDevelop3                   = Generates KDevelop 3 project files.
+  KDevelop3 - Unix Makefiles  = Generates KDevelop 3 project files.
+  Sublime Text 2 - Ninja      = Generates Sublime Text 2 project files.
+  Sublime Text 2 - Unix Makefiles
+                              = Generates Sublime Text 2 project files.
+

@@ -1,9 +1,9 @@
 {
-   "owner" : "agua",
+   "owner" : "admin",
    "location" : "bin/seqxref",
    "executor" : "",
    "installdir" : "/aguadev/apps/emboss",
-   "version" : "6.4.0.0",
+   "version" : "6.6.0.0",
    "name" : "seqxref",
    "localonly" : "0",
    "description" : "Retrieve all database cross-references for a sequence entry",
@@ -47,7 +47,7 @@
    "linkurl" : "http://emboss.sourceforge.net/apps/release/6.4/emboss/apps/seqxref.html",
    "ordinal" : 0,
    "notes" : "",
-   "url" : "http://www.ebi.ac.uk/Tools/emboss",
+   "url" : "http://archive.ubuntu.com/ubuntu/pool/universe/e/emboss/emboss_$version.orig.tar.gz",
    "type" : "sequence"
 }
 

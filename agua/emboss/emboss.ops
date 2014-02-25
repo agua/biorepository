@@ -1,43 +1,35 @@
 {
 	"owner"				:	"agua",
-	"repository"		:	"biorepodev",
-	"privacy"			:	"private",
+	"repository"		:	"",
+	"privacy"			:	"",
     "package"           :   "emboss",
-    "version"           :   "6.4.0.0",
-	"download"			:	"http://archive.ubuntu.com/ubuntu/pool/universe/e/emboss/emboss_6.4.0.orig.tar.gz",
-		"description"       :   "EMBOSS is a free open source software analysis package specially developed for the needs of the molecular biology and bioinformatics user community. The software automatically copes with data in a variety of formats and even allows transparent retrieval of sequence data from the web. Also, as extensive libraries are provided with the package, it is a platform to allow other scientists to develop and release software in true open source spirit. EMBOSS also integrates a range of currently available packages and tools for sequence analysis into a seamless whole.",
+    "version"           :   "6.6.0",
+	"url"				:	"http://archive.ubuntu.com/ubuntu/pool/universe/e/emboss/emboss_$version.orig.tar.gz",
+	"unzipped"			:	"EMBOSS-$version",
+	"description"       :   "EMBOSS is a free open source software analysis package specially developed for the needs of the molecular biology and bioinformatics user community. The software automatically copes with data in a variety of formats and even allows transparent retrieval of sequence data from the web. Also, as extensive libraries are provided with the package, it is a platform to allow other scientists to develop and release software in true open source spirit. EMBOSS also integrates a range of currently available packages and tools for sequence analysis into a seamless whole.",
     "type"              :   "application",
     "source"            :   "git",
     "keywords"          :   ["emboss", "bioinformatics", "applications", "sequence", "motif", "protein", "nucleotide", "analysis", "alignment"],
-    "url"               :   "http://www.ebi.ac.uk/Tools/emboss",
+    "website"           :   "http://www.ebi.ac.uk/Tools/emboss",
 	"linkurl"			:	"http://emboss.sourceforge.net/apps/release/6.4/emboss/apps/<APP>.html",
     "installtype"       :   "ops",
-    "opsfile"           :   "emboss/emboss.ops",
-    "installfile"       :   "emboss/emboss.pm",
     "appdir"            :   "emboss/apps",
-    "licensefile"       :   "http://emboss.sourceforge.net/licence/",
-    "readmefile"        :   "http://emboss.sourceforge.net/docs/",
+    "licensefile"       :   "http://emboss.sourceforge.net/licence",
+    "readmefile"        :   "http://emboss.sourceforge.net/docs",
     "installtype"       :   "ops",
-    "author"            :   [{
-        "name": "",
-        "surname": "",
-	"organisation":"European Molecular Biology Lab - European Bioinformatics Institute (EMBL-EBI",
-        "email": "emboss@lists.open-bio.org",
-        "url": "http://emboss.sourceforge.net/credits/#staff"
-    }],
-    "publication"       :   [],
-    "organisation"      :   [],
-    "ISA"               :   {},
-    "acknowledgements"  :   [],
-    "citations"         :   [
-		{
-			"authors": [
-				"Rice,P.", 
-				"Longden,I.", 
-				"Bleasby,A."
-			],
-			"title" : "EMBOSS: The European Molecular Biology Open Software Suite (2000)"
-		}
+	"authors": [
+		"Rice,P.", 
+		"Longden,I.", 
+		"Bleasby,A."
 	],
+    "publication"       :   {
+		"title": 	"EMBOSS: The European Molecular Biology Open Software Suite (2000)",
+		"year":		"2000",
+		"journal": 	"Trends Genet. 2000 Jun;16(6):276-7"
+	},
+	"website": "http://emboss.sourceforge.net/credits/#staff",
+	"organisation":"European Molecular Biology Lab - European Bioinformatics Institute (EMBL-EBI",
+   "email": "emboss@lists.open-bio.org",
+    "ISA"               :   {},
     "resources"         :   {}
 }

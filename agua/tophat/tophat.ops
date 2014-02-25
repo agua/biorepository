@@ -1,0 +1,23 @@
+{
+    "package":        "tophat",
+    "version":        "2.0.10",
+    "build":          "",
+    "type":           "application",
+    "installtype":    "ops",
+    "source":         "url",
+    "url":            "http://tophat.cbcb.umd.edu/downloads/tophat-$version.Linux_x86_64.tar.gz",
+    "keywords":       ["RNA-Seq", "RNASeq", "expression analysis", "alignment", "tophat"],
+    "description":    "Alignment of short RNA-Seq reads",
+    "website":        "http://tophat.cbcb.umd.edu/",
+    "installtype":    "ops",
+    "licensefile":    "LICENSE",
+    "readmefile":     "README",
+    "authors":         ["Cole Trapnell", "Lior Pachter", "Steven L. Salzberg"],
+    "publication":    {
+        "year":     "2009",
+        "journal":  "Bioinformatics doi:10.1093/bioinformatics/btp120",
+        "title":    "TopHat: discovering splice junctions with RNA-Seq"
+    }
+}
+
+

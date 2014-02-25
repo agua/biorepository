@@ -1,0 +1,25 @@
+#java//jre1.7.0_51/bin/java -jar varscan/2.3.6/varscan.jar 
+VarScan v2.3
+
+USAGE: java -jar VarScan.jar [COMMAND] [OPTIONS] 
+
+COMMANDS:
+	pileup2snp		Identify SNPs from a pileup file
+	pileup2indel		Identify indels a pileup file
+	pileup2cns		Call consensus and variants from a pileup file
+	mpileup2snp		Identify SNPs from an mpileup file
+	mpileup2indel		Identify indels an mpileup file
+	mpileup2cns		Call consensus and variants from an mpileup file
+
+	somatic			Call germline/somatic variants from tumor-normal pileups
+	copynumber			Determine relative tumor copy number from tumor-normal pileups
+	readcounts		Obtain read counts for a list of variants from a pileup file
+
+	filter			Filter SNPs by coverage, frequency, p-value, etc.
+	somaticFilter		Filter somatic variants for clusters/indels
+	processSomatic		Isolate Germline/LOH/Somatic calls from output
+	copyCaller		GC-adjust and process copy number changes from VarScan copynumber output
+	compare			Compare two lists of positions/variants
+	limit			Restrict pileup/snps/indels to ROI positions
+
+

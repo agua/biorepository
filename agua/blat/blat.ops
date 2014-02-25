@@ -1,0 +1,24 @@
+{
+    "package"       :   "rsem",
+    "version"       :   "1.2.11",
+    "type"          :   "application",
+    "installtype"   :   "ops",
+    "url"           :   "http://users.soe.ucsc.edu/~kent/src/blatSrc$version.zip",
+    "unzipped"      :   "blatSrc",
+    "keywords"      :   ["blat", "alignment", "blast"],
+    "description"   :   "RNA-Seq by Expectation-Maximization",
+    "website"       :   "http://genome.cshlp.org/content/12/4/656.long",
+    "licensefile"   :   "LICENSE",
+    "readmefile"    :   "README",
+    "authors"       :   [
+        "Kent WJ"
+    ],
+    "publication"   :   {
+        "title"     :   "BLAT--the BLAST-like alignment tool",
+        "year"      :   "2002",
+        "journal"   :   "Genome Res. 2002 Apr;12(4):656-64"
+    },
+
+    "dependencies"  :   [
+    ]
+}

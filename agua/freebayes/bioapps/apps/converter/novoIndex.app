@@ -1,0 +1,66 @@
+{
+   "owner" : "agua",
+   "location" : "bin/converters/novoIndex.pl",
+   "executor" : "/usr/bin/perl",
+   "installdir" : "/agua/0.6/t/bin/Agua/Ops/Install/outputs/bioapps",
+   "version" : "0.6.0",
+   "name" : "novoIndex",
+   "localonly" : "0",
+   "description" : "Run novoindex to convert FASTA files into binary indexed files",
+   "package" : "bioapps",
+   "parameters" : [
+      {
+         "locked" : "0",
+         "value" : "",
+         "args" : "output.referencedir.value, input.outputdir.value, input.inputdir.value",
+         "description" : "Location of directory containing *.fa files",
+         "discretion" : "essential",
+         "inputParams" : "",
+         "ordinal" : "1",
+         "argument" : "--inputdir",
+         "format" : "",
+         "paramtype" : "input",
+         "valuetype" : "directory",
+         "category" : "inputdir",
+         "param" : "inputdir",
+         "paramFunction" : ""
+      },
+      {
+         "locked" : "0",
+         "value" : "",
+         "args" : "output.referencedir.value, input.outputdir.value, input.inputdir.value",
+         "description" : "Print indexed files to this directory",
+         "discretion" : "         ",
+         "inputParams" : "",
+         "ordinal" : "1",
+         "argument" : "--outputdir",
+         "format" : "",
+         "paramtype" : "input",
+         "valuetype" : "directory",
+         "category" : "outputdir",
+         "param" : "outputdir",
+         "paramFunction" : ""
+      },
+      {
+         "locked" : "0",
+         "value" : "1",
+         "args" : "input.subdirs.value",
+         "description" : "",
+         "discretion" : "optional",
+         "inputParams" : "",
+         "ordinal" : "1",
+         "argument" : "--subdirs",
+         "format" : "",
+         "paramtype" : "input",
+         "valuetype" : "flag",
+         "category" : "subdirs",
+         "param" : "subdirs",
+         "paramFunction" : ""
+      }
+   ],
+   "ordinal" : null,
+   "notes" : " ",
+   "url" : "http://www.aguadev.org/confluence/display/howto/Bioapps+API",
+   "type" : "converter"
+}
+

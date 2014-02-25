@@ -1,0 +1,29 @@
+{
+    "package"       :   "rsem",
+    "version"       :   "1.2.11",
+    "type"          :   "application",
+    "installtype"   :   "ops",
+    "url"           :   "http://deweylab.biostat.wisc.edu/rsem/src/rsem-$version.tar.gz",
+    "keywords"      :   ["rsem", "RNA-Seq", "expectation maximization", "NGS"],
+    "description"   :   "RNA-Seq by Expectation-Maximization",
+    "website"       :   "http://deweylab.biostat.wisc.edu/rsem",
+    "licensefile"   :   "LICENSE",
+    "readmefile"    :   "README",
+    "authors"       :   [
+        "Bo L",
+        "Dewey CN"
+    ],
+
+    "publication"   :   {
+        "title"     :   "RSEM: accurate transcript quantification from RNA-Seq data with or without a reference genome",
+        "year"      :   "2013",
+        "journal"   :   "BMC Bioinformatics. 12:323"
+    },
+
+    "dependencies"  :   [
+        {
+            "package":  "R",
+            "version":  "3.0.0"
+        }
+    ]
+}

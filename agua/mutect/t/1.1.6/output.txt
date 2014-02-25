@@ -1,0 +1,3 @@
+#make_mutect_release.pl 
+usage: make_mutect_release.pl <tmp-dir> <mutect-tag> <gatk-tag>
+  for example: make_walker_release.pl /tmp 1.1.5 2.5

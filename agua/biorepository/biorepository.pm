@@ -71,13 +71,13 @@ method checkInputs {
 }
 
 #### POST-INSTALL
-method postInstall {
+method postInstall ($installdir, $version) {
 	$self->logDebug("");
 	$self->logDebug("biorepository    self->dbobject()", $self->dbobject());
 
-	##### RUN INSTALL TO SET PERMISSIONS, ETC.
-	#$self->logDebug("Doing loadProjects()");
-	#$self->loadProjects();
+	#### RUN INSTALL TO SET PERMISSIONS, ETC.
+	$self->logDebug("Doing loadProjects()");
+	$self->loadProjects();
 	
 	#### SET ACCESS
 	$self->logDebug("Doing setAccess()");

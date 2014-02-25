@@ -1,0 +1,13 @@
+#rsem/1.2.9/rsem-run-em
+Usage : rsem-run-em refName read_type sampleName imdName statName [-p #Threads] [-b samInpType samInpF has_fn_list_? [fn_list]] [-q] [--gibbs-out] [--sampling]
+
+  refName: reference name
+  read_type: 0 single read without quality score; 1 single read with quality score; 2 paired-end read without quality score; 3 paired-end read with quality score.
+  sampleName: sample's name, including the path
+  sampleToken: sampleName excludes the path
+  -p: number of threads which user wants to use. (default: 1)
+  -b: produce bam format output file. (default: off)
+  -q: set it quiet
+  --gibbs-out: generate output file used by Gibbs sampler. (default: off)
+  --sampling: sample each read from its posterior distribution when bam file is generated. (default: off)
+// model parameters should be in imdName.mparams.

@@ -1,0 +1,21 @@
+{
+    "package":        "cmake",
+    "version":        "2.18.2",
+    "build":          "",
+    "type":           "application",
+    "installtype":    "ops",
+    "source":         "url",
+    "url":            "https://github.com/arq5x/cmake2/releases/download/v$version/cmake-$version.tar.gz",
+    "checkurl":       "false",
+    "keywords":       ["NGS", "converter", "cmake"],
+    "description":    "A swiss army knife for genome arithmetic",
+    "website":        "https://github.com/arq5x/cmake2",
+    "licensefile":    "LICENSE",
+    "readmefile":     "README",
+    "authors":         [ "Quinlan AR", "Hall IM" ],
+    "publication":    {
+        "year":     "2010",
+        "title":    "BEDTools: a flexible suite of utilities for comparing genomic features",
+        "journal":  "Bioinformatics. 26, 6, pp. 841-842"
+    }
+}

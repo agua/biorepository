@@ -67,11 +67,13 @@ method checkInputs {
 	$self->logDebug("random", $random);
 }
 
-method postInstall {
+method postInstall ($installdir, $version) {
+	$self->logDebug("installdir", $installdir);
+	$self->logDebug("version", $version);
+
 	my $username 	= 	$self->username();
 	my $login 		= 	$self->login();
 	my $package		=	$self->package();
-	my $installdir	=	$self->installdir();
 	my $opsdir		=	$self->opsdir();
 
 	$package = $self->repository() if not defined $package;
@@ -87,8 +89,6 @@ method postInstall {
 	
 	$self->logDebug("self->opsinfo", $self->opsinfo());
 	my $resources 	= $self->opsinfo()->resources();
-	my $version = $self->opsinfo()->version();
-	$self->logDebug("version", $version);
 	
 	#### LOAD SNAPSHOT IF NOT FOUND
 	my $datavolume 	= 	$resources->{datavolume};
