@@ -1,0 +1,45 @@
+{
+    "package"           :   "gatk",
+    "repository"        :   "gatk",
+	"owner"				:	"broadgsa",
+    "version"           :   "2.7-1-g42d771f",
+    "privacy"           :   "public",
+    "description"       :   "GATK Official Release Repository: contains the core MIT-licensed GATK framework, plus protected tools restricted to non-commercial use only",
+    "type"              :   "application",
+    "source"            :   "git",
+    "repotype"          :   "github",
+    "keywords"          :   [
+		"NGS",
+		"toolkit",
+		"expression",
+		"variation",
+		"gatk",
+		"gatk"
+	],
+    "installtype"       :   "ops",
+    "licensefile"       :   "LICENSE",
+    "readmefile"        :   "README",
+    "authors"           :   ["Garrison Erik"],
+    "email"             :   "erik.garrison@bc.edu",
+          
+    "website"           :   "https://github.com/ekg/gatk",
+    "authors"			:	[
+		"McKenna A",
+		"Hanna M",
+		"Banks E",
+		"Sivachenko A",
+		"Cibulskis K",
+		"Kernytsky A",
+		"Garimella K",
+		"Altshuler D",
+		"Gabriel S",
+		"Daly M",
+		"DePristo MA"
+	],
+	"publication"       :   {
+        "title"         :   "The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data",
+        "year"          :   "2010",
+        "journal"       :   "Genome Res. 20:1297-303"
+    }
+}
+

@@ -1,0 +1,33 @@
+{
+    "package"		:	"bamtools",
+    "repository"	:	"bamtools",
+    "owner"			:	"pezmaster31",
+    "version"		:	"v2.3.0",
+    "type"			:	"application",
+    "source"		:	"git",
+    "hubtype"		:	"github",
+	"privacy"		:	"public",
+    "installtype"	:	"ops",
+    "keywords"		:	[
+		"bamtools",
+		"BAM file",
+		"file manipulation",
+		"developer tools"
+	],
+    "description"	:	"A C++ API and command-line toolkit for reading, writing, and manipulating BAM (genome alignment) files",
+    "website"		:	"https://github.com/pezmaster31/bamtools/wiki",
+    "licensefile"	:	"LICENSE",
+    "readmefile"	:	"README",
+    "authors"		:	[
+		"Barnett D",
+		"Garrison E",
+		"Marth G",
+		"Stromberg M"
+    ],
+    "dependencies"	: 	[
+		{
+			"package"   :   "cmake",
+			"version"   :   "2.6.4"
+		}
+	]
+}

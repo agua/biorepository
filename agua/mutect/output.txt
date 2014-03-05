@@ -1,0 +1,244 @@
+#muTect.jar --help
+--------------------------------------------------------------------------------
+The Genome Analysis Toolkit (GATK) v2.7-1-g42d771f, Compiled 2014/03/03 13:33:23
+Copyright (c) 2010 The Broad Institute
+For support and documentation go to http://www.broadinstitute.org/gatk
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+usage: java -jar muTect.jar -T <analysis_type> [-args <arg_file>] [-I <input_file>] [-rbs <read_buffer_size>] [-et 
+       <phone_home>] [-K <gatk_key>] [-tag <tag>] [-rf <read_filter>] [-L <intervals>] [-XL <excludeIntervals>] [-isr 
+       <interval_set_rule>] [-im <interval_merging>] [-ip <interval_padding>] [-R <reference_sequence>] [-ndrs] [-maxRuntime 
+       <maxRuntime>] [-maxRuntimeUnits <maxRuntimeUnits>] [-dt <downsampling_type>] [-dfrac <downsample_to_fraction>] [-dcov 
+       <downsample_to_coverage>] [-baq <baq>] [-baqGOP <baqGapOpenPenalty>] [-fixMisencodedQuals] 
+       [-allowPotentiallyMisencodedQuals] [-OQ] [-DBQ <defaultBaseQualities>] [-PF <performanceLog>] [-BQSR <BQSR>] [-DIQ] 
+       [-EOQ] [-preserveQ <preserve_qscores_less_than>] [-globalQScorePrior <globalQScorePrior>] [-allowBqsrOnReducedBams] [-S 
+       <validation_strictness>] [-rpr] [-kpr] [-sample_rename_mapping_file <sample_rename_mapping_file>] [-U <unsafe>] [-nt 
+       <num_threads>] [-nct <num_cpu_threads_per_data_thread>] [-mte] [-bfh <num_bam_file_handles>] [-rgbl 
+       <read_group_black_list>] [-ped <pedigree>] [-pedString <pedigreeString>] [-pedValidationType <pedigreeValidationType>] 
+       [-l <logging_level>] [-log <log_to_file>] [-h] [-version]
+
+ -T,--analysis_type <analysis_type>                                                      Type of analysis to run
+ -args,--arg_file <arg_file>                                                             Reads arguments from the 
+                                                                                         specified file
+ -I,--input_file <input_file>                                                            SAM or BAM file(s)
+ -rbs,--read_buffer_size <read_buffer_size>                                              Number of reads per SAM file to 
+                                                                                         buffer in memory
+ -et,--phone_home <phone_home>                                                           What kind of GATK run report 
+                                                                                         should we generate? AWS is the 
+                                                                                         default, can be NO_ET so 
+                                                                                         nothing is posted to the run 
+                                                                                         repository. Please see 
+                                                                                         nd-how-does-it-affect-me#latest 
+                                                                                         for details. (NO_ET|AWS|STDOUT)
+ -K,--gatk_key <gatk_key>                                                                GATK Key file. Required if 
+                                                                                         running with -et NO_ET. Please 
+                                                                                         see 
+                                                                                         nd-how-does-it-affect-me#latest 
+                                                                                         for details.
+ -tag,--tag <tag>                                                                        Arbitrary tag string to 
+                                                                                         identify this GATK run as part 
+                                                                                         of a group of runs, for later 
+                                                                                         analysis
+ -rf,--read_filter <read_filter>                                                         Specify filtration criteria to 
+                                                                                         apply to each read individually
+ -L,--intervals <intervals>                                                              One or more genomic intervals 
+                                                                                         over which to operate. Can be 
+                                                                                         explicitly specified on the 
+                                                                                         command line or in a file 
+                                                                                         (including a rod file)
+ -XL,--excludeIntervals <excludeIntervals>                                               One or more genomic intervals 
+                                                                                         to exclude from processing. Can 
+                                                                                         be explicitly specified on the 
+                                                                                         command line or in a file 
+                                                                                         (including a rod file)
+ -isr,--interval_set_rule <interval_set_rule>                                            Indicates the set merging 
+                                                                                         approach the interval parser 
+                                                                                         should use to combine the 
+                                                                                         various -L or -XL inputs (UNION|
+                                                                                         INTERSECTION)
+ -im,--interval_merging <interval_merging>                                               Indicates the interval merging 
+                                                                                         rule we should use for abutting 
+                                                                                         intervals (ALL|
+                                                                                         OVERLAPPING_ONLY)
+ -ip,--interval_padding <interval_padding>                                               Indicates how many basepairs of 
+                                                                                         padding to include around each 
+                                                                                         of the intervals specified with 
+                                                                                         the -L/--intervals argument
+ -R,--reference_sequence <reference_sequence>                                            Reference sequence file
+ -ndrs,--nonDeterministicRandomSeed                                                      Makes the GATK behave non 
+                                                                                         deterministically, that is, the 
+                                                                                         random numbers generated will 
+                                                                                         be different in every run
+ -maxRuntime,--maxRuntime <maxRuntime>                                                   If provided, that GATK will 
+                                                                                         stop execution cleanly as soon 
+                                                                                         after maxRuntime has been 
+                                                                                         exceeded, truncating the run 
+                                                                                         but not exiting with a failure. 
+                                                                                          By default the value is 
+                                                                                         interpreted in minutes, but 
+                                                                                         this can be changed by 
+                                                                                         maxRuntimeUnits
+ -maxRuntimeUnits,--maxRuntimeUnits <maxRuntimeUnits>                                    The TimeUnit for maxRuntime 
+                                                                                         (NANOSECONDS|MICROSECONDS|
+                                                                                         MILLISECONDS|SECONDS|MINUTES|
+                                                                                         HOURS|DAYS)
+ -dt,--downsampling_type <downsampling_type>                                             Type of reads downsampling to 
+                                                                                         employ at a given locus.  Reads 
+                                                                                         will be selected randomly to be 
+                                                                                         removed from the pile based on 
+                                                                                         the method described here (NONE|
+                                                                                         ALL_READS|BY_SAMPLE)
+ -dfrac,--downsample_to_fraction <downsample_to_fraction>                                Fraction [0.0-1.0] of reads to 
+                                                                                         downsample to
+ -dcov,--downsample_to_coverage <downsample_to_coverage>                                 Coverage [integer] to 
+                                                                                         downsample to. For locus-based 
+                                                                                         traversals (eg., LocusWalkers 
+                                                                                         and ActiveRegionWalkers),this 
+                                                                                         controls the maximum depth of 
+                                                                                         coverage at each locus. For 
+                                                                                         non-locus-based traversals 
+                                                                                         (eg., ReadWalkers), this 
+                                                                                         controls the maximum number of 
+                                                                                         reads sharing the same 
+                                                                                         alignment start position. Note 
+                                                                                         that this downsampling option 
+                                                                                         does NOT produce an unbiased 
+                                                                                         random sampling from all 
+                                                                                         available reads at each locus: 
+                                                                                         instead, the primary goal of 
+                                                                                         the to-coverage downsampler is 
+                                                                                         to maintain an even 
+                                                                                         representation of reads from 
+                                                                                         all alignment start positions 
+                                                                                         when removing excess coverage. 
+                                                                                         For a true across-the-board 
+                                                                                         unbiased random sampling of 
+                                                                                         reads, use -dfrac instead. Also 
+                                                                                         note that the coverage target 
+                                                                                         is an approximate goal that is 
+                                                                                         not guaranteed to be met 
+                                                                                         exactly: the downsampling 
+                                                                                         algorithm will under some 
+                                                                                         circumstances retain slightly 
+                                                                                         more coverage than requested.
+ -baq,--baq <baq>                                                                        Type of BAQ calculation to 
+                                                                                         apply in the engine (OFF|
+                                                                                         CALCULATE_AS_NECESSARY|
+                                                                                         RECALCULATE)
+ -baqGOP,--baqGapOpenPenalty <baqGapOpenPenalty>                                         BAQ gap open penalty (Phred 
+                                                                                         Scaled).  Default value is 40. 
+                                                                                          30 is perhaps better for whole 
+                                                                                         genome call sets
+ -fixMisencodedQuals,--fix_misencoded_quality_scores                                     Fix mis-encoded base quality 
+                                                                                         scores
+ -allowPotentiallyMisencodedQuals,--allow_potentially_misencoded_quality_scores          Do not fail when encountering 
+                                                                                         base qualities that are too 
+                                                                                         high and that seemingly 
+                                                                                         indicate a problem with the 
+                                                                                         base quality encoding of the 
+                                                                                         BAM file
+ -OQ,--useOriginalQualities                                                              If set, use the original base 
+                                                                                         quality scores from the OQ tag 
+                                                                                         when present instead of the 
+                                                                                         standard scores
+ -DBQ,--defaultBaseQualities <defaultBaseQualities>                                      If reads are missing some or 
+                                                                                         all base quality scores, this 
+                                                                                         value will be used for all base 
+                                                                                         quality scores
+ -PF,--performanceLog <performanceLog>                                                   If provided, a GATK runtime 
+                                                                                         performance log will be written 
+                                                                                         to this file
+ -BQSR,--BQSR <BQSR>                                                                     The input covariates table file 
+                                                                                         which enables on-the-fly base 
+                                                                                         quality score recalibration 
+                                                                                         (intended for use with 
+                                                                                         BaseRecalibrator and 
+                                                                                         PrintReads)
+ -DIQ,--disable_indel_quals                                                              If true, disables printing of 
+                                                                                         base insertion and base 
+                                                                                         deletion tags (with -BQSR)
+ -EOQ,--emit_original_quals                                                              If true, enables printing of 
+                                                                                         the OQ tag with the original 
+                                                                                         base qualities (with -BQSR)
+ -preserveQ,--preserve_qscores_less_than <preserve_qscores_less_than>                    Bases with quality scores less 
+                                                                                         than this threshold won't be 
+                                                                                         recalibrated (with -BQSR)
+ -globalQScorePrior,--globalQScorePrior <globalQScorePrior>                              The global Qscore Bayesian 
+                                                                                         prior to use in the BQSR. If 
+                                                                                         specified, this value will be 
+                                                                                         used as the prior for all 
+                                                                                         mismatch quality scores instead 
+                                                                                         of the actual reported quality 
+                                                                                         score
+ -allowBqsrOnReducedBams,--allow_bqsr_on_reduced_bams_despite_repeated_warnings          Do not fail when running base 
+                                                                                         quality score recalibration on 
+                                                                                         a reduced BAM file even though 
+                                                                                         we highly recommend against it
+ -S,--validation_strictness <validation_strictness>                                      How strict should we be with 
+                                                                                         validation (STRICT|LENIENT|
+                                                                                         SILENT)
+ -rpr,--remove_program_records                                                           Should we override the Walker's 
+                                                                                         default and remove program 
+                                                                                         records from the SAM header
+ -kpr,--keep_program_records                                                             Should we override the Walker's 
+                                                                                         default and keep program 
+                                                                                         records from the SAM header
+ -sample_rename_mapping_file,--sample_rename_mapping_file <sample_rename_mapping_file>   Rename sample IDs on-the-fly at 
+                                                                                         runtime using the provided 
+                                                                                         mapping file. This option 
+                                                                                         requires that each BAM file 
+                                                                                         listed in the mapping file have 
+                                                                                         only a single sample specified 
+                                                                                         in its header (though there may 
+                                                                                         be multiple read groups for 
+                                                                                         that sample). Each line of the 
+                                                                                         mapping file must contain the 
+                                                                                         absolute path to a BAM file, 
+                                                                                         followed by whitespace, 
+                                                                                         followed by the new sample name 
+                                                                                         for that BAM file.
+ -U,--unsafe <unsafe>                                                                    If set, enables unsafe 
+                                                                                         operations: nothing will be 
+                                                                                         checked at runtime.  For expert 
+                                                                                         users only who know what they 
+                                                                                         are doing.  We do not support 
+                                                                                         usage of this argument. 
+                                                                                         (ALLOW_N_CIGAR_READS|
+                                                                                         ALLOW_UNINDEXED_BAM|
+                                                                                         ALLOW_UNSET_BAM_SORT_ORDER|
+                                                                                         NO_READ_ORDER_VERIFICATION|
+                                                                                         ALLOW_SEQ_DICT_INCOMPATIBILITY|
+                                                                                         LENIENT_VCF_PROCESSING|ALL)
+ -nt,--num_threads <num_threads>                                                         How many data threads should be 
+                                                                                         allocated to running this 
+                                                                                         analysis.
+ -nct,--num_cpu_threads_per_data_thread <num_cpu_threads_per_data_thread>                How many CPU threads should be 
+                                                                                         allocated per data thread to 
+                                                                                         running this analysis?
+ -mte,--monitorThreadEfficiency                                                          Enable GATK threading 
+                                                                                         efficiency monitoring
+ -bfh,--num_bam_file_handles <num_bam_file_handles>                                      The total number of BAM file 
+                                                                                         handles to keep open 
+                                                                                         simultaneously
+ -rgbl,--read_group_black_list <read_group_black_list>                                   Filters out read groups 
+                                                                                         matching <TAG>:<STRING> or a 
+                                                                                         .txt file containing the filter 
+                                                                                         strings one per line.
+ -ped,--pedigree <pedigree>                                                              Pedigree files for samples
+ -pedString,--pedigreeString <pedigreeString>                                            Pedigree string for samples
+ -pedValidationType,--pedigreeValidationType <pedigreeValidationType>                    How strict should we be in 
+                                                                                         validating the pedigree 
+                                                                                         information? (STRICT|SILENT)
+ -l,--logging_level <logging_level>                                                      Set the minimum level of 
+                                                                                         logging, i.e. setting INFO 
+                                                                                         get's you INFO up to FATAL, 
+                                                                                         setting ERROR gets you ERROR 
+                                                                                         and FATAL level logging.
+ -log,--log_to_file <log_to_file>                                                        Set the logging location
+ -h,--help                                                                               Generate this help message
+ -version,--version                                                                      Output version information
+
+ mutect    
+   MuTect  
+           
+

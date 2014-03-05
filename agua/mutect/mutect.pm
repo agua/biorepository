@@ -17,8 +17,8 @@ method preInstall {
 	
 	$self->updateReport(["Completed preInstall"]);
 
-	$self->login($self->opsinfo()->login());
 	$self->logDebug("self->opsinfo()->login()", $self->opsinfo()->login());
+	$self->login($self->opsinfo()->login()) if not defined $self->login() or $self->login() eq "";
 	
 	return;
 }
@@ -27,45 +27,89 @@ method doInstall ($installdir, $version) {
 	$self->logDebug("version", $version);
 	$self->logDebug("installdir", $installdir);
 
-	$version 	= 	$self->gitInstall($installdir, $version);
-	$self->makeInstall("$installdir/$version", $version);
+	$self->gitInstall($installdir, $version);
+
+	$self->antInstall("$installdir/$version", $version);
 
 	$self->confirmInstall($installdir, $version);
 	
 	return $version;
 }
 
+method gitInstall ($installdir, $version) {
+	$self->logDebug("version", $version);
+	$self->logDebug("installdir", $installdir);
 
-method checkInputs {
-	$self->logDebug("");
+	#### RESOURCES
+	my $dependencies	=	$self->opsinfo()->dependencies();
+	$self->logDebug("dependencies", $dependencies);
+	my $gatkversion	=	$$dependencies[1]->{version};
+	$self->logDebug("gatkversion", $gatkversion);
+	my $tempdir	=	"/tmp";
+	my $basedir = "$tempdir/mutect-dist";
+	my $gatkdir = "$basedir/gatk-protected";
+	my $tempdistro = "$tempdir/mutect-dist-zip";
+	my $mutectdir = "$basedir/mutect-src";
+	my $cwd = `pwd`;
+	chomp($cwd);
 
-	my 	$username 		= $self->username();
-	my 	$version 		= $self->version();
-	my  $package 		= $self->package();
-	my  $repotype 		= $self->repotype();
-	my 	$owner 			= $self->owner();
-	my  $repository 	= $self->repository();
-	my  $installdir 	= $self->installdir();
-
-	if ( not defined $package or not $package ) {
-		$package = $self->repository();
-		$self->package($package);
-	}
-	$self->logError("owner not defined") and exit if not defined $owner;
-	$self->logError("package not defined") and exit if not defined $package;
-	$self->logError("version not defined") and exit if not defined $version;
-	$self->logError("username not defined") and exit if not defined $username;
-	$self->logError("repotype not defined") and exit if not defined $repotype;
-	$self->logError("repository not defined") and exit if not defined $repository;
-	$self->logError("installdir not defined") and exit if not defined $installdir;
+	#### RECREATE TEMP DISTRO
+	`rm -rf $tempdistro` if -e $tempdistro;
+	`mkdir -p $tempdistro`;
 	
-	$self->logDebug("owner", $owner);
-	$self->logDebug("package", $package);
-	$self->logDebug("username", $username);
-	$self->logDebug("repotype", $repotype);
-	$self->logDebug("repository", $repository);
+	#### RECREATE BASEDIR
+	`rm -rf $basedir` if -e $basedir;
+	`mkdir -p $mutectdir`;
+	
+	#### CLONE mutect
+	system("cd $mutectdir && git clone https://github.com/broadinstitute/mutect.git") == 0 or die();
+	
+	#### VERIFY tag EXISTS
+	my $cnt = `cd $mutectdir/mutect && git ls-remote --tags -q | grep refs/tags/$version | wc -l`;
+	chomp($cnt);
+	if ($cnt == 0) { die("ERROR: release tag $version does not exist!\n"); }
+	
+	#### RESET MUTECT TO version
+	system("cd $mutectdir/mutect && git reset --hard $version") == 0 or die();
+	
+	
+	`cd $mutectdir/mutect && git describe --tags | awk '{ print "MuTect Revision: " \$0 }' > $tempdistro/version.txt`;
+	
+	#### CLONE GATK-protected
+	chdir($basedir);
+	system("git clone https://github.com/broadgsa/gatk-protected.git") == 0 or die();
+	chdir($gatkdir);
+	system("git reset --hard $gatkversion") == 0 or die();
+
+	$self->runCommand("cp $gatkdir/dist/packages/muTect-*/muTect.jar $installdir");
+}
+
+
+method antInstall ($installdir, $version) {
 	$self->logDebug("installdir", $installdir);
 	$self->logDebug("version", $version);
+
+	my $dependencies	=	$self->opsinfo()->dependencies();
+	$self->logDebug("dependencies", $dependencies);
+	my $javaversion	=	$$dependencies[0]->{version};
+	my $gatkversion	=	$$dependencies[1]->{version};
+
+	my ($basedir) 	= 	$installdir	=~	/^(.+?)\/[^\/]+\/[^\/]+$/;
+	$self->logDebug("basedir", $basedir);
+	my $gatkdir 	= 	"/tmp/mutect-dist/gatk-protected";
+	
+	#### CLEAN THEN BUILD
+	$self->changeDir($gatkdir);
+	$self->runCommand("ant clean");
+	my ($out, $err) = $self->runCommand("export JAVA_HOME=$basedir/java/$javaversion && ant -Dexternal.dir=/tmp/mutect-dist/mutect-src -Dexecutable=mutect package");
+	$self->logDebug("out", $out);
+	$self->logDebug("err", $err);
+
+	#### CREATE INSTALL TARGET DIR
+	`mkdir -p $installdir` if not -d $installdir;
+	
+	#### COPY EXECUTABLE
+	$self->runCommand("cp $gatkdir/dist/packages/muTect-*/muTect.jar $installdir");
 }
 
 1;

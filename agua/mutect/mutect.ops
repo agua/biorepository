@@ -1,6 +1,7 @@
 {
     "package"           :   "mutect",
     "repository"        :   "mutect",
+	"owner"				:	"broadinstitute",
     "version"           :   "1.1.6",
     "privacy"           :   "public",
     "description"       :   "Reliable and accurate identification of somatic point mutations in next generation sequencing data of cancer genomes",
@@ -17,8 +18,19 @@
     "authors"           :   ["Cibulskis K"],
     "website"           :   "http://www.broadinstitute.org/cancer/cga/mutect",
     "publication"       :   {
-        "title"         :   "Sensitive detection of somatic point mutations in impure and heterogeneous cancer samples. Nat Biotechnology",
+        "title"         :   "Sensitive detection of somatic point mutations in impure and heterogeneous cancer samples",
         "year"          :   "2013",
-        "journal"       :   "doi:10.1038/nbt.2514"
-    }
+        "journal"       :   "Nat Biotechnology, doi:10.1038/nbt.2514"
+    },
+    "dependencies"      :   [
+		{
+			"package"   :   "java",
+			"version"   :   "1.7.0_51"
+		},
+		{
+			"package"   :   "gatk-protected",
+			"version"   :   "2.7-1-g42d771f",
+			"installdir":	"%INSTALLDIR%/gatk-protected"
+		}
+	]
 }
