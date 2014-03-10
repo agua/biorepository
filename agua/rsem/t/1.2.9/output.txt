@@ -1,5 +1,5 @@
-#rsem-run-em
-Usage : rsem-run-em refName read_type sampleName imdName statName [-p #Threads] [-b samInpType samInpF has_fn_list_? [fn_list]] [-q] [--gibbs-out] [--sampling]
+#./rsem-run-em
+Usage : rsem-run-em refName read_type sampleName imdName statName [-p #./Threads] [-b samInpType samInpF has_fn_list_? [fn_list]] [-q] [--gibbs-out] [--sampling]
 
   refName: reference name
   read_type: 0 single read without quality score; 1 single read with quality score; 2 paired-end read without quality score; 3 paired-end read with quality score.

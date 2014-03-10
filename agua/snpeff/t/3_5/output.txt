@@ -1,0 +1,46 @@
+#snpEff.jar
+#java -jar
+Error: Missing command
+
+snpEff version SnpEff 3.5c (build 2014-02-21), by Pablo Cingolani
+Usage: snpEff [command] [options] [files]
+
+Run 'java -jar snpEff.jar command' for help on each specific command
+
+Available commands: 
+	[eff]                        : Calculate effect of variants. Default: eff (no command or 'eff').
+	build                        : Build a SnpEff database.
+	buildNextProt                : Build a SnpEff for NextProt (using NextProt's XML files).
+	cds                          : Compare CDS sequences calculated form a SnpEff database to the one in a FASTA file. Used for checking databases correctness.
+	closest                      : Annotate the closest genomic region.
+	count                        : Count how many intervals (from a BAM, BED or VCF file) overlap with each genomic interval.
+	databases                    : Show currently available databases (from local config file).
+	download                     : Download a SnpEff database.
+	dump                         : Dump to STDOUT a SnpEff database (mostly used for debugging).
+	genes2bed                    : Create a bed file from a genes list.
+	len                          : Calculate total genomic length for each marker type.
+	protein                      : Compare protein sequences calculated form a SnpEff database to the one in a FASTA file. Used for checking databases correctness.
+	spliceAnalysis               : Perform an analysis of splice sites. Experimental feature.
+
+Generic options:
+	-c , -config                 : Specify config file
+	-d , -debug                  : Debug mode (very verbose).
+	-dataDir <path>              : Override data_dir parameter from config file.
+	-h , -help                   : Show this help and exit
+	-if , -inOffset              : Offset input by a number of bases. E.g. '-inOffset 1' for one-based TXT input files
+	-of , -outOffset             : Offset output by a number of bases. E.g. '-outOffset 1' for one-based TXT output files
+	-noLog                       : Do not report usage statistics to server
+	-t                           : Use multiple threads (implies '-noStats'). Default 'off'
+	-q ,  -quiet                 : Quiet mode (do not show any messages or errors)
+	-v , -verbose                : Verbose mode
+
+Database options:
+	-canon                       : Only use canonical transcripts.
+	-interval                    : Use a custom intervals in TXT/BED/BigBed/VCF/GFF file (you may use this option many times)
+	-motif                       : Annotate using motifs (requires Motif database).
+	-nextProt                    : Annotate using NextProt (requires NextProt database).
+	-reg <name>                  : Regulation track to use (this option can be used add several times).
+	-onlyReg                     : Only use regulation tracks.
+	-onlyTr <file.txt>           : Only use the transcripts in this file. Format: One transcript ID per line.
+	-ss , -spliceSiteSize <int>  : Set size for splice sites (donor and acceptor) in bases. Default: 2
+	-ud , -upDownStreamLen <int> : Set upstream downstream interval length (in bases)

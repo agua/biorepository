@@ -1,4 +1,4 @@
-#bam2fastx 
+#./bam2fastx 
 Usage: bam2fastx [--fasta|-a|--fastq|-q] [--color] [-Q] [--sam|-s|-t]
    [-M|--mapped-only|-A|--all] [-o <outfile>] [-P|--paired] [-N] <in.bam>
    

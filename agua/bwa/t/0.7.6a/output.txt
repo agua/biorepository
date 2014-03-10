@@ -1,4 +1,4 @@
-#bwa 
+#./bwa 
 
 Program: bwa (alignment via Burrows-Wheeler transformation)
 Version: 0.7.6a-r433

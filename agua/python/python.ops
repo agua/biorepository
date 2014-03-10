@@ -1,0 +1,21 @@
+{
+    "package"       :   "python",
+    "version"       :   "2.7.3",
+    "type"          :   "application",
+    "installtype"   :   "ops",
+    "url"           :   "http://python.org/ftp/python/$version/Python-$version.tar.bz2",
+    "keywords"      :   ["python", "software language", "scripting"],
+    "description"   :   "An interpreted programming language",
+    "website"       :   "http://www.python.org",
+    "authors"       :   [],
+    "dependencies"  :   [
+        {
+            "package"   :   "setuptools",
+            "version"   :   "2.1"
+        },
+        {
+            "package"   :   "pip",
+            "version"   :   "1.2.1"
+        }
+    ]
+}

@@ -1,4 +1,4 @@
-#bowtie2
+#./bowtie2
 No index, query, or output file specified!
 Bowtie 2 version 2.1.0 by Ben Langmead (langmea@cs.jhu.edu, www.cs.jhu.edu/~langmea)
 Usage: 

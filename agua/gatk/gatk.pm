@@ -13,20 +13,36 @@ method doInstall ($installdir, $version) {
 	$self->logDebug("version", $version);
 	$self->logDebug("installdir", $installdir);
 
-	$version 	= 	$self->gitInstall($installdir, $version);
-	
-	$self->antInstall();
-	
-	$self->makeInstall("$installdir/$version", $version);
+	$self->gitInstall($installdir, $version);
+
+	$self->antInstall($installdir, $version);
+
 	$self->confirmInstall($installdir, $version);
-	
+
 	return $version;
 }
 
 method antInstall ($installdir, $version) {
-	my $arch = $self->getArch();
-	$self->runCommand("apt-get -y ant install") if $arch eq "ubuntu";
-	$self->runCommand("yum -y ant install") if $arch eq "centos";	
+	$self->logDebug("installdir", $installdir);
+	$self->logDebug("version", $version);
+
+	my $ant	=	"/usr/bin/ant";
+	$self->installAnt() if not -f $ant;	
+
+	my $dependencies	=	$self->opsinfo()->dependencies();
+	$self->logDebug("dependencies", $dependencies);
+	my $javaversion	=	$$dependencies[0]->{version};
+	my $gatkversion	=	$$dependencies[1]->{version};
+
+	my ($basedir) 	= 	$installdir	=~	/^(.+?)\/[^\/]+$/;
+	$self->logDebug("basedir", $basedir);
+	
+	#### CLEAN THEN BUILD
+	$self->changeDir("$installdir/$version");
+	$self->runCommand("ant clean");
+	my ($out, $err) = $self->runCommand("export JAVA_HOME=$basedir/java/$javaversion; ant");
+	$self->logDebug("out", $out);
+	$self->logDebug("err", $err);
 }
 
 

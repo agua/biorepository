@@ -72,18 +72,12 @@ method gitInstall ($installdir, $version) {
 	#### RESET MUTECT TO version
 	system("cd $mutectdir/mutect && git reset --hard $version") == 0 or die();
 	
-	
-	`cd $mutectdir/mutect && git describe --tags | awk '{ print "MuTect Revision: " \$0 }' > $tempdistro/version.txt`;
-	
 	#### CLONE GATK-protected
 	chdir($basedir);
 	system("git clone https://github.com/broadgsa/gatk-protected.git") == 0 or die();
 	chdir($gatkdir);
 	system("git reset --hard $gatkversion") == 0 or die();
-
-	$self->runCommand("cp $gatkdir/dist/packages/muTect-*/muTect.jar $installdir");
 }
-
 
 method antInstall ($installdir, $version) {
 	$self->logDebug("installdir", $installdir);

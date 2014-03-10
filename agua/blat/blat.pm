@@ -6,7 +6,8 @@ method doInstall ($installdir, $version) {
 	$self->logDebug("version", $version);
 	$self->logDebug("installdir", $installdir);
 
-#	$self->zipInstall($installdir, $version);
+	$self->zipInstall($installdir, $version);
+
 	$self->makeInstall($installdir, $version);
 	
 	$self->confirmInstall($installdir, $version);
@@ -20,10 +21,19 @@ method makeInstall ($installdir, $version) {
 	
 	#### CHANGE DIR
     $self->changeDir("$installdir/$version");
+
+	#### EDIT FILE
+	my $targetfile	=	"$installdir/$version/inc/common.mk";
+	my $backupfile	=	"$installdir/$version/inc/common.mk.bkp";
+	`mv $targetfile $backupfile` if -f $targetfile;
+	my $command 	= 	"sed 's/\${HOME}\\/bin\\/\${MACHTYPE}/\\/usr\\/bin/' $backupfile > $targetfile";
+	$self->logDebug("command", $command);
+	`$command`;
 	
 	#### MAKE
-	$self->runCommand("make");
-	$self->runCommand("make ebseq");
+	$self->runCommand("export MACHTYPE=x64_86; make");
+
+	$self->runCommand("export MACHTYPE=x64_86; make ebseq");
 	
 	return 1;
 }

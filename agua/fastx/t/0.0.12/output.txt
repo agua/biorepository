@@ -1,4 +1,4 @@
-#fasta_formatter -h
+#./fasta_formatter -h
 usage: fasta_formatter [-h] [-i INFILE] [-o OUTFILE] [-w N] [-t] [-e]
 Part of FASTX Toolkit 0.0.12 by gordon@cshl.edu
 

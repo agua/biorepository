@@ -1,0 +1,14 @@
+#bin/circos -h
+#perl
+Usage:
+      circos -conf circos.conf [-silent] [-help] [-man]
+
+      # detailed debugging for code components
+      # see http://www.circos.ca/documentation/tutorials/configuration/debugging
+      circos -debug_group GROUP1,[GROUP2,...]
+
+      # configuration dump
+      circos -cdump [BLOCK1/[BLOCK2/...]]
+
+      # overriding configuration parameters
+      circos -param image/radius=2000p -param ideogram/show=no

@@ -1,5 +1,5 @@
 {
-    "package"       :   "rsem",
+    "package"       :   "blat",
     "version"       :   "1.2.11",
     "type"          :   "application",
     "installtype"   :   "ops",

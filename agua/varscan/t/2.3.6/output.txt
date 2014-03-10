@@ -1,4 +1,5 @@
-#java -jar varscan.jar 
+#varscan.jar 
+#java -jar 
 VarScan v2.3
 
 USAGE: java -jar VarScan.jar [COMMAND] [OPTIONS] 

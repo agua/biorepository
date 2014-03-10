@@ -7,8 +7,10 @@ method doInstall ($installdir, $version) {
 	$self->logDebug("installdir", $installdir);
 	$version = $self->version() if not defined $version;
 
-	$version = $self->zipInstall($installdir, $version);
+	#$version = $self->zipInstall($installdir, $version);
 	
+	$self->confirmInstall($installdir, $version);
+
 	return $version;
 }
 

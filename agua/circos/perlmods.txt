@@ -1,0 +1,15 @@
+Config::General~2.50
+Font::TTF
+GD
+List::MoreUtils
+Math::Bezier
+Math::Round
+Math::VecStat
+Params::Validate
+Readonly
+Regexp::Common
+Set::IntSpan # v1.16+
+Text::Format
+Time::HiRes
+Clone
+GD::Polyline

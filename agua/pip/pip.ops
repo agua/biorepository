@@ -1,0 +1,13 @@
+{
+    "package"		:	"pip",
+    "version"		:	"1.2.1",
+    "type"		    :	"application",
+    "installtype"	:	"ops",
+    "source"		:	"url",
+    "url"		    :	"https://pypi.python.org/packages/source/p/pip/pip-$version.tar.gz",
+    "unzipped"		:	"pip-$version",
+    "keywords"		:	["pip", "python", "package manager"],
+    "description"	:	"A tool for installing and managing Python packages",
+    "website"		:	"https://pypi.python.org/pypi/pip",
+    "authors"		:	[]
+}

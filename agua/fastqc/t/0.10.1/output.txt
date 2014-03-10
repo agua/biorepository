@@ -1,4 +1,4 @@
-#fastqc -h
+#./fastqc -h
 
             FastQC - A high throughput sequence QC analysis tool
 

@@ -1,4 +1,5 @@
-#java -jar AddOrReplaceReadGroups.jar
+#./AddOrReplaceReadGroups.jar
+#java -jar
 ERROR: Option 'INPUT' is required.
 
 Replaces all read groups in the INPUT file with a new read group and assigns all reads to this read group in the OUTPUT BAMVersion: 1.0
