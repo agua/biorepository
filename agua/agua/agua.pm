@@ -44,6 +44,14 @@ method preInstall {
 	$self->updateReport(["Doing preInstall"]);
 	my 	$aguaversion 	= $self->conf()->getKey('agua', 'VERSION');
 	$self->updateReport(["Current version: $aguaversion"]);
+
+	###### START LOGGING TO HTML FILE
+	#$self->logDebug("BEFORE startHtmlLog login", $login);
+	#$self->startHtmlLog();
+	#$self->logDebug("AFTER startHtmlLog login", $login);
+	
+	##### LOG STATUS
+	#$self->logger()->write("Installing package: $package to installation directory: $installdir");	
 	
 	return "Completed preInstall";
 }

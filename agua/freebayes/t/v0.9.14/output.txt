@@ -1,5 +1,5 @@
-#bin/freebayes -h
-usage: bin/freebayes [OPTION] ... [BAM FILE] ... 
+#bin/freebayes  -h
+usage: /agua/apps/freebayes/v0.9.14/bin/freebayes [OPTION] ... [BAM FILE] ... 
 
 Bayesian haplotype-based polymorphism discovery.
 
@@ -287,4 +287,4 @@ debugging:
 
 
 author:   Erik Garrison <erik.garrison@bc.edu>, Marth Lab, Boston College, 2010-2012
-version:  v0.9.13-2-ga830efd-dirty
+version:  v0.9.14

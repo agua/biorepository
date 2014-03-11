@@ -7,7 +7,7 @@ method doInstall ($installdir, $version) {
 	$self->logDebug("version", $version);
 	$version = $self->version() if not defined $version;
 
-	#print "Download zipfile failed\n" and exit if not $self->zipInstall($installdir, $version);
+	print "Download zipfile failed\n" and exit if not $self->zipInstall($installdir, $version);
 	
 	$self->confirmInstall($installdir, $version);
 	
@@ -19,10 +19,6 @@ method installDependencies ($opsdir, $installdir) {
 	$self->logDebug("opsdir", $opsdir);
 	$self->logDebug("installdir", $installdir);
 
-	
-	return;
-	
-	
 	$self->installCpanm();
 
 	my $arch = $self->getArch();

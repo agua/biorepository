@@ -58,7 +58,7 @@ method doInstall ($installdir, $version) {
 	$self->updateReport(["Doing make"]);
 	$self->configInstall($installdir, $version);
 
-	return $version;
+	return 1;
 }
 
 method configInstall ($installdir, $version) {
@@ -149,7 +149,7 @@ method postInstall ($installdir, $version) {
 	$self->updateReport(["Updating 'package' table"]);
 	
 	#### NO REPORT
-	return undef;
+	return 1;
 }
 method loadAppTypes ($tsvfile) {
 	$self->logDebug("tsvfile", $tsvfile);
@@ -197,8 +197,6 @@ method createAppFiles ($owner, $package, $installdir, $apptypes, $paramtypes, $a
 	
 	foreach my $file ( @$files ) {
 		$self->logDebug("file", $file);
-		
-		next if $file ne "infoassembly";
 		
 		#### SKIP NON-COMMAND LINE APPLICATIONS
 		next if $file eq "acdgalaxy" or $file eq "runJemboss.csh" or $file eq "jembossctl";

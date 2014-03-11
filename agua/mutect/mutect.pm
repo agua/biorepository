@@ -27,13 +27,13 @@ method doInstall ($installdir, $version) {
 	$self->logDebug("version", $version);
 	$self->logDebug("installdir", $installdir);
 
-	$self->gitInstall($installdir, $version);
+#	print "Git download failed\n" and return 0 if not $self->gitInstall($installdir, $version);
 
-	$self->antInstall("$installdir/$version", $version);
+	print "Ant install failed\n" and return 0 if not $self->antInstall("$installdir/$version", $version);
 
-	$self->confirmInstall($installdir, $version);
+	print "Confirm install failed\n" and return 0 if not $self->confirmInstall($installdir, $version);
 	
-	return $version;
+	return 1;
 }
 
 method gitInstall ($installdir, $version) {
@@ -41,9 +41,9 @@ method gitInstall ($installdir, $version) {
 	$self->logDebug("installdir", $installdir);
 
 	#### RESOURCES
-	my $dependencies	=	$self->opsinfo()->dependencies();
-	$self->logDebug("dependencies", $dependencies);
-	my $gatkversion	=	$$dependencies[1]->{version};
+	my $resources	=	$self->opsinfo()->resources();
+	$self->logDebug("resources", $resources);
+	my $gatkversion	=	$resources->{"gatk-protected"}->{version};
 	$self->logDebug("gatkversion", $gatkversion);
 	my $tempdir	=	"/tmp";
 	my $basedir = "$tempdir/mutect-dist";
@@ -65,7 +65,7 @@ method gitInstall ($installdir, $version) {
 	system("cd $mutectdir && git clone https://github.com/broadinstitute/mutect.git") == 0 or die();
 	
 	#### VERIFY tag EXISTS
-	my $cnt = `cd $mutectdir/mutect && git ls-remote --tags -q | grep refs/tags/$version | wc -l`;
+	my $cnt = `cd $mutectdir/mutect; git tag | grep -r "^$version\$" | wc -l`;
 	chomp($cnt);
 	if ($cnt == 0) { die("ERROR: release tag $version does not exist!\n"); }
 	
@@ -77,25 +77,55 @@ method gitInstall ($installdir, $version) {
 	system("git clone https://github.com/broadgsa/gatk-protected.git") == 0 or die();
 	chdir($gatkdir);
 	system("git reset --hard $gatkversion") == 0 or die();
+
+	return 1;
 }
 
 method antInstall ($installdir, $version) {
 	$self->logDebug("installdir", $installdir);
 	$self->logDebug("version", $version);
+	
+	my $antfile	=	"/usr/bin/ant";
+	$self->installAnt() if not -f $antfile;
 
+	my $arch 	=	$self->getArch();
+	$self->logDebug("arch", $arch);
+	if ( $arch eq "centos" ) {
+		$self->runCommand("yum -y install ant-nodeps");
+		$self->runCommand("yum -y install ant-trax");
+	}
+	else {
+		$self->runCommand("apt-get -y install ant-nodeps");	
+		$self->runCommand("apt-get -y install ant-optional");	
+	}	
+
+	#### MAKE /root/.ant/lib
+	my $antlib	=	"/root/.ant/lib";
+	`mkdir -p $antlib` if not -d $antlib;
+	
+	#### DOWNLOAD ant-apache-bcel
+	$self->changeDir($antlib);
+	$self->runCommand("wget  http://repo1.maven.org/maven2/ant/ant-apache-bcel/1.6.5/ant-apache-bcel-1.6.5.jar");
+
+	#### GET DEPENDENCY VERSIONS
 	my $dependencies	=	$self->opsinfo()->dependencies();
 	$self->logDebug("dependencies", $dependencies);
 	my $javaversion	=	$$dependencies[0]->{version};
 	my $gatkversion	=	$$dependencies[1]->{version};
 
+	#### COPY BUILD gatk-protected AND COPY bcel
+	my $gatkdir 	= 	"/tmp/mutect-dist/gatk-protected";
 	my ($basedir) 	= 	$installdir	=~	/^(.+?)\/[^\/]+\/[^\/]+$/;
 	$self->logDebug("basedir", $basedir);
-	my $gatkdir 	= 	"/tmp/mutect-dist/gatk-protected";
+	my ($out, $err) = $self->runCommand("export JAVA_HOME=$basedir/java/$javaversion && ant");
+	$self->logDebug("out", $out);
+	$self->logDebug("err", $err);
+	$self->runCommand("cp $gatkdir/lib/bcel-*.jar $antlib");
 	
 	#### CLEAN THEN BUILD
 	$self->changeDir($gatkdir);
 	$self->runCommand("ant clean");
-	my ($out, $err) = $self->runCommand("export JAVA_HOME=$basedir/java/$javaversion && ant -Dexternal.dir=/tmp/mutect-dist/mutect-src -Dexecutable=mutect package");
+	($out, $err) = $self->runCommand("export JAVA_HOME=$basedir/java/$javaversion && ant -Dexternal.dir=/tmp/mutect-dist/mutect-src -Dexecutable=mutect package");
 	$self->logDebug("out", $out);
 	$self->logDebug("err", $err);
 
@@ -104,6 +134,10 @@ method antInstall ($installdir, $version) {
 	
 	#### COPY EXECUTABLE
 	$self->runCommand("cp $gatkdir/dist/packages/muTect-*/muTect.jar $installdir");
+
+	#### COPY LICENSE
+	$self->runCommand("cp $gatkdir/../mutect-src/mutect/mutect.LICENSE.txt $installdir/LICENSE");
+
 }
 
 1;
