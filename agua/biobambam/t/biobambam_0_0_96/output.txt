@@ -1,0 +1,13 @@
+#src/bamcollate --help
+This is biobambam version 0.0.96.
+biobambam is distributed under version 3 of the GNU General Public License.
+
+Key=Value pairs:
+
+tmpfile=[<filename>]   : prefix for temporary files, default: create files in current directory
+readgroups=[]          : filter for read groups, default: do not filter
+pairsonly=[0]          : output complete pairs only (1=yes,0=no)
+level=<[-1]>           : compression settings for output bam file (0=uncompressed,1=fast,9=best,-1=zlib default)
+colhashbits=<[20]>     : log_2 of size of hash table used for collation
+collistsize=<[524288]> : output list size for collation
+

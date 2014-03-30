@@ -1,7 +1,7 @@
 #./samtools
 
 Program: samtools (Tools for alignments in the SAM format)
-#SKIP Version: 0.1.19-44428cd
+SKIP Version: 0.1.19-44428cd
 
 Usage:   samtools <command> [options]
 
