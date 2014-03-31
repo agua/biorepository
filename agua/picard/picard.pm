@@ -7,7 +7,8 @@ method doInstall ($installdir, $version) {
 	$self->logDebug("installdir", $installdir);
 	$version = $self->version() if not defined $version;
 
-	$version = $self->zipInstall($installdir, $version);
+	$self->runCommand("rm -fr $installdir/*.jar");
+	$self->zipInstall($installdir, $version);
 
 	$self->confirmInstall($installdir, $version);
 	

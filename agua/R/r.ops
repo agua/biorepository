@@ -1,7 +1,7 @@
 {
     "package":        "R",
     "version":        "3.0.2",
-    "build":          "",
+    "versions":       ["3.0.0", "3.0.1", "3.0.2", "3.0.3"],
     "type":           "application",
     "installtype":    "ops",
     "url"           :   "http://cran.r-project.org/src/base/R-3/R-$version.tar.gz",

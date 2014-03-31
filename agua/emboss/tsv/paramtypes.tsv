@@ -1,5 +1,6 @@
 align	outfile	file
 array	array	string
+assembly	assembly	string
 boolean	boolean	boolean
 codon	infile	file
 datafile	infile	file
@@ -17,10 +18,12 @@ matrix	matrix	string
 matrixf	matrixfile	file
 menu	menu	string
 obo	obo	string
+outassembly	assembly	string
 outcodon	outcodon	string
 outdir	outdir	directory
 outfile	outfile	file
 outobo	outfile	file
+outrefseq	refseq	string
 outresource	outfile	file
 outtaxon	outtaxon	string
 outtext	outtext	string
@@ -29,6 +32,7 @@ pattern	pattern	string
 range	range	string
 regexp	regex	string
 report	outfile	file
+refseq	refseq	string
 resource	resource	string
 selection	selection	string
 seqall	seqall	string
@@ -43,5 +47,7 @@ taxon	taxon	string
 text	text	string
 toggle	toggle	string
 url	url	string
+variation	variation	string
+outvariation	variation	string
 xygraph	outgraph	ps|hpgl|hp7470|hp7580|meta|cps|x11|tek|tekt|none|data|xterm|svg
 y	string	string
