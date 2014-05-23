@@ -94,7 +94,7 @@ method loadProjects {
 	$self->logDebug("basedir", $basedir);
 	$self->logDebug("self->dbobject()", $self->dbobject());
 
-	#### SET OPSDIR FOR APPDIR AND TO RETRIEVE DB ENTRY
+	#### SET OPSDIR - LATER USE FOR APPDIR AND TO RETRIEVE DB ENTRY
 	my $opsdir = "$basedir/repos/public/agua/biorepository";
 	$self->logDebug("opsdir", $opsdir);
 	

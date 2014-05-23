@@ -1,11 +1,11 @@
 {
     "package":        "biobambam",
-    "version":        "biobambam_0_0_96",
+    "version":        "biobambam_0_0_129",
     "owner":          "gt1",
     "repository":     "biobambam",
     "source":         "git",
     "hubtype":        "github",
-    "url":            "https://github.com/gt1/biobambam.git",
+    "url":            "#### NOT USED: https://github.com/gt1/biobambam.git",
     "checkurl":       "false",
     "type":           "application",
     "installtype":    "ops",
@@ -27,7 +27,7 @@
     "dependencies"	    : 	[
 		{
 			"package"   :   "libmaus",
-			"version"   :   "libmaus_0_0_77"
+			"version"   :   "libmaus_0_0_108"
 		}
 	]
 }

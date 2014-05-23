@@ -34,28 +34,18 @@ method preInstall {
 	$self->logDebug("version", $version);
 	$self->logDebug("random", $random);
 
-	#### START LOGGING TO HTML FILE
-	my $logfile = $self->setHtmlLogFile($package, $random);
-	$self->logDebug("logfile", $logfile);
-	$self->startHtmlLog($package, $version, $logfile);
-
-	$self->updateReport(["Completed preInstall"]);
-
 	return;
 }
 
 method doInstall ($installdir, $version) {
 
 	$self->logDebug("Doing self->zipInstall()");
-	$self->updateReport(["Downloading EMBOSS"]);	
 	$version = $self->zipInstall($installdir, $version);
 
 	$self->logDebug("Doing self->installDependencies()");
-	$self->updateReport(["Installing dependencies"]);
 	$self->installDependencies();
 
 	$self->logDebug("Doing self->configInstall()");
-	$self->updateReport(["Doing make"]);
 	$self->configInstall($installdir, $version);
 
 	return 1;
@@ -90,11 +80,8 @@ method configInstall ($installdir, $version) {
 
 method installDependencies {
 
-	$self->logDebug("");
-
 	#### INSTALL X11 DEV LIBRARIES
-	$self->updateReport(["Installing X11 development libraries for EMBOSS"]);
-	
+	$self->logDebug("Installing X11 development libraries for EMBOSS");	
 	my $arch = $self->getArch();
 	$self->logDebug("arch", $arch);
 	$self->runCommand("apt-get -y install libx11-dev") if $arch eq "ubuntu";
@@ -130,25 +117,17 @@ method postInstall ($installdir, $version) {
 	my $files 	=	$self->getFiles("$bindir");
 	#$self->logDebug("files", $files);
 	$self->logDebug("Doing createAppFiles");
-	$self->updateReport(["Creating apps in appdir: $appdir"]);
 	$self->createAppFiles($owner, $package, $installdir, $apptypes, $paramtypes, $appdir, $bindir, $files);
-	$self->updateReport(["Completed creating apps"]);
 	$self->logDebug("Completed createAppFiles");
 	
 	#### SET DATABASE HANDLE
 	$self->setDbObject() if not defined $self->db();
 	
 	#### LOAD APP FILES
-	$self->updateReport(["Loading apps in appdir: $appdir"]);
 	$self->logDebug("Doing loadAppFiles");
 	$self->loadAppFiles($username, $package, $installdir, $appdir);
-	$self->updateReport(["Completed loading apps"]);
 	$self->logDebug("Completed loadAppFiles");
 	
-	#### UPDATE PACKAGE TABLE
-	$self->updateReport(["Updating 'package' table"]);
-	
-	#### NO REPORT
 	return 1;
 }
 method loadAppTypes ($tsvfile) {

@@ -1,0 +1,30 @@
+#bamcollate2 -h
+This is biobambam version 0.0.125.
+biobambam is distributed under version 3 of the GNU General Public License.
+
+Key=Value pairs:
+
+collate=<[1]>                                      : collate pairs
+reset=<>                                           : reset alignments and header like bamreset (for collate=0,1 or 3 only, default enabled for 3)
+level=<[-1]>                                       : compression settings for output bam file (0=uncompressed,1=fast,9=best,-1=zlib default)
+filename=<[stdin]>                                 : input filename (default: read file from standard input)
+inputformat=<[bam]>                                : input format: bam
+ranges=<[]>                                        : input ranges (bam input only, default: read complete file)
+exclude=<[SECONDARY,SUPPLEMENTARY]>                : exclude alignments matching any of the given flags
+disablevalidation=<[0]>                            : disable validation of input data
+colhlog=<[18]>                                     : base 2 logarithm of hash table size used for collation
+colsbs=<[134217728]>                               : size of hash table overflow list in bytes
+T=<[bamcollate2_host-10-2-24-85_32480_1396309531]> : temporary file name
+md5=<[0]>                                          : create md5 check sum (default: 0)
+md5filename=<filename>                             : file name for md5 check sum (default: extend output file name)
+index=<[0]>                                        : create BAM index (default: 0)
+indexfilename=<filename>                           : file name for BAM index file (default: extend output file name)
+readgroups=[<>]                                    : read group filter (default: keep all)
+mapqthres=<[-1]>                                   : mapping quality threshold (collate=1 only, default: keep all)
+classes=[F,F2,O,O2,S]                              : class filter (collate=1 only, default: keep all)
+resetheadertext=[<>]                               : replacement SAM header text file for reset=1 (default: filter header in source BAM file)
+resetaux=<[1]>                                     : reset auxiliary fields (collate=0,1 only with reset=1)
+auxfilter=[<>]                                     : comma separated list of aux tags to keep if reset=1 and resetaux=0 (default: keep all)
+
+Alignment flags: PAIRED,PROPER_PAIR,UNMAP,MUNMAP,REVERSE,MREVERSE,READ1,READ2,SECONDARY,QCFAIL,DUP,SUPPLEMENTARY
+

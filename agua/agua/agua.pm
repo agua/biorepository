@@ -41,19 +41,10 @@ method preInstall {
 	$self->moveConf();
 
 	#### REPORT PROGRESSS
-	$self->updateReport(["Doing preInstall"]);
-	my 	$aguaversion 	= $self->conf()->getKey('agua', 'VERSION');
-	$self->updateReport(["Current version: $aguaversion"]);
+	my 	$version 	= $self->conf()->getKey('agua', 'VERSION');
+	$self->logDebug("current version", $version);
 
-	###### START LOGGING TO HTML FILE
-	#$self->logDebug("BEFORE startHtmlLog login", $login);
-	#$self->startHtmlLog();
-	#$self->logDebug("AFTER startHtmlLog login", $login);
-	
-	##### LOG STATUS
-	#$self->logger()->write("Installing package: $package to installation directory: $installdir");	
-	
-	return "Completed preInstall";
+	return 1;
 }
 
 #### POST-INSTALL
@@ -65,8 +56,8 @@ method postInstall ($installdir, $version) {
 	
 	#### UPDATE CONFIG WITH NEW ENTRIES IF NOT PRESENT
 	my $confdir		=	$self->setConfDir();
-	my $conffile 	=	"$confdir/default.conf";
-	my $distroconfig= 	"$installdir/bin/scripts/resources/agua/conf/default.conf";
+	my $conffile 	=	"$confdir/config.yaml";
+	my $distroconfig= 	"$installdir/bin/scripts/resources/agua/conf/config.yaml";
 	$self->logDebug("DOING updateConfig($distroconfig, $conffile)");
 	$self->updateConfig($distroconfig, $conffile);
 
@@ -74,85 +65,11 @@ method postInstall ($installdir, $version) {
 	$self->logDebug("version", $version);
 	$self->conf()->setKey("agua", "VERSION", $version);
 
-	#### RUN INSTALL TO SET PERMISSIONS, ETC.
-	my $output = $self->runUpgrade();
-
 	return "Completed postInstall. Reload browser after 'terminalInstall' to complete installation";
 }
 
-method terminalInstall  {
-	$self->logDebug("");
-	
-	#### KILL EXISTING FCGI PROCESSES
-	#### AND RESTART FCGI
-	my $commands = [
-"service apache2 restart",
-"killall admin.pl",
-"killall sharing.pl",
-"killall folders.pl",
-"killall package.pl",
-"killall view.pl",
-"killall workflow.pl"
-	];
-	foreach my $command ( @$commands ) {
-		$self->logDebug("command", $command);
-		`$command`;
-	}		
-
-	return "Apache and FastCGI processes restarted. Reload this web page to complete installation"
-}
 
 #### UTILS
-method runUpgrade {
-	my $installdir	=	$self->installdir();
-	$installdir = "/agua" if not defined $installdir;
-	$self->logDebug("installdir", $installdir);
-
-	$self->changeDir("$installdir/bin/scripts");
-	my $command = qq{$installdir/bin/scripts/install.pl \\
---mode upgrade \\
---installdir $installdir
-};
-	$self->logDebug("command", $command);
-
-	$self->runCommand($command);
-	my $logfile = "/tmp/agua-install.log";
-	my $output = `cat $logfile`;
-	
-	return "ERROR running upgrade during postInstall:\n\n$output" if $output !~ /Completed \S+\/install.pl/ms;
-
-	return $output;
-}
-
-method checkInputs {
-	my 	$pwd 			= $self->pwd();
-	my 	$username 		= $self->username();
-	my 	$version 		= $self->version();
-	my  $package 		= $self->package();
-	my  $hubtype 		= $self->hubtype();
-	my 	$owner 			= $self->owner();
-	my 	$privacy 		= $self->privacy();
-	my  $repository 	= $self->repository();	
-	my 	$aguaversion 	= $self->conf()->getKey('agua', 'VERSION');
-
-	$self->logError("owner not defined") and exit if not defined $owner;
-	$self->logError("version not defined") and exit if not defined $version;
-	$self->logError("package not defined") and exit if not defined $package;
-	$self->logError("username not defined") and exit if not defined $username;
-	$self->logError("hubtype not defined") and exit if not defined $hubtype;
-	$self->logError("repository not defined") and exit if not defined $repository;
-	$self->logError("aguaversion not defined") and exit if not defined $aguaversion;
-	
-	$self->logDebug("owner", $owner);
-	$self->logDebug("package", $package);
-	$self->logDebug("username", $username);
-	$self->logDebug("hubtype", $hubtype);
-	$self->logDebug("repository", $repository);
-	$self->logDebug("aguaversion", $aguaversion);
-	$self->logDebug("privacy", $privacy);
-	$self->logDebug("version", $version);
-}
-
 method moveConf () {
 	my $confdir 	=	$self->setConfDir();
 	my $tempdir		=	$self->setTempDir();
