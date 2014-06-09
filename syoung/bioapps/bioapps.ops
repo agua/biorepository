@@ -10,7 +10,6 @@
     "installtype"       :   "ops",
     "licensefile"       :   "LICENSE",
     "readmefile"        :   "README",
-    "installtype"       :   "ops",
     "authors"           :   ["Young Stuart"],
     "website"           :   "http://www.aguadev.org",
     "publication"       :   {},

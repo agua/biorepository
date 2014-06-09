@@ -31,6 +31,10 @@ method preInstall {
 	return;
 }
 
+method doInstall {
+	$self->logDebug("");
+}
+
 method checkInputs {
 	$self->logDebug("");
 

@@ -1,0 +1,18 @@
+{
+    "package"		:	"pancancer",
+    "repository"	:	"pancancer",
+    "owner"	        :	"syoung",
+    "version"		:	"0.0.1",
+    "privacy"		:	"public",
+    "description"	:	"PanCancer alignment workflow",
+    "type"		    :	"application",
+    "source"		:	"git",
+    "keywords"	    :	["ICGC", "TCGA", "PanCancer", "PCAP-core", "PCAP", "alignment", "bwa_mem"],
+    "url"			:	"https://stuartpyoung@bitbucket.org/annaisystems/pancancer.git",
+    "installtype"	:	"ops",
+    "readmefile"	:	"README",
+    "authors"		:	["Ellrott Kyle", "Young Stuart"],
+    "website"		:	"https://bitbucket.org/annaisystems/pancancer",
+    "publication"	:	{},
+    "resources"	    :	{}
+}

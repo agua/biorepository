@@ -1,0 +1,18 @@
+{
+    "package"		:	"pcap",
+    "repository"	:	"PCAP-core",
+    "owner"	        :	"ICGC-TCGA-PanCancer",
+    "version"		:	"v1.0.4",
+    "privacy"		:	"public",
+    "description"	:	"NGS reference implementations and helper code for the IGCG/TCGA Pan-Cancer Analysis Project",
+    "type"		:	"application",
+    "source"		:	"git",
+    "branch"      :   "dev",
+    "keywords"	:	["ICGC", "TCGA", "PCAP", "pancancer", "alignment", "analysis"],
+    "url"			:	"https://github.com/ICGC-TCGA-PanCancer/PCAP-core.git",
+    "installtype"	:	"ops",
+    "readmefile"	:	"README",
+    "authors"		:	[ "Raine Keiran" ],
+    "website"		:	"https://github.com/ICGC-TCGA-PanCancer/PCAP-core",
+    "publication"	:	{}
+}

@@ -1,0 +1,19 @@
+{
+    "package"		:	"gt",
+    "repository"	:	"gt",
+    "owner"			:	"",
+    "version"		:	"0.0.1",
+    "privacy"		:	"private",
+    "description"	:	"",
+    "type"		:	"application",
+    "source"		:	"git",
+    "keywords"	:	[],
+    "url"			:	"",
+    "installtype"	:	"ops",
+    "licensefile"	:	"LICENSE",
+    "readmefile"	:	"README",
+    "authors"		:	[],
+    "website"		:	"",
+    "publication"	:	{},
+    "resources"	:	{}
+}

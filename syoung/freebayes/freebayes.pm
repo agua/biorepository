@@ -20,20 +20,20 @@ method preInstall {
 	$self->login($self->opsinfo()->login());
 	$self->logDebug("self->opsinfo()->login()", $self->opsinfo()->login());
 	
-	return;
+	return 1;
 }
 
 method doInstall ($installdir, $version) {
 	$self->logDebug("version", $version);
 	$self->logDebug("installdir", $installdir);
 
-	print "Git install failed\n" and exit if not $self->gitInstall($installdir, $version);
-
-	$self->makeInstall($installdir, $version);
-
-	$self->confirmInstall($installdir, $version);
+	return 0 if not $self->gitInstall($installdir, $version);
 	
-	return $version;
+	return 0 if not $self->makeInstall($installdir, $version);
+
+	return 0 if not $self->confirmInstall($installdir, $version);
+	
+	return 1;
 }
 
 

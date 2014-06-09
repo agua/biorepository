@@ -1,0 +1,28 @@
+{
+    "package"		:	"cu",
+    "repository"	:	"cu",
+    "owner"	        :	"syoung",
+    "version"		:	"0.0.1",
+    "privacy"		:	"public",
+    "description"	:	"PanCancer alignment workflow",
+    "type"		    :	"application",
+    "source"		:	"git",
+    "hubtype"       :   "bitbucket",
+    "owner"         :   "annaisystems",
+    "login"         :   "stuartpyoung",
+    "keywords"	    :	["Colorado University", "bladder", "cancer", "TCGA", "PanCancer", "PCAP-core", "PCAP", "alignment", "variant", "bwa_mem", "freebayes"],
+    "url"			:	"https://stuartpyoung@bitbucket.org/annaisystems/cu.git",
+    "installtype"	:	"ops",
+    "readmefile"	:	"README",
+    "authors"		:	["DeLaVega Francisco", "Costello James", "Jones Kenneth", "Parman Craig", "Young Stuart"],
+    "website"		:	"https://bitbucket.org/annaisystems/cu",
+    "publication"	:	{},
+    "resources"	    :	{},
+    "dependencies"  :   [
+		{
+			"package"   :   "freebayes",
+            "version"   :   "v0.9.9.2",
+			"treeish"   :   "7e198dc"
+		}
+	]
+}
