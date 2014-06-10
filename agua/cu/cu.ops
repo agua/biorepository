@@ -4,7 +4,7 @@
     "owner"	        :	"syoung",
     "version"		:	"0.0.1",
     "privacy"		:	"public",
-    "description"	:	"PanCancer alignment workflow",
+    "description"	:	"Colorado University alignment and variant calling workflow (BWA --> FreeBayes and Mutect) based on PanCancer alignment",
     "type"		    :	"application",
     "source"		:	"git",
     "hubtype"       :   "bitbucket",
@@ -23,6 +23,16 @@
 			"package"   :   "freebayes",
             "version"   :   "v0.9.9.2",
 			"treeish"   :   "7e198dc"
+		}
+        ,
+		{
+			"package"   :   "pcap",
+            "version"   :   "v1.0.4"
+		}
+        ,
+		{
+			"package"   :   "gt",
+            "version"   :   "0.0.1"
 		}
 	]
 }

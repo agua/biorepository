@@ -41,7 +41,7 @@ method loadWorkflows ($installdir, $version) {
     $self->runCommand($command);
     
     #### LOAD SAMPLES FILE NAMES AND SIZES
-    $command     =   "$basedir/bin/sample/loadSampleFiles.pl --username $username --project $project --workflow loadSamples --workflownumber 1 --file /agua/apps/cu/data/samples.tsv";
+    $command     =   "$basedir/bin/sample/loadSampleFiles.pl --username $username --project $project --workflow loadSamples --workflownumber 1 --file $installdir/$version/data/samples.tsv";
     $self->logDebug("command", $command);
     $self->runCommand($command);
 }

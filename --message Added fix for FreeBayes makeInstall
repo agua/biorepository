@@ -1,0 +1,148 @@
+* 54 seconds ago 76905e6 -Fix syoung/cu,syoung/freebayes: Added fix for FreeBayes treeish 7e198dc makeInstall
+|  
+* 24 hours ago e26b078 [0.8.0-beta.1+build.23] Added skel option and packages: cu, gt, pancancer and pcap
+|  
+* 25 hours ago 452dee8 -Fix syoung/cu/cu.pm: Uncommented after debugging
+|  
+* 25 hours ago e9f5613 -Inc syoung/pcap: Enabled copy of template bwa_mem.pl
+|  
+* 25 hours ago bef72b3 +Add syoung/pcap/templates/bwa_mem.pl: Edited bwa_mem.pl with '--workdir' option to replace original
+|  
+* 25 hours ago 8c9d4d5 +Add syoung/cu,syoung/gt: Added 'cu' and 'gt' packages
+|  
+* 2 weeks ago 2559153 -Onw syoung/pcap: Creating pcap installer
+|  
+* 2 weeks ago 4540d87 -Inc syoung/versions.tsv: Added pancancer 0.0.1
+|  
+* 2 weeks ago 53ba350 -Inc syoung/pancancer: Completed install PanCancer and load workflows
+|  
+* 2 weeks ago 4e4c1a2 +Add syoung/biorepository/templates/skel.pm: Skeleton *.pm file
+|  
+* 2 weeks ago edc3a8a +Add syoung/versions.tsv: List of packages and latest versions
+|  
+* 2 weeks ago 9f4e040 +Add syoung/pcap: Stub created by 'deploy.pl --mode skel'
+|  
+* 2 weeks ago 8af9d71 +Add syoung/pancancer: Stub created by 'deploy.pl --mode skel'
+|  
+* 3 weeks ago 2eb3ff8 [0.8.0-beta.1+build.22] Updated biobambam to non-git install
+| 50 seconds ago 37e3513 -Inc syoung: Updated agua, biobambam (added test 0.0.125), biorepository, cufflinks, emboss and libmaus
+| 
+| 
+|  
+* 3 weeks ago 39d68a1 -Inc syoung: Updated agua, biobambam (added test 0.0.125), biorepository, cufflinks, emboss and libmaus
+|  
+* 2 months ago a981761 [0.8.0-beta.1+build.21] Fixed all biotools v5 installs
+| * 29 seconds ago 00b8dcc +Fix syoung: Fixed install of R, bedtools2, emboss, fastqc, mutect and picard
+| 
+| 
+|  
+* 2 months ago 00b8dcc +Fix syoung: Fixed install of R, bedtools2, emboss, fastqc, mutect and picard
+|  
+* 2 months ago 6201d73 [0.8.0-beta.1+build.20] Added biobambam and libmaus dependency
+| * 30 seconds ago 6956e0c +Add syoung/biobambam,syoung/libmaus: Added biobambam with libmaus
+| 
+| 
+|  
+* 2 months ago 6956e0c +Add syoung/biobambam,syoung/libmaus: Added biobambam with dependency libmaus
+|  
+* 3 months ago be9b36f [0.8.0-beta.1+build.19] Added mutect binary download
+| * 22 seconds ago 7fc16e6 -Fix syoung/mutect: Changed to downloadInstall of binar
+| * 40 seconds ago beb1d9b +Add syoung/mutectbuild: Build version of muTect
+| 
+| 
+|  
+* 3 months ago 7fc16e6 -Fix syoung/mutect: Changed to downloadInstall of binary from S3
+|  
+* 3 months ago beb1d9b +Add syoung/mutectbuild: Build version of muTect
+|  
+* 3 months ago d5fad08 [0.8.0-beta.1+build.18] Fixed Ops::Install for biotools v4
+|  
+* 3 months ago 355881f [0.8.0-beta.1+build.16] Enabled install all biotools v4 apps with tests
+|  
+* 3 months ago 0c56462 -Del syoung/freebayes/bioapps: Cleaned up
+|  
+* 3 months ago 172ae7b +Add syoung: Added pip, setuptools and python; tests for cufflinks, freebayes and gatk
+|  
+* 3 months ago c076965 -Del syoung: Cleanup - removed syoung/aguatest, etc.
+|  
+* 3 months ago 32b3196 +Add syoung/circos: Working CIRCOS install with confirmation, updated mutect and bowtie2
+|  
+* 3 months ago b412f55 -Del syoung: Cleanup
+|  
+* 3 months ago 963e078 -Fix all: Removed create outputs dir from test.t, completed all tests
+|  
+* 3 months ago 9fd3ec0 -Del all: Cleaned up old files
+|  
+* 3 months ago 1efbaf1 +Add all: Added test.t to all, fixed confirmInstall failures
+|  
+* 3 months ago fe8408b [0.8.0-beta.1+build.13] Enabled fuller dependencies in Aps::Ops
+| * 72 seconds ago +Add t/unit/html/plugins/packages: Added with grunt and QUnit tests
+| * 5 days ago 85d61b2 +Add bin/install/resources/agua: Added biorepository.pm and *.ops
+| * 8 days ago 6474c2d +Add t/unit/html/plugins/apps/packages: Test Apps pane Packages panel
+| 
+| 
+|  
+* 3 months ago cc39d62 -Inc syoung/gatk-protected,syoung/mutect: Completed mutect install with gatk-protected dependency
+|  
+* 3 months ago 3f68bbe +Add syoung/bamtools,syoung/java: Added JDK 1.7.0_51 and bamtools v2.3.0
+|  
+* 3 months ago c9e5da7 -Onw snpeff,gtak,gatk-protected,mutect: Enabling install mutect with gatk-protected dependency
+|  
+* 4 months ago 4416335 [0.8.0-beta.1+build.12] Enabled automatic installation with dependencies
+| +Add syoung: Added R, blat and rsem with tests
+| -Inc syoung/freebayes/freebayes.ops: Removed tophat dependency (used for testing)
+| +Add syoung: Added m4, mutect and samtools
+| -Inc syoung: Updates to bedtools, bwa, cmake, emboss and fastqc
+| +Add syoung/fastx,syoung/freebayes: Implemented freebayes with cmake dependency
+| -Del syoung/picard,syoung/tophat,syoung/varscan: Deleted usage.txt file
+| +Add syoung/fastqc: Updated and added output.txt test
+| +Add syoung: Added bedtools, bowtie2, bwa, cmake, picard and varscan.
+| | Updated cufflinks, emboss and tophat
+| +Del syoung/tophat,syoung/bowtie2: Clean up old files and tophat *.tar.gz file
+| -Inc syoung: Enabled install - bowtie2, cufflinks and tophat
+| +Add syoung/cufflinks: Added cufflinks
+| +Add syoung: Added biotools apps, completed tophat.pm w/o tests
+| 
+| 
+| 
+|  
+* 4 months ago 8675bee +Add syoung: Added R, blat and rsem with tests
+|  
+* 4 months ago f082243 -Inc syoung/freebayes/freebayes.ops: Removed tophat dependency (used for testing)
+|  
+* 4 months ago 14efa91 +Add syoung: Added m4, mutect and samtools
+|  
+* 4 months ago 7aff736 -Inc syoung: Updates to bedtools, bwa, cmake, emboss and fastqc
+|  
+* 4 months ago 9e5b602 +Add syoung/fastx,syoung/freebayes: Implemented freebayes with cmake dependency
+|  
+* 4 months ago 863262c -Del syoung/picard,syoung/tophat,syoung/varscan: Deleted usage.txt file
+|  
+* 4 months ago 74aa33f +Add syoung/fastqc: Updated and added output.txt test
+|  
+* 4 months ago ac4970e +Add syoung: Added bedtools, bowtie2, bwa, cmake, picard and varscan.
+| Updated cufflinks, emboss and tophat
+|  
+* 4 months ago 7bdd46e +Del syoung/tophat,syoung/bowtie2: Clean up old files and tophat *.tar.gz file
+|  
+* 4 months ago 38e7e27 -Inc syoung: Enabled install - bowtie2, cufflinks and tophat
+|  
+* 4 months ago 1f09fb1 +Add syoung/cufflinks: Added cufflinks
+|  
+* 4 months ago f20d3f1 +Add syoung: Added biotools apps, completed tophat.pm w/o tests
+|  
+* 5 months ago 604e0ef [0.8.0-beta.1+build.11] Enabled load of latest bioapps version
+| 3500d1b -Fix syoung/bioapps/bioapps.pm: Enabled load of latest bioapps version
+| Added 'mountpoint' object method to bioapps.pm
+| Added ->login(agua) to preInstall method
+| 
+| 
+| 
+|  
+* 5 months ago 3500d1b -Fix syoung/bioapps/bioapps.pm: Enabled load of latest bioapps version
+| Added 'mountpoint' object method to bioapps.pm
+| Added $self->login("agua") to preInstall method
+|  
+* 5 months ago 8981297 [0.8.0-beta.1+build.10] Fixed bioapps.pm 'privacy' object method
+|  
+* 11 months ago 681401d -Fix syoung/agua/tsv/app.tsv: Changed username to 'admin' from 'agua'
