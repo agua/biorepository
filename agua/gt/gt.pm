@@ -15,7 +15,7 @@ method doInstall ($installdir, $version) {
 	$self->logDebug("out", $out);
 	$self->logDebug("err", $err);
 
-    return 0 if not $self->perlmakeInstall($installdir, $version);
+    return 0 if not $self->makeInstall($installdir, $version);
 
     return $version;
 }
