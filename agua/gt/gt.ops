@@ -1,19 +1,23 @@
 {
     "package"		:	"gt",
     "repository"	:	"gt",
-    "owner"			:	"",
-    "version"		:	"0.0.1",
-    "privacy"		:	"private",
-    "description"	:	"",
-    "type"		:	"application",
+    "hubtype"       :   "bitbucket",
+    "owner"			:	"annaisystems",
+    "login"			:	"stuartpyoung",
+    "version"		:	"0.0.3",
+    "privacy"		:	"public",
+    "description"	:	"Tools for downloading and accessing remote BAM-format genomic data files provided by GNOS-based repositories such as CGHub",
+    "type"		    :	"application",
     "source"		:	"git",
-    "keywords"	:	[],
-    "url"			:	"",
+    "keywords"	    :	[ "GeneTorrent", "GTFuse", "GNOS", "gtdownload", "gtupload", "BAM", "utility", "CGHub" ],
+    "url"			:	"https://stuartpyoung@bitbucket.org/annaisystems/gt.git",
     "installtype"	:	"ops",
     "licensefile"	:	"LICENSE",
     "readmefile"	:	"README",
-    "authors"		:	[],
-    "website"		:	"",
+    "authors"		:	[
+        "Young Stuart"
+    ],
+    "website"		:	"https://bitbucket.org/annaisystems/gt",
     "publication"	:	{},
     "resources"	:	{}
 }
