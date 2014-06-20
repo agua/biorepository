@@ -1,6 +1,7 @@
 {
     "package"           :   "gatkprotected",
     "repository"        :   "gatk-protected",
+	"hubtype"		:	"github",
 	"owner"				:	"broadgsa",
 	"login"				:	"broadgsa",
     "version"			:   "2.7-1-g42d771f",

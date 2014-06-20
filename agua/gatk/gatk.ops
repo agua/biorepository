@@ -1,6 +1,7 @@
 {
     "package"           :   "gatk",
     "repository"        :   "gatk",
+	"hubtype"		:	"github",
 	"owner"				:	"broadgsa",
     "version"           :   "2.8-1",
     "privacy"           :   "public",

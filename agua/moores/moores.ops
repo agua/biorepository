@@ -1,0 +1,20 @@
+{
+    "package"		:	"moores",
+    "repository"	:	"moores",
+    "hubtype"		:	"github",
+    "owner"		:	"hcarter",
+    "version"		:	"0.0.1",
+    "privacy"		:	"public",
+    "description"	:	"Analysis of unmapped viral reads",
+    "type"		:	"application",
+    "source"		:	"git",
+    "keywords"		:	["unmapped", "virus", "TCGA", ],
+    "url"		:	"https://git@bitbucket.org/annaisystems/moores.git",
+    "installtype"	:	"ops",
+    "licensefile"	:	"LICENSE",
+    "readmefile"	:	"README",
+    "authors"		:	[ "Carter Hannah", "Young Stuart"],
+    "website"		:	"https://bitbucket.org/annaisystems/moores/src",
+    "publication"	:	{},
+    "resources"	:	{}
+}

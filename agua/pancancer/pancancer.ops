@@ -1,6 +1,7 @@
 {
     "package"		:	"pancancer",
     "repository"	:	"pancancer",
+	"hubtype"		:	"github",
     "owner"	        :	"syoung",
     "version"		:	"0.0.1",
     "privacy"		:	"public",

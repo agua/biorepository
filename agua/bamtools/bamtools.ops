@@ -1,11 +1,11 @@
 {
     "package"		:	"bamtools",
     "repository"	:	"bamtools",
+	"hubtype"		:	"github",
     "owner"			:	"pezmaster31",
     "version"		:	"v2.3.0",
     "type"			:	"application",
     "source"		:	"git",
-    "hubtype"		:	"github",
 	"privacy"		:	"public",
     "installtype"	:	"ops",
     "keywords"		:	[

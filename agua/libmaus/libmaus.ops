@@ -1,6 +1,7 @@
 {
     "package"           :   "libmaus",
     "repository"        :   "libmaus",
+	"hubtype"		:	"github",
     "version"           :   "libmaus_experimental_0_0_108",
     "privacy"           :   "public",
     "description"       :   "A collection of data structures and algorithms",

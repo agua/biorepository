@@ -1,6 +1,7 @@
 {
     "package"           :   "freebayes",
     "repository"        :   "freebayes",
+	"hubtype"		:	"github",
     "version"           :   "0.9.14",
     "privacy"           :   "public",
     "description"       :   "Bayesian haplotype-based polymorphism discovery and genotyping.",

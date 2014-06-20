@@ -1,6 +1,7 @@
 {
     "package"		:	"pcap",
     "repository"	:	"PCAP-core",
+	"hubtype"		:	"github",
     "owner"	        :	"ICGC-TCGA-PanCancer",
     "version"		:	"v1.0.4",
     "privacy"		:	"public",
