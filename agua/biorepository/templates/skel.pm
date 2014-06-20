@@ -11,3 +11,6 @@ method doInstall ($installdir, $version) {
 
     return $version;
 }
+
+
+1;
