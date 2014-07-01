@@ -3,8 +3,6 @@
     "repository"	:	"cu",
     "hubtype"       :   "bitbucket",
     "owner"         :   "annaisystems",
-    "version"		:	"0.0.1",
-    "privacy"		:	"public",
     "description"	:	"Colorado University alignment and variant calling workflow (BWA --> FreeBayes and Mutect) based on PanCancer alignment",
     "type"		    :	"application",
     "source"		:	"git",
