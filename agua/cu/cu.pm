@@ -7,7 +7,7 @@ method doInstall ($installdir, $version) {
     $self->logDebug("installdir", $installdir);
     $version = $self->version() if not defined $version;
     
-    return 0 if not $self->gitInstall($installdir, $version);
+    #return 0 if not $self->gitInstall($installdir, $version);
     
     return 0 if not $self->loadWorkflows($installdir, $version);
     
@@ -71,20 +71,45 @@ method loadWorkflows ($installdir, $version) {
     $version        =   $self->version() if not defined $version;
     $self->logDebug("FINAL version", $version);
     
-    #### DELETE EXISTING project ENTRY
-    $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl ./CU.proj delete --username $username");
-    
-    #### ADD project
-    $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl ./CU.proj save --username $username");
-    
-    #### ADD WORKFLOWS
-    $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl CU.proj saveWorkflow --wkfile 1-LoadSamples.work --username $username");
-    $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl CU.proj saveWorkflow --wkfile 2-Download.work --username $username");
-    $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl CU.proj saveWorkflow --wkfile 3-Bwa.work --username $username");
-    $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl CU.proj saveWorkflow --wkfile 4-FreeBayes.work --username $username");
-    $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl CU.proj saveWorkflow --wkfile 5-Upload.work --username $username");
+    my $filedir     =   "$installdir/$version/conf";
+    my $name        =   "CU";
+    $self->loadProject($filedir, $name, $username);
+
+    my $filedir     =   "$installdir/$version/conf/Load";
+    my $name        =   "Load";
+    $self->loadProject($filedir, $name, $username);
+
+    my $filedir     =   "$installdir/$version/conf/Run";
+    my $name        =   "Run";
+    $self->loadProject($filedir, $name, $username);
     
     return 1;
+}
+
+method loadProject ($filedir, $name, $username) {
+    #### DELETE EXISTING project ENTRY
+    $self->runCommand("cd $filedir && /agua/bin/cli/flow.pl ./$name.proj delete --username $username");
+    
+    #### ADD project
+    $self->runCommand("cd $filedir && /agua/bin/cli/flow.pl ./$name.proj save --username $username");
+    
+    #### ADD WORKFLOWS
+    my $workfiles   =   $self->getWorkFiles($filedir);
+    $self->logDebug("workfiles", $workfiles);
+    foreach my $workfile ( @$workfiles ) {
+        $self->runCommand("cd $filedir && /agua/bin/cli/flow.pl $name.proj saveWorkflow --wkfile $workfile --username $username");
+    }
+
+}
+
+method getWorkFiles ($directory) {
+	my $regex	=	"\\.work\$";
+	
+	my $workfiles   =   $self->getFilesByRegex($directory, $regex);
+    
+    $workfiles      =   $self->sortByRegex($workfiles, "^(\\d+)");
+
+    return $workfiles;
 }
 
 method loadData ($installdir, $version) {
