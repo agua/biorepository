@@ -61,6 +61,9 @@ service rabbitmq-server restart
 
 method loadWorkflows ($installdir, $version) {
     print "Loading workflows\n";
+    
+    $version = $self->version() if $version eq "max";
+
     $self->logDebug("installdir", $installdir);
     $self->logDebug("version", $version);
     
@@ -114,6 +117,9 @@ method getWorkFiles ($directory) {
 
 method loadData ($installdir, $version) {
     print "Loading data\n";
+
+    $version = $self->version() if $version eq "max";
+
     $self->logDebug("installdir", $installdir);
     $self->logDebug("version", $version);
 
