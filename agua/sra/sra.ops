@@ -1,0 +1,12 @@
+{
+    "package"		:	"sra",
+    "version"		:	"2.3.5-2",
+    "privacy"		:	"private",
+    "description"	:	"",
+    "type"			:	"application",
+    "url"			:	"http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/$version/sratoolkit.$version-ubuntu64.tar.gz",
+    "unzipped"		:	"sratoolkit.$version-ubuntu64",
+    "installtype"	:	"ops",
+    "keywords"		:	[ "SRA Toolkit", "Short Read Archive", "SRA", "conversion", "SRA file conversion"],
+    "website"		:	"http://trace.ncbi.nlm.nih.gov/Traces/sra/?view=software"
+}

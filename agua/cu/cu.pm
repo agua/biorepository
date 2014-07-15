@@ -78,12 +78,12 @@ method loadWorkflows ($installdir, $version) {
     my $name        =   "CU";
     $self->loadProject($filedir, $name, $username);
 
-    my $filedir     =   "$installdir/$version/conf/Load";
-    my $name        =   "Load";
+    $filedir     =   "$installdir/$version/conf/Load";
+    $name        =   "Load";
     $self->loadProject($filedir, $name, $username);
 
-    my $filedir     =   "$installdir/$version/conf/Run";
-    my $name        =   "Run";
+    $filedir     =   "$installdir/$version/conf/Run";
+    $name        =   "Run";
     $self->loadProject($filedir, $name, $username);
     
     return 1;
