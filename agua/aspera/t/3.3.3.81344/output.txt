@@ -1,0 +1,69 @@
+#bin/ascp -h
+Usage: ascp [OPTION] SRC... DEST
+          SRC to DEST, or multiple SRC to DEST dir
+          SRC, DEST format: [[user@]host:]PATH
+  -h,--help                       Display usage
+  -A,--version                    Display version.
+  -T                              Disable encryption
+  -d                              Create target directory
+  -p                              Preserve file timestamp
+  -q                              Disable progress display
+  -v                              Verbose mode
+  -6                              Use IPv6
+  -D...                           Debug level
+  -l MAX-RATE                     Max transfer rate
+  -m MIN-RATE                     Min transfer rate
+                                  RATE: G/g(gig),M/m(meg),K/k(kilo)
+  -u USER-STRING                  User-specific string
+  -i PRIVATE-KEY-FILE             Private-key file name (id_rsa)
+  -w DIRECTION                    Test bandwidth. DIRECTION: r,f
+  -K PROBE-RATE                   Bandwidth measurement, probes/sec
+  -k RESUME-LEVEL                 Resume criterion: 0,3,2,1
+  -Z DATAGRAM-SIZE                Manually set MTU
+  -g READ-SIZE                    File read-block size
+  -G WRITE-SIZE                   File write-block size
+                                  SIZE: K (kilo), M (meg), or just bytes
+  -L LOCAL-LOG-DIR                Local logging directory path
+  -R REMOTE-LOG-DIR               Remote logging directory path
+  -S REMOTE-ASCP                  Name of remote ascp command line
+  -e PRE-POST                     Pre and Post command file path
+  -O FASP-PORT                    UDP port used for FASP transport
+  -P SSH-PORT                     TCP port used for SSH authentication
+  -C M-ID:N-COUNT                 Parallel transfer, move only Mth of N parts
+  -E PATTERN                      Exclusion pattern. Repeat for more.
+  -f CONFIG-FILE                  Configuration-file name
+  -W TOKEN-STRING                 Specify TOKEN-STRING for transfer
+  -@ RANGE-LOW:RANGE-HIGH         Transfer only a range of bytes within file
+  -X REXMSG-SIZE                  Size of retransmit request
+  --mode=MODE                     MODE: send, recv
+  --user=USERNAME
+  --host=HOSTNAME
+  --policy=TRANSFER_POLICY        TRANSFER_POLICY: fixed,high,fair,low
+  --file-list=FILENAME            File with list of sources
+  --file-pair-list=FILENAME       File with list of src/dest pairs
+  --source-prefix=PREFIX          Prepend to each SRC path
+  --symbolic-links=METHOD         METHOD: follow,copy,copy+force,skip
+  --remove-after-transfer         Remove SRC files after transfer success
+  --remove-empty-directories      Remove empty SRC subdirectories
+  --skip-special-files
+  --file-manifest=OUTPUT          OUTPUT: text,none
+  --file-manifest-path=DIRECTORY
+  --file-manifest-inprogress-suffix=SUFFIX
+  --precalculate-job-size
+  --overwrite=METHOD              METHOD: never,always,older,diff,diff+older
+  --file-crypt=CRYPT              CRYPT: encrypt,decrypt
+  --file-checksum=HASH            HASH: sha1,md5,none
+  --partial-file-suffix=SUFFIX    Default SUFFIX is ".partial"
+  --src-base=NAME                 Preserve directory structure of SRC
+                                    arguments below NAME
+  --proxy=URL
+  --preserve-file-owner-uid
+  --preserve-file-owner-gid
+
+  HTTP fallback only options:
+  -y 0/1                          1 = Allow HTTP fallback (default = 0)
+  -j 0/1                          1 = Encode all HTTP transfers as JPEG files
+  -Y FILENAME                     HTTPS key file name
+  -I FILENAME                     HTTPS certificate file name
+  -t PORT                         HTTP fallback server port
+  -x PROXYSERVER-ADDR[:PORT]      Proxy address and port (default 80)
