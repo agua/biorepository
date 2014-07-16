@@ -21,16 +21,18 @@ method scriptInstall ($installdir, $version) {
     $self->logDebug("version", $version);
     
     my ($script)    =   $self->opsinfo()->url()   =~  /^.+?\/([^\/]+)\.tar\.gz/;
+    $script         .=  ".sh";
     $self->logDebug("script", $script);
-
+    $script         =~  s/\$version/$version/;
+    
+    #### RUN SCRIPT
     my $command     =   "$installdir/$script";
     $self->runCommand($command);
     
+    #### COPY INSTALLATION TO installdir
     my $homedir     =   $ENV{'HOME'};
-    $self->logDebug("homedir", $homedir);
-    
+    $self->logDebug("homedir", $homedir);    
     my $sourcedir  =   "$homedir/.aspera/connect";
-    
     $command        =   "cp -r $sourcedir   $installdir/$version";
     $self->runCommand($command);
     
