@@ -8,7 +8,8 @@ method doInstall ($installdir, $version) {
     $version = $self->version() if not defined $version;
     
     return 0 if not $self->gitInstall($installdir, $version);
-    
+	$version	=	$self->version();
+	
     return 0 if not $self->loadWorkflows($installdir, $version);
     
     return 0 if not $self->loadData($installdir, $version);
@@ -62,30 +63,31 @@ service rabbitmq-server restart
 method loadWorkflows ($installdir, $version) {
     print "Loading workflows\n";
     
-    $version = $self->version() if $version eq "max";
-
+    $version 	= 	$self->version() if $version eq "max";
+    $version	=   $self->version() if not defined $version;
     $self->logDebug("installdir", $installdir);
     $self->logDebug("version", $version);
     
-    my $basedir =   $self->conf()->getKey("agua", "INSTALLDIR");
-    $self->logDebug("basedir", $basedir);
+    my $basedir 	=   $self->conf()->getKey("agua", "INSTALLDIR");
     my $project     =   "CU";
     my $username    =   "syoung";
-    $version        =   $self->version() if not defined $version;
-    $self->logDebug("FINAL version", $version);
+    	
+	#### LOAD 'CU' PROJECT
+    print "Loading CU project\n";
+	$self->loadProject("$installdir/$version/conf", "CU", $username);
     
-    my $filedir     =   "$installdir/$version/conf";
-    my $name        =   "CU";
-    $self->loadProject($filedir, $name, $username);
+	#### LOAD 'SRA' PROJECT
+    print "Loading SRA project\n";
+    $self->loadProject("$installdir/$version/conf/sra", "SRA", $username);
+    $self->loadProject("$installdir/$version/conf/sra/LoadSRA", "LoadSRA", $username);
+    $self->loadProject("$installdir/$version/conf/sra/RunSRA", "RunSRA", $username);
 
-    $filedir     =   "$installdir/$version/conf/Load";
-    $name        =   "Load";
-    $self->loadProject($filedir, $name, $username);
+	#### LOAD 'TCGA' PROJECT
+    print "Loading TCGA project\n";
+    $self->loadProject("$installdir/$version/conf/tcga", "TCGA", $username);
+    $self->loadProject("$installdir/$version/conf/tcga/LoadTCGA", "LoadTCGA", $username);
+    $self->loadProject("$installdir/$version/conf/tcga/LoadTCGA", "RunTCGA", $username);
 
-    $filedir     =   "$installdir/$version/conf/Run";
-    $name        =   "Run";
-    $self->loadProject($filedir, $name, $username);
-    
     return 1;
 }
 
@@ -102,24 +104,19 @@ method loadProject ($filedir, $name, $username) {
     foreach my $workfile ( @$workfiles ) {
         $self->runCommand("cd $filedir && /agua/bin/cli/flow.pl $name.proj saveWorkflow --wkfile $workfile --username $username");
     }
-
 }
 
 method getWorkFiles ($directory) {
 	my $regex	=	"\\.work\$";
 	
-	my $workfiles   =   $self->getFilesByRegex($directory, $regex);
-    
+	my $workfiles   =   $self->getFilesByRegex($directory, $regex);    
     $workfiles      =   $self->sortByRegex($workfiles, "^(\\d+)");
 
     return $workfiles;
 }
 
 method loadData ($installdir, $version) {
-    print "Loading data\n";
-
     $version = $self->version() if $version eq "max";
-
     $self->logDebug("installdir", $installdir);
     $self->logDebug("version", $version);
 
@@ -130,20 +127,38 @@ method loadData ($installdir, $version) {
     $self->logDebug("username", $username);
     $self->logDebug("project", $project);
     
-    $version        =   $self->version() if not defined $version;
-    $self->logDebug("FINAL version", $version);
-    
-    #### LOAD SAMPLES IDs
-    my $command     =   "$basedir/bin/sample/loadSamples.pl --username $username --project $project --workflow loadSamples --workflownumber 1 --file $installdir/$version/data/samples.tsv";
-    $self->logDebug("command", $command);
-    $self->runCommand($command);
-    
-    #### LOAD SAMPLES FILE NAMES AND SIZES
-    $command     =   "$basedir/bin/sample/loadTable.pl --table sample --tsvfile $installdir/$version/data/tsv/sample.tsv --sqlfile $installdir/$version/data/sql/sample.sql";
-    $self->logDebug("command", $command);
-    $self->runCommand($command);
+	#### LOAD SRA DATA
+    print "Loading SRA data\n";
+	$self->loadProjectData($installdir, $version, "sra");
 
+	#### LOAD TCGA DATA
+    print "Loading TCGA data\n";
+	$self->loadProjectData($installdir, $version, "tcga");
+	
     return 1;
+}
+
+method loadProjectData ($installdir, $version, $group) {
+	my $table		=	$group . "sample";
+	my $sqlfile		=	"$installdir/$version/data/$group/sql/$table.sql";
+	my $tsvfile		=	"$installdir/$version/data/$group/tsv/$table.tsv";
+	$self->logDebug("sqlfile", $sqlfile);
+	$self->logDebug("tsvfile", $tsvfile);
+	$self->logDebug("table", $table);
+	
+	#### CREATE TABLE
+	$self->loadSqlFile($sqlfile);
+	
+	#### LOAD TCGA DATA
+	$self->db()->load($table, $tsvfile, undef);	
+}
+
+
+method loadSqlFile ($sqlfile) {
+	#### LOAD SQL
+	my $query	=	$self->fileContents($sqlfile);
+	$self->logDebug("query", $query);
+	$self->db()->do($query);
 }
 
 
