@@ -9,7 +9,6 @@
     "type"              :   "application",
     "source"            :   "git",
     "repotype"          :   "github",
-    "owner"             :   "broadinstitute",
     "login"             :   "",
     "keywords"          :   ["NGS", "genotyping", "Bayesian", "polymorphism", "variation"],
     "url"               :   "https://github.com/broadinstitute/mutect.git",

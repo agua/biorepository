@@ -2,7 +2,7 @@
     "package"        :    "aspera",
     "version"        :    "3.3.3.81344",
     "privacy"        :    "private",
-    "description"    :    "A high performance file transfer client, can be used to download Short Read Archive (SRA) files",
+    "description"    :    "A high performance file transfer client, can be used to download Short Read Archive files",
     "type"           :    "application",
     "keywords"        :    ["ASPERA", "file transfer", "SRA", "Short Read Archive"],
     "url"            :    "https://s3-us-west-1.amazonaws.com/biotools/aspera-connect-$version-linux-64.tar.gz",
