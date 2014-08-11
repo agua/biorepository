@@ -28,12 +28,34 @@ method setExtra ($installdir, $version) {
 	$extra			.=	$self->openstackAuthentication($installdir, $version);
 	$self->logDebug("FINAL extra", $extra);
 
+	$extra			.=	$self->nfsServer($installdir, $version);
+
     my $extrafile  =   "$installdir/$version/data/sh/extra";
     $self->logDebug("extrafile", $extrafile);
 
 	$self->printToFile($extrafile, $extra);
 
    return 1;
+}
+
+method nfsServer ($installdir, $version) {
+    my $nfsserver      =   $self->conf()->getKey("siphon", "NFSSERVER");
+	
+	my $basedir		=   $self->conf()->getKey("agua:INSTALLDIR", undef);	
+	$self->logDebug("basedir", $basedir);
+
+	my $extra		=	qq{echo "SETTING OPENSTACK CREDENTIALS"\n};
+	$extra			.=	qq{
+
+#### MOUNT NFS
+echo "[CONFIG] Mounting NFS share"
+$basedir/bin/openstack/config.pl --mode setKey --section "siphon:NFSSERVER" --value $nfsserver
+
+$installdir/$version/data/sh/mountnfs.sh	$nfsserver
+
+};
+
+	return $extra;
 }
 
 method rabbitMqConfiguration ($installdir, $version) {
