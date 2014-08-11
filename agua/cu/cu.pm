@@ -22,14 +22,12 @@ method doInstall ($installdir, $version) {
 method setExtra ($installdir, $version) {
     #### extra FILE WILL BE ADDED TO USERDATA WHEN VM IS LAUNCHED
 
-	my $extra		=	$self->setRabbitMq($installdir, $version);
+	my $extra		=	$self->rabbitMqConfiguration($installdir, $version);
 	$self->logDebug("rabbitmq extra", $extra);
 	
-	$extra			.=	$self->setOpenstackCredentials($installdir, $version);
+	$extra			.=	$self->openstackAuthentication($installdir, $version);
 	$self->logDebug("FINAL extra", $extra);
 
-	return 0 if not defined $extra;
-	
     my $extrafile  =   "$installdir/$version/data/sh/extra";
     $self->logDebug("extrafile", $extrafile);
 
@@ -38,21 +36,15 @@ method setExtra ($installdir, $version) {
    return 1;
 }
 
-method setRabbitMq ($installdir, $version) {
+method rabbitMqConfiguration ($installdir, $version) {
     my $user        =   $self->conf()->getKey("queue", "user");
     my $pass        =   $self->conf()->getKey("queue", "pass");
     my $vhost       =   $self->conf()->getKey("queue", "vhost");
     $self->logDebug("user", $user);
     $self->logDebug("pass", $pass);
     $self->logDebug("vhost", $vhost);
-    
-    #### master: AUTHENTICATE WITH RabbitMQ AND ADD TO extra FILE.
-    #### extra FILE WILL BE ADDED TO USERDATA WHEN VM IS LAUNCHED
-    my $extrafile  =   "$installdir/$version/data/sh/extra";
-    $self->logDebug("extrafile", $extrafile);
-    
-    return "" if not defined $user;
 
+    return "" if not defined $user;
 	print "Missing RabbitMQ authentication info: pass\n" and return if not defined $pass;
 	print "Missing RabbitMQ authentication info: vhost\n" and return if not defined $vhost;
 
@@ -60,6 +52,12 @@ method setRabbitMq ($installdir, $version) {
 	$self->runCommand("sudo rabbitmqctl add_user $user $pass");
 	$self->runCommand("sudo rabbitmqctl add_vhost $vhost");
 	$self->runCommand(qq{sudo rabbitmqctl set_permissions -p $vhost $user ".*" ".*" ".*"});
+
+	#### SET HOST
+	my $host	=		$self->conf()->getKey("queue", "host");
+	$self->logDebug("host", $host);
+	my $basedir		=   $self->conf()->getKey("agua:INSTALLDIR", undef);	
+	$self->logDebug("basedir", $basedir);
 	
 	#### SET AUTHENTICATION ON master
 	my $extra =   qq{
@@ -69,13 +67,15 @@ sudo rabbitmqctl add_vhost $vhost
 sudo rabbitmqctl set_permissions -p $vhost $user ".*" ".*" ".*"
 service rabbitmq-server restart
 
+$basedir/bin/openstack/config.pl --mode setKey --section "queue:host" --value $host
+
 };
 	$self->logDebug("extra", $extra);
 
    return $extra;
 }
 
-method setOpenstackCredentials ($installdir, $version) {
+method openstackAuthentication ($installdir, $version) {
 
 	my $basedir		=   $self->conf()->getKey("agua:INSTALLDIR", undef);	
 	$self->logDebug("basedir", $basedir);
