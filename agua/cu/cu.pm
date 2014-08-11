@@ -7,16 +7,35 @@ method doInstall ($installdir, $version) {
     $self->logDebug("installdir", $installdir);
     $version = $self->version() if not defined $version;
     
-    return 0 if not $self->gitInstall($installdir, $version);
-	$version	=	$self->version();
+#    return 0 if not $self->gitInstall($installdir, $version);
+#	$version	=	$self->version();
 	
-    return 0 if not $self->loadWorkflows($installdir, $version);
+    return 0 if not $self->setExtra($installdir, $version);
     
-    return 0 if not $self->loadData($installdir, $version);
-    
-    return 0 if not $self->setRabbitMq($installdir, $version);
-    
+    #return 0 if not $self->loadWorkflows($installdir, $version);
+    #
+    #return 0 if not $self->loadData($installdir, $version);
+
     return 1;
+}
+
+method setExtra ($installdir, $version) {
+    #### extra FILE WILL BE ADDED TO USERDATA WHEN VM IS LAUNCHED
+
+	my $extra		=	$self->setRabbitMq($installdir, $version);
+	$self->logDebug("rabbitmq extra", $extra);
+	
+	$extra			.=	$self->setOpenstackCredentials($installdir, $version);
+	$self->logDebug("FINAL extra", $extra);
+
+	return 0 if not defined $extra;
+	
+    my $extrafile  =   "$installdir/$version/data/sh/extra";
+    $self->logDebug("extrafile", $extrafile);
+
+	$self->printToFile($extrafile, $extra);
+
+   return 1;
 }
 
 method setRabbitMq ($installdir, $version) {
@@ -32,32 +51,45 @@ method setRabbitMq ($installdir, $version) {
     my $extrafile  =   "$installdir/$version/data/sh/extra";
     $self->logDebug("extrafile", $extrafile);
     
-    if ( defined $user ) {
-        print "Missing RabbitMQ authentication info: pass\n" and return if not defined $pass;
-        print "Missing RabbitMQ authentication info: vhost\n" and return if not defined $vhost;
+    return "" if not defined $user;
 
-        #### SET AUTHENTICATION ON master
-        $self->runCommand("sudo rabbitmqctl add_user $user $pass");
-        $self->runCommand("sudo rabbitmqctl add_vhost $vhost");
-        $self->runCommand(qq{sudo rabbitmqctl set_permissions -p $vhost $user ".*" ".*" ".*"});
-        
-        #### SET AUTHENTICATION ON master
-        my $extra =   qq{
+	print "Missing RabbitMQ authentication info: pass\n" and return if not defined $pass;
+	print "Missing RabbitMQ authentication info: vhost\n" and return if not defined $vhost;
+
+	#### SET AUTHENTICATION ON master
+	$self->runCommand("sudo rabbitmqctl add_user $user $pass");
+	$self->runCommand("sudo rabbitmqctl add_vhost $vhost");
+	$self->runCommand(qq{sudo rabbitmqctl set_permissions -p $vhost $user ".*" ".*" ".*"});
+	
+	#### SET AUTHENTICATION ON master
+	my $extra =   qq{
+echo "SETTING RABBITMQ AUTHENTICATION"
 sudo rabbitmqctl add_user $user $pass
 sudo rabbitmqctl add_vhost $vhost
 sudo rabbitmqctl set_permissions -p $vhost $user ".*" ".*" ".*"
 service rabbitmq-server restart
-};
-        $self->logDebug("extra", $extra);
-        
-        $self->printToFile($extrafile, $extra);
-    }
-    else {
-        #### INSERTED INTO userdata.tmpl COMMANDS USING extra
-        print "user is defined: $user\n";
-    }
 
-   return 1;
+};
+	$self->logDebug("extra", $extra);
+
+   return $extra;
+}
+
+method setOpenstackCredentials ($installdir, $version) {
+
+	my $basedir		=   $self->conf()->getKey("agua:INSTALLDIR", undef);	
+	$self->logDebug("basedir", $basedir);
+
+	my $extra		=	qq{echo "SETTING OPENSTACK CREDENTIALS"\n};
+	my $credentials	=	["authurl", "password", "tenantid", "tenantname", "username"];
+	foreach my $credential ( @$credentials ) {
+	    my $value	=   $self->conf()->getKey("openstack", $credential);
+		$extra		.=	qq{$basedir/bin/openstack/config.pl --mode setKey --section "openstack:$credential" --value $value\n};
+	}
+	$extra	.=	"\n";
+	$self->logDebug("extra", $extra);
+
+   return $extra;
 }
 
 method loadWorkflows ($installdir, $version) {
