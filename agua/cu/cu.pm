@@ -10,7 +10,9 @@ method doInstall ($installdir, $version) {
     return 0 if not $self->gitInstall($installdir, $version);
 	$version	=	$self->version();
 	
-    return 0 if not $self->setExtra($installdir, $version);
+    return 0 if not $self->setPreData($installdir, $version);
+    
+    return 0 if not $self->setPostData($installdir, $version);
     
     return 0 if not $self->loadWorkflows($installdir, $version);
     
@@ -19,24 +21,35 @@ method doInstall ($installdir, $version) {
     return 1;
 }
 
-method setExtra ($installdir, $version) {
-    #### extra FILE WILL BE ADDED TO USERDATA WHEN VM IS LAUNCHED
+method setPreData ($installdir, $version) {
+    #### FILE CONTENTS WILL BE ADDED TO BEGINNING OF USERDATA WHEN VM IS LAUNCHED
 
-	my $extra		=	$self->rabbitMqConfiguration($installdir, $version);
-	$self->logDebug("rabbitmq extra", $extra);
-	
-	$extra			.=	$self->openstackAuthentication($installdir, $version);
-	$self->logDebug("FINAL extra", $extra);
+	my $output		=	$self->rabbitMqConfiguration($installdir, $version);
+	$output			.=	$self->openstackAuthentication($installdir, $version);
+	$self->logDebug("output", $output);
 
-	$extra			.=	$self->nfsServer($installdir, $version);
+    my $outputfile  =   "$installdir/$version/data/sh/predata";
+    $self->logDebug("outputfile", $outputfile);
 
-    my $extrafile  =   "$installdir/$version/data/sh/extra";
-    $self->logDebug("extrafile", $extrafile);
-
-	$self->printToFile($extrafile, $extra);
+	$self->printToFile($outputfile, $output);
 
    return 1;
 }
+
+method setPostData ($installdir, $version) {
+    #### FILE CONTENTS WILL BE ADDED TO END OF USERDATA WHEN VM IS LAUNCHED
+
+	my $output		=	$self->nfsServer($installdir, $version);
+	$self->logDebug("output", $output);
+
+    my $outputfile  =   "$installdir/$version/data/sh/postdata";
+    $self->logDebug("outputfile", $outputfile);
+
+	$self->printToFile($outputfile, $output);
+
+   return 1;
+}
+
 
 method nfsServer ($installdir, $version) {
     my $nfsserver      =   $self->conf()->getKey("siphon", "NFSSERVER");
