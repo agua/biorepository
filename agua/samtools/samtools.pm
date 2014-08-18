@@ -17,6 +17,16 @@ method doInstall ($installdir, $version) {
 method makeInstall ($installdir, $version) {
 	$self->logDebug("version", $version);
 	$self->logDebug("installdir", $installdir);
+
+	my $arch	=	$self->getArch();
+	$self->logDebug("arch", $arch);
+	
+	if ( $arch eq "ubuntu" ) {
+		$self->runCommand("apt-get install -y libncurses5 libncurses5-dev")
+	}
+	elsif ( $arch eq "centos" ) {
+		$self->runCommand("yum install -y ncurses ncurses-devel")
+	}
 	
 	#### CHANGE DIR
     $self->changeDir("$installdir/$version");

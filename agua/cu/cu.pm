@@ -53,14 +53,12 @@ method setPostData ($installdir, $version) {
 
 method nfsServer ($installdir, $version) {
     my $nfsserver      =   $self->conf()->getKey("siphon", "NFSSERVER");
+	print "cu::nfsServer    nfsserver not defined. Skipping mount call\n" and return "";
 	
 	my $basedir		=   $self->conf()->getKey("agua:INSTALLDIR", undef);	
 	$self->logDebug("basedir", $basedir);
 
-	my $extra		=	qq{echo "SETTING OPENSTACK CREDENTIALS"\n};
-	$extra			.=	qq{
-
-#### MOUNT NFS
+	my $extra		=	qq{#### MOUNT NFS
 echo "[CONFIG] Mounting NFS share"
 $basedir/bin/openstack/config.pl --mode setKey --section "siphon:NFSSERVER" --value $nfsserver
 
@@ -107,7 +105,7 @@ $basedir/bin/openstack/config.pl --mode setKey --section "queue:host" --value $h
 };
 	$self->logDebug("extra", $extra);
 
-   return $extra;
+	return $extra;
 }
 
 method openstackAuthentication ($installdir, $version) {
@@ -119,6 +117,7 @@ method openstackAuthentication ($installdir, $version) {
 	my $credentials	=	["authurl", "password", "tenantid", "tenantname", "username"];
 	foreach my $credential ( @$credentials ) {
 	    my $value	=   $self->conf()->getKey("openstack", $credential);
+		print "cu::openstackAuthentication    value not defined for openstack credential: $credential. Skipping openstack authentication\n" and return "" if not defined $value;
 		$extra		.=	qq{$basedir/bin/openstack/config.pl --mode setKey --section "openstack:$credential" --value $value\n};
 	}
 	$extra	.=	"\n";
@@ -153,7 +152,7 @@ method loadWorkflows ($installdir, $version) {
     print "Loading TCGA project\n";
     $self->loadProject("$installdir/$version/conf/tcga", "TCGA", $username);
     $self->loadProject("$installdir/$version/conf/tcga/LoadTCGA", "LoadTCGA", $username);
-    $self->loadProject("$installdir/$version/conf/tcga/LoadTCGA", "RunTCGA", $username);
+    $self->loadProject("$installdir/$version/conf/tcga/RunTCGA", "RunTCGA", $username);
 
     return 1;
 }
