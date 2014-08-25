@@ -53,7 +53,7 @@ method setPostData ($installdir, $version) {
 
 method nfsServer ($installdir, $version) {
     my $nfsserver      =   $self->conf()->getKey("siphon", "NFSSERVER");
-	print "cu::nfsServer    nfsserver not defined. Skipping mount call\n" and return "";
+	print "cu::nfsServer    nfsserver not defined. Skipping mount call\n" and return "" if not defined $nfsserver;
 	
 	my $basedir		=   $self->conf()->getKey("agua:INSTALLDIR", undef);	
 	$self->logDebug("basedir", $basedir);
