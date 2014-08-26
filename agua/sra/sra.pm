@@ -14,11 +14,11 @@ method doInstall ($installdir, $version) {
         $self->opsinfo()->url("http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/$version/sratoolkit.$version-centos_linux64.tar.gz");
         $self->opsinfo()->unzipped("sratoolkit.$version-centos_linux64");
     }
-    elsif ( $arch eq "centos" ) {
+    elsif ( $arch eq "ubuntu" ) {
         $self->opsinfo()->url("http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/$version/sratoolkit.$version-ubuntu64.tar.gz");
         $self->opsinfo()->unzipped("sratoolkit.$version-centos_linux64");
     }
-    elsif ( $arch eq "osc" ) {
+    elsif ( $arch eq "osx" ) {
         $self->opsinfo()->url("http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/$version/sratoolkit.$version-mac64.tar.gz");
         $self->opsinfo()->unzipped("sratoolkit.$version-centos_linux64");
     }
