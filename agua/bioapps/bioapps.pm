@@ -31,8 +31,11 @@ method preInstall {
 	return;
 }
 
-method doInstall {
-	$self->logDebug("");
+method doInstall ($installdir, $version) {
+	$self->logDebug("installdir", $installdir);
+	$self->logDebug("version", $version);
+	
+	#$self->gitInstall($installdir, $version);	
 }
 
 method checkInputs {
@@ -60,8 +63,7 @@ method checkInputs {
 	$self->logError("repository not defined") and exit if not defined $repository;
 	$self->logError("installdir not defined") and exit if not defined $installdir;
 	
-	$self->logDebug("owner", $owner);
-	$self->logDebug("package", $package);
+	$self->logDebug("owner", $owner);	
 	$self->logDebug("username", $username);
 	$self->logDebug("repotype", $repotype);
 	$self->logDebug("repository", $repository);
@@ -86,62 +88,62 @@ method postInstall ($installdir, $version) {
 	$self->logDebug("installdir", $installdir);
 
 	#### LOAD app AND parameter TABLE ENTRIES	
-	$self->loadApps($login, $package, $installdir, $opsdir);
-
+	$self->loadApps($login, $package, $installdir, $version);
+	
 	#### LOAD feature TABLE ENTRIES
-	$self->loadFeatures ($installdir);
-	
+	$self->loadFeatures ($installdir, $version);
 	$self->logDebug("self->opsinfo", $self->opsinfo());
-	my $resources 	= $self->opsinfo()->resources();
 	
-	#### LOAD SNAPSHOT IF NOT FOUND
-	my $datavolume 	= 	$resources->{datavolume};
-	my $snapshot	=	$datavolume->{id};
-	my $name		=	$datavolume->{name};
-	my $id			=	$datavolume->{id};
-	my $description	=	$datavolume->{description};
-	$self->logDebug("name", $name);
-	$self->logDebug("id", $id);
-	$self->logDebug("description", $description);
+	#### LOAD JBROWSE DATA
+	$self->loadJbrowseData();
 	
-	#### LOAD SNAPSHOT IF NOT ALREADY LOADED
-	my $snapshotid = $self->loadSnapshot($name, $id, $description);
-
-	#### SET MOUNTPOINT	
-	my $mountpoint = $self->mountpoint() || "/bioapps-$snapshotid";
-
-	##### SET CONFIG FILE
-	my $configfile = "$opsdir/conf/bioapps.conf";
-	$self->logDebug("configfile", $configfile);
-	return if not -f $configfile;
-	
-	#### LOAD CONFIG
-	$self->loadConfig($configfile, $mountpoint, $installdir);
+####	##### SET CONFIG FILE
+####	#### LOAD CONFIG
+####	my $configfile = "$installdir/$version/conf/bioapps.conf";
+####	$self->logDebug("configfile", $configfile);
+####	return if not -f $configfile;
+#####	$self->loadConfig($configfile, $mountpoint, $installdir);
+####	$self->loadConfig($configfile, "$installdir/$version/conf", $installdir);
 	
 	return;
 }
 
-method loadApps ($login, $package, $installdir, $opsdir) {
+method loadJbrowseData {
+	my $resources 	= $self->opsinfo()->resources();
+	my $dataurl		=	$resources->{dataurl};
+	$self->logDebug("dataurl", $dataurl);
+
+	my $directory	=	"/data";
+	`mkdir -p $directory` if not -d $directory;
+	my $command		=	"cd $directory; wget $dataurl";
+	$self->logDebug("command", $command);
+
+	`$command`;
+}
+method loadApps ($login, $package, $installdir, $version) {
 #### LOAD app AND parameter TABLE ENTRIES
 	$self->logDebug("login", $login);
 	$self->logDebug("package", $package);
 
-	my $appdir = "$opsdir/apps";
+	my $appdir = "$installdir/$version/conf";
 	$self->logDebug("appdir", $appdir);
 
 	$self->updateReport(["Loading apps in appdir: $appdir"]);
 
 	$self->logDebug("Doing loadAppFiles");
-	$self->loadAppFiles($login, $package, $installdir, $appdir);
+	my $format	=	"yaml";
+	$self->loadAppFiles($login, $package, $installdir, $appdir, $format);
 	$self->logDebug("Completed loadAppFiles");
 
 	$self->updateReport(["Completed loading apps"]);
 }
 
-method loadFeatures ($installdir) {
+method loadFeatures ($installdir, $version) {
 #### LOAD feature TABLE ENTRIES
+	$self->logDebug("installdir", $installdir);
+	$self->logDebug("version", $version);
 
-	my $featurefile = "$installdir/conf/tsv/feature.tsv";
+	my $featurefile = "$installdir/$version/data/tsv/feature.tsv";
 
 	$self->updateReport(["Loading JBrowse features in featurefile: $featurefile"]);
 

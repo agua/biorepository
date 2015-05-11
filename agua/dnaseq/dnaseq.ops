@@ -1,0 +1,19 @@
+{
+    "package"		  :	"dnaseq",
+    "repository"	:	"dnaseq",
+    "hubtype"		  :	"bitbucket",
+    "owner"		    :	"stuartpyoung",
+    "privacy"		  :	"private",
+    "description" :	"Broad GATK Best Practices DNA-Seq workflow",
+    "type"		    :	"application",
+    "source"		  :	"git",
+    "keywords"		:	["Broad Best Practices", "DNA-Seq", "DNASeq", "NGS", "GATK", "samtools"],
+    "url"		      :	"git@bitbucket.org:stuartpyoung/dnaseq.git",
+    "installtype"	:	"ops",
+    "licensefile"	:	"LICENSE",
+    "readmefile"	:	"README",
+    "authors"		  :	[],
+    "website"		  :	"https://bitbucket.org/stuartpyoung/dnaseq/src",
+    "publication"	:	{},
+    "resources"	  :	{}
+}

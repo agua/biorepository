@@ -1,5 +1,7 @@
 {
     "package"           :   "bioapps",
+    "repository"        :   "bioapps",
+    "owner"             :   "agua",
     "version"           :   "0.8.0",
     "privacy"           :   "private",
     "description"       :   "Bioinformatics applications for the Agua cloud workflow platform",
@@ -14,11 +16,7 @@
     "website"           :   "http://www.aguadev.org",
     "publication"       :   {},
     "resources"         :   {
-        "datavolume"         :   {
-                "id"            :   "snap-6341b301",
-                "name"          :   "aquarius-8",
-                "description"   :   "Bioinformatics data volume: Bioapps SNP SQLite database, NextGen aligner reference sequences and JBrowse feature data"
-        },
-        "configfile"    :   "conf/default.conf"
+        "dataurl"       :   "https://s3-us-west-1.amazonaws.com/aguadev/jbrowse.tar.gz",
+        "description"   :   "JBrowse feature data"
     }
 }

@@ -1,0 +1,96 @@
+Usage: pythia_pcr [options] [sequence file]
+
+Options:
+  -h, --help            show this help message and exit
+  --profile-filename=PROFILE_FILENAME
+                        If this option is called, the code is profiled and the
+                        result written to the filename.  Default is no
+                        profiling.
+  --p-min-len=PRIMER_LEN_MIN
+                        Minimum primer length (default is 18)
+  --p-max-len=PRIMER_LEN_MAX
+                        Maximum primer length (default is 30)
+  --left-start-min=LEFT_PRIMER_MIN_START
+                        Minimum coordinate of 5' base of left primer (defaults
+                        to None)
+  --left-start-max=LEFT_PRIMER_MAX_START
+                        Maximum coordinate of 5' base of left primer (default
+                        is None)
+  --left-stop-min=LEFT_PRIMER_MIN_STOP
+                        Minimum coordinate of 3' base of left primer (defaults
+                        to None)
+  --left-stop-max=LEFT_PRIMER_MAX_STOP
+                        Maximum coordinate of 3' base of left primer (default
+                        is None)
+  --right-start-min=RIGHT_PRIMER_MIN_START
+                        Minimum coordinate of 3' base of right primer
+                        (defaults to None)
+  --right-start-max=RIGHT_PRIMER_MAX_START
+                        Maximum coordinate of 3' base of right primer
+                        (defaults to None)
+  --right-stop-min=RIGHT_PRIMER_MIN_STOP
+                        Minimum coordinate of 5' base of right primer
+                        (defaults to None)
+  --right-stop-max=RIGHT_PRIMER_MAX_STOP
+                        Maximum coordinate of 5' base of right primer
+                        (defaults to None)
+  --tm-min=TM_MIN       Minimum primer melting temperature (defaults to 60C)
+  --tm-max=TM_MAX       Maximum primer melting temperature (defaults to 64C)
+  --tm-delta=TM_DELTA   Maximum difference between pcr primer melting
+                        temperatures(defaults to 4 C)
+  --tm-target=TM_TARGET
+                        Optimum primer melting temperature (defaults to 62C)
+  --annealing-temp=ANNEALING_TEMP
+                        Annealing temperature (defaults to 60C)
+  --min-equilibrium-efficiency=MIN_EQ_EFF
+                        Minimum equilibrium efficiency (defaults to .8, can be
+                        0.8,0.85,0.9,0.95)
+  --threeprime-allowed-bases=THREEPRIME_ALLOWED_BASES
+                        allowed bases at 3' end of primer (defaults to ACGT)
+  --fiveprime-allowed-bases=FIVEPRIME_ALLOWED_BASES
+                        allowed bases at 5' end of primer (defaults to ACGT)
+  --na-conc=NA_CONC     Sodium concentration in moles per liter; default is
+                        0.03
+  --mg-conc=MG_CONC     Magnesium concentration in moles per liter; default is
+                        0.001
+  --amplicon-min=AMPLICON_MIN_SIZE
+                        minimum amplicon size
+  --amplicon-max=AMPLICON_MAX_SIZE
+                        maximum amplicon size
+  --max-amplicon-overlap=AMPLICON_MAX_OVERLAP
+                        maximum overlap of amplicons
+  --tiling-jump=TILING_JUMP
+                        amount of sequence to jump ahead if a design fails in
+                        amplicon tiling
+  --primer-conc=PRIMER_CONC
+                        Primer concentration in moles per liter; default is
+                        1E-6
+  --target-conc=TARGET_CONC
+                        Target concentration in moles per liter; default is
+                        1E-16
+  --specificity-file=SPECIFICITY_FILE
+                        File containing sequences to scan for specificity
+  --nested              design nested primers
+  --max-nested-offset=MAX_NESTED_OFFSET
+                        Max distance of nested primer from outer primer
+  --max-homopolymer=MAX_HOMOPOLYMER
+                        maximum homopolymer run (i.e. AAAA or CCCC)
+  --max-nested-overlap=MAX_NESTED_OVERLAP
+                        Max overlap of nested primer with outer primer
+  --nested-threeprime-allowed-bases=NESTED_THREEPRIME_ALLOWED_BASES
+                        allowed bases at 3' end of nested primer (defaults to
+                        ACGT)
+  --nested-fiveprime-allowed-bases=NESTED_FIVEPRIME_ALLOWED_BASES
+                        allowed bases at 5' end of nesetd primer (defaults to
+                        ACGT)
+  --specificity-max-separation=SPECIFICITY_MAX_SEP
+                        max size of non-specific amplicons (default=1000)
+  --output-filename=OUTPUT_FILENAME
+                        Write output to specified file rather than standard
+                        out
+  --max-time=MAX_TIME   Maximum amount of time to spend on the primer design
+                        task
+  --illustrate-primability=ILLUSTRATE_PRIMABILITY
+                        Make png image showing primability in region (0 or 1)
+  --verbosity=VERBOSITY
+                        How verbose to std err?
