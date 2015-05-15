@@ -1,0 +1,20 @@
+{
+    "package"		  :	"dnaseqref",
+    "version"	    :	"hg19",
+    "description" :	"Reference sequences for the Broad GATK Best Practices DNA-Seq workflow",
+    "type"		    :	"data",
+    "keywords"		:	["Broad Best Practices", "DNA-Seq", "DNASeq", "NGS", "GATK", "samtools"],
+    "installtype"	:	"ops",
+    "readmefile"	:	"README",
+    "resources"	  :	{
+        "installdir" : "/data/references",
+        "urls": [
+            "ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz",
+            "ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/ucsc.hg19.fasta.gz",
+            "ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/ucsc.hg19.fasta.fai.gz",
+            "ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/ucsc.hg19.dict.gz",
+            "ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/1000G_phase1.indels.hg19.sites.vcf.gz",
+            "ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/dbsnp_138.hg19.vcf.gz"
+        ]
+    }
+}

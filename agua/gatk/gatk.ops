@@ -1,7 +1,7 @@
 {
     "package"           :   "gatk",
     "version"           :   "3.3-0",
-		"url"								:		"https://s3.amazonaws.com/itmi.pipeline/software/gatk/GenomeAnalysisTK-$version.tar.bz2",
+        "url"           :        "https://s3.amazonaws.com/itmi.pipeline/software/gatk/GenomeAnalysisTK-$version.tar.bz2",
     "description"       :   "GATK Official Release Repository: contains the core MIT-licensed GATK framework, plus protected tools restricted to non-commercial use only",
     "type"              :   "application",
     "source"            :   "git",
@@ -13,25 +13,25 @@
 				"variation",
 				"gatk",
 				"gatk"
-			],
+		],
     "installtype"       :   "ops",
     "licensefile"       :   "LICENSE",
     "readmefile"        :   "README",
     "authors"           :   ["Garrison Erik"],
     "email"             :   "erik.garrison@bc.edu",
     "website"           :   "https://github.com/ekg/gatk",
-    "authors"			:	[
-				"McKenna A",
-				"Hanna M",
-				"Banks E",
-				"Sivachenko A",
-				"Cibulskis K",
-				"Kernytsky A",
-				"Garimella K",
-				"Altshuler D",
-				"Gabriel S",
-				"Daly M",
-				"DePristo MA"
+    "authors"           :    [
+						"McKenna A",
+						"Hanna M",
+						"Banks E",
+						"Sivachenko A",
+						"Cibulskis K",
+						"Kernytsky A",
+						"Garimella K",
+						"Altshuler D",
+						"Gabriel S",
+						"Daly M",
+						"DePristo MA"
 		],
 		"publication"       :   {
         "title"         :   "The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data",
@@ -39,10 +39,10 @@
         "journal"       :   "Genome Res. 20:1297-303"
     },
     "dependencies"      :   [
-		{
-			"package"   :   "java",
-			"version"   :   "1.7.0_51"
-		}
-	]
+        {
+            "package"   :   "java",
+            "version"   :   "1.7.0_51"
+        }
+    ]
 }
 

@@ -16,18 +16,12 @@ method doInstall ($installdir, $version) {
 	$self->zipInstall($installdir, $version);
 
 	$self->makeInstallDir($installdir, $version);
-	
-	#$self->antInstall($installdir, $version);
-
-	#$self->confirmInstall($installdir, $version);
 
 	return $version;
 }
 
 method makeInstallDir ($installdir, $version) {
 #### UNZIPPED RESULT: GenomeAnalysisTK.jar AND A resources FOLDER WITH TEST FILES
-	
-	#### DELETE DIRECTORY AND ZIPFILE IF EXIST
 	my $targetdir = "$installdir/$version";
 	`mkdir -p $targetdir`;
 	$self->logCritical("Can't create targetdir: $targetdir") and exit if not -d $targetdir;
