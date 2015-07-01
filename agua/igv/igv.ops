@@ -1,0 +1,22 @@
+{
+    "package"	    :	"IGV",
+    "version"	    :	"2.3.55",
+    "versions"      :   [],
+    "type"	        :	"application",
+    "installtype"	:	"ops",
+    "source"	    :	"url",
+    "url"           :   "https://s3.amazonaws.com/itmi.pipeline/software/igv/IGV_$version.zip",
+    "unzipped"      :   "IGV_$version",
+    "checkurl"      :   "false",
+    "keywords"      :   ["NGS", "viewer", "IGV"],
+    "description"   :   "Integrative Genomics Viewer (IGV): high-performance genomics data visualization and exploration",
+    "website"       :   "http://www.broadinstitute.org/igv/home",
+    "licensefile"	:	"LICENSE",
+    "readmefile"	:	"README",
+    "authors"	    :	[ "James T. Robinson", "Helga Thorvaldsdóttir", "Wendy Winckler", "Mitchell Guttman", "Eric S. Lander", "Gad Getz", "Jill P. Mesirov" .  ],
+    "publication"	:	{
+        "year"	:	"2011",
+        "title"	:	"Integrative Genomics Viewer",
+        "journal"	:	"Nature Biotechnology 29, 24–26"
+    }
+}
