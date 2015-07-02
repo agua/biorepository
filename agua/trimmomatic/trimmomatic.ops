@@ -1,0 +1,22 @@
+{
+    "package"	    :	"trimmomatic",
+    "version"	    :	"0.33",
+    "versions"      :   [],
+    "type"	        :	"application",
+    "installtype"	:	"ops",
+    "source"	    :	"url",
+    "url"           :   "https://s3.amazonaws.com/itmi.pipeline/software/trimmomatic/Trimmomatic-$version.zip",
+    "unzipped"      :   "Trimmomatic-$version",
+    "checkurl"      :   "false",
+    "keywords"      :   ["NGS", "trim", "trimmomatic"],
+    "description"   :   "Trim adapters from reads; trim reads to a certain length",
+    "website"       :   "http://www.usadellab.org/cms/?page=trimmomatic",
+    "licensefile"	:	"LICENSE",
+    "readmefile"	:	"README",
+    "authors"	    :	["Bolger, A. M.", "Lohse, M.", "Usadel, B"],
+    "publication"	:	{
+        "year"	:	"2014",
+        "title"	:	"Trimmomatic: A flexible trimmer for Illumina Sequence Data",
+        "journal"	:	"Bioinformatics, btu170"
+    }
+}

@@ -1,4 +1,4 @@
-package igv;
+package trimmomatic;
 use Moose::Role;
 use Method::Signatures::Simple;
 

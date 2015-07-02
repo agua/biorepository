@@ -1,4 +1,4 @@
-package igv;
+package IGV;
 use Moose::Role;
 use Method::Signatures::Simple;
 

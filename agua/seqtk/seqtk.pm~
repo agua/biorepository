@@ -1,4 +1,4 @@
-package igv;
+package seqtk;
 use Moose::Role;
 use Method::Signatures::Simple;
 

@@ -1,0 +1,17 @@
+{
+    "package"        :    "seqtk",
+    "versions"        :    "",
+    "tag"           :   "",
+    "type"            :    "application",
+    "installtype"    :    "ops",
+    "source"        :   "git",
+    "hubtype"       :   "github",
+    "repository"    :   "seqtk",
+    "owner"         :   "lh3",
+    "login"         :   "lh3",
+    "checkurl"      :   "false",
+    "website"       :   "https://github.com/lh3/seqtk",
+    "licensefile"    :    "LICENSE",
+    "readmefile"    :    "README",
+    "authors"        :    ["Heng Li"]
+}
