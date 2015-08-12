@@ -1,0 +1,19 @@
+{
+    "package":        "picard",
+    "version":        "1.107",
+    "build":          "",
+    "type":           "application",
+    "installtype":    "ops",
+    "source":         "url",
+    "url":            "http://downloads.sourceforge.net/project/picard/picard-tools/$version/picard-tools-$version.zip",
+    "keywords":       ["SAM file", "file manipulation", "converter", "picard"],
+    "description":    "Java-based command-line utilities that manipulate SAM files, and a Java API (SAM-JDK) for creating new programs that read and write SAM files",
+    "website":        "http://sourceforge.net/projects/picard",
+    "installtype":    "ops",
+    "licensefile":    "LICENSE",
+    "readmefile":     "README",
+    "authors":         ["Wysoker Alec", "Tibbetts Kathleen", "McCowan Mike", "Fennell Tim"],
+    "publication":    {}
+}
+
+

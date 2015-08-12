@@ -1,4 +1,4 @@
-package seqtk;
+package mendelchecker;
 use Moose::Role;
 use Method::Signatures::Simple;
 

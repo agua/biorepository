@@ -1,6 +1,6 @@
 {
     "package":        "samtools",
-    "version":        "",
+    "version":        "0.1.19",
     "build":          "",
     "type":           "application",
     "installtype":    "ops",

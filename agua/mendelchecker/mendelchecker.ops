@@ -1,0 +1,22 @@
+{
+    "package"	    :	"mendelchecker",
+    "version"	    :	"2",
+    "versions"      :   [],
+    "type"	        :	"application",
+    "installtype"	:	"ops",
+    "source"	    :	"url",
+    "url"           :   "https://s3.amazonaws.com/itmi.pipeline/software/mendelchecker/MendelChecker_v$version.tar.gz",
+    "unzipped"      :   "MendelChecker_$version",
+    "checkurl"      :   "false",
+    "keywords"      :   ["NGS", "Mendelian", "segregation"],
+    "description"   :   "MendelChecker is a likelihood-based measure of Mendelian segregation of Single Nucleotide Polymorphisms (SNPs) in nuclear pedigrees.",
+    "website"       :   "http://sourceforge.net/projects/mendelchecker/",
+    "licensefile"	:	"LICENSE",
+    "readmefile"	:	"README",
+    "authors"	    :	[ "Van Hout, C.V.", "Gottipati S.", "Chen N.", "Clark A.G."],
+    "publication"	:	{
+        "year"	:	"2014",
+        "title"	:	"MendelChecker: Quality Control for Next Generation Sequencing Using Mendelian Inheritance in Pedigrees",
+        "journal"	:	"to be submitted"
+    }
+}

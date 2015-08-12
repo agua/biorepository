@@ -1,17 +1,18 @@
 {
-    "package"        :    "seqtk",
+    "package"        :    "vt",
     "versions"        :    "",
     "tag"           :   "",
     "type"            :    "application",
     "installtype"    :    "ops",
     "source"        :   "git",
+    "privacy"		:	"public",
     "hubtype"       :   "github",
-    "repository"    :   "seqtk",
-    "owner"         :   "lh3",
-    "login"         :   "lh3",
+    "repository"    :   "vt",
+    "owner"         :   "atks",
+    "login"         :   "",
     "checkurl"      :   "false",
-    "website"       :   "https://github.com/lh3/seqtk",
+    "website"       :   "https://github.com/atks/vt",
     "licensefile"    :    "LICENSE",
     "readmefile"    :    "README",
-    "authors"        :    ["Heng Li"]
+    "authors"        :    ["Adrien atks@umich.edu"]
 }

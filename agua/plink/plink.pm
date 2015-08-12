@@ -1,4 +1,4 @@
-package IGV;
+package plink;
 use Moose::Role;
 use Method::Signatures::Simple;
 

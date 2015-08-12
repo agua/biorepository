@@ -1,0 +1,18 @@
+{
+"package" : "vcftools",
+"versions" : "",
+"tag" : "",
+"type" : "application",
+"installtype" : "ops",
+"source" : "git",
+"privacy" : "public",
+"hubtype" : "github",
+"repository" : "vcftools",
+"owner" : "vcftools",
+"login" : "",
+"checkurl" : "false",
+"website" : "https://github.com/vcftools/vcftools",
+"licensefile" : "LICENSE",
+"readmefile" : "README",
+"authors" : ["Adam Auton", "Petr Danecek", "Anothony Marcketta"]
+}
