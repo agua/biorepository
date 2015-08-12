@@ -1,5 +1,5 @@
 
-package picard;
+package vt;
 use Moose::Role;
 use Method::Signatures::Simple;
 

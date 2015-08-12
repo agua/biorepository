@@ -1,5 +1,5 @@
 
-package picard;
+package seqtk;
 use Moose::Role;
 use Method::Signatures::Simple;
 

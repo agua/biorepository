@@ -1,5 +1,5 @@
 {
-    "package"        :    "picard",
+    "package"        :    "seqtk",
     "versions"        :    "",
     "tag"           :   "",
     "type"            :    "application",
@@ -7,12 +7,12 @@
     "source"        :   "git",
     "privacy"		:	"public",
     "hubtype"       :   "github",
-    "repository"    :   "picard",
-    "owner"         :   "broadinstitute",
+    "repository"    :   "seqtk",
+    "owner"         :   "lh3",
     "login"         :   "",
     "checkurl"      :   "false",
-    "website"       :   "https://github.com/broadinstitute/picard",
+    "website"       :   "https://github.com/lh3/seqtk",
     "licensefile"    :    "LICENSE",
     "readmefile"    :    "README",
-    "authors"        :    [""]
+    "authors"        :    ["Heng Li"]
 }

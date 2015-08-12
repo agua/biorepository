@@ -1,5 +1,5 @@
 
-package picard;
+package vcflib;
 use Moose::Role;
 use Method::Signatures::Simple;
 

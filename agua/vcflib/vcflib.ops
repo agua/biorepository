@@ -1,0 +1,18 @@
+{
+"package" : "vcflib",
+"versions" : "",
+"tag" : "",
+"type" : "application",
+"installtype" : "ops",
+"source" : "git",
+"privacy" : "public",
+"hubtype" : "github",
+"repository" : "vcflib",
+"owner" : "ekg",
+"login" : "",
+"checkurl" : "false",
+"website" : "https://github.com/ekg/vcflib",
+"licensefile" : "LICENSE",
+"readmefile" : "README",
+"authors" : ["Erik Garrison"]
+}

@@ -1,5 +1,5 @@
 {
-    "package"        :    "picard",
+    "package"        :    "vt",
     "versions"        :    "",
     "tag"           :   "",
     "type"            :    "application",
@@ -7,12 +7,12 @@
     "source"        :   "git",
     "privacy"		:	"public",
     "hubtype"       :   "github",
-    "repository"    :   "picard",
-    "owner"         :   "broadinstitute",
+    "repository"    :   "vt",
+    "owner"         :   "atks",
     "login"         :   "",
     "checkurl"      :   "false",
-    "website"       :   "https://github.com/broadinstitute/picard",
+    "website"       :   "https://github.com/atks/vt",
     "licensefile"    :    "LICENSE",
     "readmefile"    :    "README",
-    "authors"        :    [""]
+    "authors"        :    ["Adrien atks@umich.edu"]
 }
