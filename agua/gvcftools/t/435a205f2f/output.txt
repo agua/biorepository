@@ -1,0 +1,35 @@
+ubuntu@ip-10-232-153-103:/a/apps/gvcftools/435a205f2f/bin$ merge_variants
+
+merge_variants merges the variants from multiple gVCF files
+
+version: v0.16.2
+
+usage: merge_variants [options] > merged_variants
+
+options:
+
+configuration:
+  --ref arg             samtools reference sequence (required)
+  --region arg          samtools reference region (optional)
+  --exclude arg         name of chromosome to skip over (argument may be
+                        specified multiple times). Exclusions will be ignored
+                        if a region argument is provided
+  --input arg           merge files (can be specified multiple times)
+  --murdock             If true, don't stop because of any out-of-order
+                        position conflicts. Any out of order positions are
+                        ignored. In case of an overlap the first observation is
+                        used and subsequent repeats are ignored.
+
+help:
+  -h [ --help ]         print this message
+
+
+Note this is a simple prototype merge implementation and comes with
+considerable restrictions:
+
+  - Most INFO fields are not recomputed/forwared to the merged record.
+  - Most sample fields are not forwarded to the merged record (this would
+      require knowing which fields depend on allele count.)
+  - Merged record FILTER field is a simple union of all merged samples,
+      thus a single filtered sample will filter the merged record.
+  - No handling of overlapping indel alleles

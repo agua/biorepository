@@ -1,18 +1,18 @@
 {
-"package" : "vcflib",
-"versions" : "v1.0.0-rc0",
+"package" : "vcftools",
+"versions" : "",
 "tag" : "",
 "type" : "application",
 "installtype" : "ops",
 "source" : "git",
 "privacy" : "public",
 "hubtype" : "github",
-"repository" : "vcflib",
-"owner" : "ekg",
+"repository" : "vcftools",
+"owner" : "vcftools",
 "login" : "",
 "checkurl" : "false",
-"website" : "https://github.com/ekg/vcflib",
+"website" : "https://github.com/vcftools/vcftools",
 "licensefile" : "LICENSE",
 "readmefile" : "README",
-"authors" : ["Erik Garrison"]
+"authors" : ["Adam Auton", "Petr Danecek", "Anothony Marcketta"]
 }

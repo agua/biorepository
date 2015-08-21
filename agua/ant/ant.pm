@@ -1,5 +1,5 @@
 
-package samtools;
+package ant;
 use Moose::Role;
 use Method::Signatures::Simple;
 

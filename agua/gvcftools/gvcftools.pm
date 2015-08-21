@@ -1,5 +1,5 @@
 
-package samtools;
+package gvcftools;
 use Moose::Role;
 use Method::Signatures::Simple;
 

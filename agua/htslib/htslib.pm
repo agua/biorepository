@@ -1,5 +1,5 @@
 
-package samtools;
+package htslib;
 use Moose::Role;
 use Method::Signatures::Simple;
 

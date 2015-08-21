@@ -1,0 +1,20 @@
+{
+    "package":        "htslib",
+    "version":        "1.2.1",
+    "build":          "",
+    "type":           "application",
+    "installtype":    "ops",
+    "owner":          "samtools",
+    "repository":     "htslib",
+    "source":         "git",
+    "hubtype":        "github",
+    "url":            "https://github.com/samtools/htslib",
+    "checkurl":       "false",
+    "keywords":       ["htslib"],
+    "description":    "HTSlib is an implementation of a unified C library for accessing common file formats, such as SAM, CRAM and VCF, used for high-throughput sequencing data, and is the core library used by samtools and bcftools.",
+    "website":        "",
+    "licensefile":    "LICENSE",
+    "readmefile":     "README",
+    "authors":         [""],
+    "publication":    {}
+}

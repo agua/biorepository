@@ -1,6 +1,6 @@
 {
 "package" : "vcflib",
-"versions" : "v1.0.0-rc0",
+"versions" : "",
 "tag" : "",
 "type" : "application",
 "installtype" : "ops",

@@ -1,5 +1,5 @@
 
-package samtools;
+package bcftools;
 use Moose::Role;
 use Method::Signatures::Simple;
 

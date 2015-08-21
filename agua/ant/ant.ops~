@@ -1,18 +1,19 @@
 {
-    "package"        :    "vt",
-    "versions"        :    "0.57",
+    "package"        :    "ant",
+    "versions"        :    "ANT_196_RC1",
+    "treeish" : "",
     "tag"           :   "",
     "type"            :    "application",
     "installtype"    :    "ops",
     "source"        :   "git",
     "privacy"		:	"public",
     "hubtype"       :   "github",
-    "repository"    :   "vt",
-    "owner"         :   "atks",
+    "repository"    :   "ant",
+    "owner"         :   "apache",
     "login"         :   "",
     "checkurl"      :   "false",
-    "website"       :   "https://github.com/atks/vt",
+    "website"       :   "https://github.com/apache/ant",
     "licensefile"    :    "LICENSE",
     "readmefile"    :    "README",
-    "authors"        :    ["Adrien atks@umich.edu"]
+    "authors"        :    [""]
 }

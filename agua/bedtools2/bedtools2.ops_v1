@@ -1,0 +1,22 @@
+{
+    "package"	    :	"bedtools2",
+    "version"	    :	"2.24.0",
+    "versions"      :   ["2.19.0", "2.19.0", "2.18.2", "2.18.1", "2.18.0"],
+    "type"	        :	"application",
+    "installtype"	:	"ops",
+    "source"	    :	"url",
+    "url"           :   "https://s3.amazonaws.com/itmi.pipeline/software/bedtools2/bedtools2-$version.zip",
+    "unzipped"      :   "bedtools2-$version",
+    "checkurl"      :   "false",
+    "keywords"      :   ["NGS", "converter", "bedtools"],
+    "description"   :   "A swiss army knife for genome arithmetic",
+    "website"       :   "https://github.com/arq5x/bedtools2",
+    "licensefile"	:	"LICENSE",
+    "readmefile"	:	"README",
+    "authors"	    :	[ "Quinlan AR", "Hall IM" ],
+    "publication"	:	{
+        "year"	:	"2010",
+        "title"	:	"BEDTools: a flexible suite of utilities for comparing genomic features",
+        "journal"	:	"Bioinformatics. 26, 6, pp. 841-842"
+    }
+}

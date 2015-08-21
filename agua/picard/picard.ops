@@ -1,6 +1,6 @@
 {
     "package"        :    "picard",
-    "versions"        :    "",
+    "versions"        :    "1.138",
     "tag"           :   "",
     "type"            :    "application",
     "installtype"    :    "ops",

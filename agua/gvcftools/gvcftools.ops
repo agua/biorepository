@@ -1,18 +1,19 @@
 {
-    "package"        :    "vt",
-    "versions"        :    "0.57",
+    "package"        :    "gvcftools",
+    "versions"        :    "",
+    "treeish"    : "",
     "tag"           :   "",
     "type"            :    "application",
     "installtype"    :    "ops",
     "source"        :   "git",
     "privacy"		:	"public",
     "hubtype"       :   "github",
-    "repository"    :   "vt",
-    "owner"         :   "atks",
+    "repository"    :   "gvcftools",
+    "owner"         :   "sequencing",
     "login"         :   "",
     "checkurl"      :   "false",
-    "website"       :   "https://github.com/atks/vt",
+    "website"       :   "https://github.com/sequencing/gvcftools",
     "licensefile"    :    "LICENSE",
     "readmefile"    :    "README",
-    "authors"        :    ["Adrien atks@umich.edu"]
+    "authors"	    :	["Chris Saunders"]
 }

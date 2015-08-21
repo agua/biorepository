@@ -1,18 +1,18 @@
 {
-    "package"        :    "vt",
-    "versions"        :    "0.57",
+    "package"        :    "picard",
+    "versions"        :    "",
     "tag"           :   "",
     "type"            :    "application",
     "installtype"    :    "ops",
     "source"        :   "git",
     "privacy"		:	"public",
     "hubtype"       :   "github",
-    "repository"    :   "vt",
-    "owner"         :   "atks",
+    "repository"    :   "picard",
+    "owner"         :   "broadinstitute",
     "login"         :   "",
     "checkurl"      :   "false",
-    "website"       :   "https://github.com/atks/vt",
+    "website"       :   "https://github.com/broadinstitute/picard",
     "licensefile"    :    "LICENSE",
     "readmefile"    :    "README",
-    "authors"        :    ["Adrien atks@umich.edu"]
+    "authors"        :    [""]
 }

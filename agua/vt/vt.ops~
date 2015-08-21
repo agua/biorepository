@@ -1,6 +1,6 @@
 {
     "package"        :    "vt",
-    "versions"        :    "0.57",
+    "versions"        :    "",
     "tag"           :   "",
     "type"            :    "application",
     "installtype"    :    "ops",

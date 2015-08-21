@@ -1,6 +1,6 @@
 {
 "package" : "vcftools",
-"versions" : "",
+"versions" : "v0.1.13",
 "tag" : "",
 "type" : "application",
 "installtype" : "ops",
