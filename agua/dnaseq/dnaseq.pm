@@ -7,7 +7,7 @@ method doInstall ($installdir, $version) {
     $self->logDebug("installdir", $installdir);
     $version = $self->version() if not defined $version;
     
-    #return 0 if not $self->gitInstall($installdir, $version);
+    return 0 if not $self->gitInstall($installdir, $version);
 
 $self->version("0.0.1");
     $version = $self->version();
@@ -19,7 +19,7 @@ $self->version("0.0.1");
     my $appdir      =   "$installdir/$version/conf/app";
     my $format      =   "yaml";
 	$self->logDebug("Doing loadAppFiles");
-	#$self->loadAppFiles($username, $package, $installdir, $appdir, $format);
+	$self->loadAppFiles($username, $package, $installdir, $appdir, $format);
 	$self->logDebug("Completed loadAppFiles");
 
     return 0 if not $self->loadWorkflows($installdir, $version);
