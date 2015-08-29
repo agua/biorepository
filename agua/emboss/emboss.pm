@@ -41,10 +41,10 @@ method doInstall ($installdir, $version) {
 
 	$self->logDebug("Doing self->zipInstall()");
 	$version = $self->zipInstall($installdir, $version);
-
+	
 	$self->logDebug("Doing self->installDependencies()");
 	$self->installDependencies();
-
+	
 	$self->logDebug("Doing self->configInstall()");
 	$self->configInstall($installdir, $version);
 
@@ -99,6 +99,7 @@ method postInstall ($installdir, $version) {
 	my $package		=	$self->package();
 	my $opsdir		=	$self->opsdir();
 	my $appdir 		= 	"$opsdir/apps";
+	my $format		=	"yaml";
 
 	$self->logDebug("owner", $owner);
 	$self->logDebug("username", $username);
@@ -125,7 +126,7 @@ method postInstall ($installdir, $version) {
 	
 	#### LOAD APP FILES
 	$self->logDebug("Doing loadAppFiles");
-	$self->loadAppFiles($username, $package, $installdir, $appdir);
+	$self->loadAppFiles($username, $package, $installdir, $appdir, $format);
 	$self->logDebug("Completed loadAppFiles");
 	
 	return 1;
@@ -176,9 +177,12 @@ method createAppFiles ($owner, $package, $installdir, $apptypes, $paramtypes, $a
 	
 	foreach my $file ( @$files ) {
 		$self->logDebug("file", $file);
-		
+
 		#### SKIP NON-COMMAND LINE APPLICATIONS
-		next if $file eq "acdgalaxy" or $file eq "runJemboss.csh" or $file eq "jembossctl";
+		next if $file eq "acdgalaxy"
+		or $file eq "runJemboss.csh"
+		or $file eq "jembossctl"
+		or $file =~ "^acd";
 
 		#### GET -help OUTPUT
 		my $filepath 	= 	"$bindir/$file";
@@ -188,7 +192,7 @@ method createAppFiles ($owner, $package, $installdir, $apptypes, $paramtypes, $a
 		next if $help =~ /^Error/;
 		my $type	=	$apptypes->{$file}->{type};
 		$self->logDebug("type", $type);
-
+		
 		#### CHECK FOR ERROR - TYPE NOT DEFINED
 		$self->logDebug("type not defined for file: $file") and next if not defined $type;
 		
@@ -201,6 +205,9 @@ method createAppFiles ($owner, $package, $installdir, $apptypes, $paramtypes, $a
 		$app->{location}	=	"bin/$file";
 		$app->{url}			=	$url;
 
+		$self->logDebug("app", $app);
+	
+		
 		#### ADD LINK IF PROVIDED
 		my $link	=	$self->setLink($linkurl, $file, $type);
 		if ( defined $link and $link ne "" ) {

@@ -8,12 +8,38 @@
     "type"		    :	"application",
     "source"		  :	"git",
     "keywords"		:	["Broad Best Practices", "DNA-Seq", "DNASeq", "NGS", "GATK", "samtools"],
-    "url"		      :	"git@bitbucket.org:stuartpyoung/dnaseq.git",
+    "url"		      :	"git@github.com:syoung/dnaseq.git",
     "installtype"	:	"ops",
     "licensefile"	:	"LICENSE",
     "readmefile"	:	"README",
     "authors"		  :	[],
     "website"		  :	"https://bitbucket.org/stuartpyoung/dnaseq/src",
     "publication"	:	{},
-    "resources"	  :	{}
+    "resources"	  :	{},
+    "dependencies" : [
+        {
+            "package"	:	 "java",
+            "version"	:	 "1.7.0_51"
+        },
+        {
+            "package"	:	 "samtools",
+            "version"	:	 "0.1.19"
+        },
+        {
+            "package"	:	 "bamtools",
+            "version"	:	 "v2.3.0"
+        },
+        {
+            "package"	:	 "picard",
+            "version"	:	 "1.103"
+        },
+        {
+            "package"	:	 "gatk",
+            "version"	:	 "3.3-0"
+        },
+        {
+            "package"	:	 "fastqc",
+            "version"	:	 "0.9.3"
+        }
+    ]
 }

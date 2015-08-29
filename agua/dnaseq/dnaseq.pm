@@ -7,11 +7,20 @@ method doInstall ($installdir, $version) {
     $self->logDebug("installdir", $installdir);
     $version = $self->version() if not defined $version;
     
-    return 0 if not $self->gitInstall($installdir, $version);
+    #return 0 if not $self->gitInstall($installdir, $version);
 
-    return 0 if not $self->loadWorkflows($installdir, $version);
+	#### LOAD APP FILES
+    my $username    =   $self->username();
+    my $package    =   $self->package();
+    my $appdir      =   "$installdir/latest/conf/apps";
+    my $format      =   "yaml";
+	$self->logDebug("Doing loadAppFiles");
+	$self->loadAppFiles($username, $package, $installdir, $appdir, $format);
+	$self->logDebug("Completed loadAppFiles");
 
-    return 0 if not $self->loadData($installdir, $version);
+    #return 0 if not $self->loadWorkflows($installdir, $version);
+    #
+    #return 0 if not $self->loadData($installdir, $version);
     
     return $version;
 }
@@ -35,17 +44,51 @@ method loadWorkflows ($installdir, $version) {
     $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl ./CU.proj save --username $username");
     
     #### ADD WORKFLOWS
-    $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl CU.proj saveWorkflow --wkfile 1-LoadSamples.work --username $username");
-    $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl CU.proj saveWorkflow --wkfile 2-Download.work --username $username");
-    $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl CU.proj saveWorkflow --wkfile 3-Bwa.work --username $username");
-    $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl CU.proj saveWorkflow --wkfile 4-FreeBayes.work --username $username");
-    $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl CU.proj saveWorkflow --wkfile 5-Upload.work --username $username");
+    my $projects = [
+        {
+            project =>  "FastQC",
+            workflows   =>  [
+                "FastQC"
+            ]
+        }
+        ,
+        {
+            project =>  "Align",
+            workflows   =>  [
+                "Bwa"
+            ]
+        }
+        ,
+        {
+            project =>  "Process",
+            workflows   =>  [
+                "FixMates",
+                "FilterReads",
+                "MarkDuplicates",
+                "AddReadGroups",
+                "QualityFilter",
+                "IndelRealignment",
+                "BaseRecalibration",
+                "HaplotypeCaller",
+                "Varscan",
+                "FreeBayes"
+            ]
+        }
+    ];
+    foreach my $project ( @$projects ) {
+        my $project     =   $project->{project};
+        my $workflows   =   $project->{workflows};
+        print "Loading workflows for project '$project'\n";
 
-    print "...completed loading workflows\n";
+        foreach my $workflow ( @$workflows ) {
+            $self->runCommand("cd $installdir/$version/conf && /agua/bin/cli/flow.pl CU.proj saveWorkflow --wkfile 1-LoadSamples.work --username $username");
+        }
+        print "Completed loading workflows for project '$project'\n\n";
+    }
 }
 
 method loadData ($installdir, $version) {
-    print "Loading data\n";
+    print "Loading samples\n";
     $self->logDebug("installdir", $installdir);
     $self->logDebug("version", $version);
 
@@ -56,17 +99,19 @@ method loadData ($installdir, $version) {
     $self->logDebug("project", $project);
     $self->logDebug("username", $username);
 
+    my $table   =   "samples";
+
     #### LOAD SAMPLES IDs
-    my $command     =   "$basedir/bin/sample/loadSamples.pl --username $username --project $project --workflow loadSamples --workflownumber 1 --file $installdir/$version/data/samples.tsv";
+    my $command     =   "$basedir/bin/sample/loadSamples.pl --username $username --project $project --workflow loadSamples --workflownumber 1 --file $installdir/$version/data/$table.tsv";
     $self->logDebug("command", $command);
     $self->runCommand($command);
     
     #### LOAD SAMPLES FILE NAMES AND SIZES
-    $command     =   "$basedir/bin/sample/loadTable.pl --table samples --tsvfile $installdir/$version/data/samples.tsv --sqlfile $installdir/$version/data/samples.sql";
+    $command     =   "$basedir/bin/sample/loadTable.pl --table $table --tsvfile $installdir/$version/data/$table.tsv --sqlfile $installdir/$version/data/$table.sql";
     $self->logDebug("command", $command);
     $self->runCommand($command);
 
-    print "...completed loading data\n";
+    print "Completed loading samples\n\n";
 }
 
 

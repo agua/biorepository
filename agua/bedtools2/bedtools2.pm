@@ -8,22 +8,6 @@ method doInstall ($installdir, $version) {
 	$version 	= 	$self->version() if not defined $version;
 	
 	print "Failed to download version: $version\n" and exit if not $self->zipInstall($installdir, $version);
-	print "Failed to configure version: $version\n" and exit if not $self->configInstall($installdir, $version);
-
-	$self->confirmInstall($installdir, $version);
-	
-	return $version;
-}
-
-method configInstall ($installdir, $version) {
-	$self->logDebug("version", $version);
-	$self->logDebug("installdir", $installdir);
-	
-	#### CHANGE DIR
-    $self->changeDir("$installdir/$version");
-	
-	#### MAKE
-	$self->runCommand("make");
 	
 	return $version;
 }
