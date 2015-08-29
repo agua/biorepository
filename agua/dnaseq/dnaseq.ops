@@ -40,6 +40,10 @@
         {
             "package"	:	 "fastqc",
             "version"	:	 "0.9.3"
+        },
+        {
+            "package"	:	 "s3lib",
+            "version"	:	 "0.0.1"
         }
     ]
 }
