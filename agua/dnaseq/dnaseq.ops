@@ -1,22 +1,22 @@
 {
     "package"		  :	"dnaseq",
-    "repository"	:	"dnaseq",
+    "repository"	  :	"dnaseq",
     "hubtype"		  :	"bitbucket",
-    "owner"		    :	"stuartpyoung",
+    "owner"		      :	"stuartpyoung",
     "privacy"		  :	"private",
-    "description" :	"Broad GATK Best Practices DNA-Seq workflow",
-    "type"		    :	"application",
+    "description"     :	"Broad GATK Best Practices DNA-Seq workflow",
+    "type"		      :	"application",
     "source"		  :	"git",
-    "keywords"		:	["Broad Best Practices", "DNA-Seq", "DNASeq", "NGS", "GATK", "samtools"],
+    "keywords"		  :	["Broad Best Practices", "DNA-Seq", "DNASeq", "NGS", "GATK", "samtools"],
     "url"		      :	"git@github.com:syoung/dnaseq.git",
-    "installtype"	:	"ops",
-    "licensefile"	:	"LICENSE",
-    "readmefile"	:	"README",
+    "installtype"	  :	"ops",
+    "licensefile"	  :	"LICENSE",
+    "readmefile"	  :	"README",
     "authors"		  :	[],
     "website"		  :	"https://bitbucket.org/stuartpyoung/dnaseq/src",
-    "publication"	:	{},
-    "resources"	  :	{},
-    "dependencies" : [
+    "publication"	  :	{},
+    "resources"	      :	{},
+    "dependencies"    : [
         {
             "package"	:	 "java",
             "version"	:	 "1.7.0_51"
