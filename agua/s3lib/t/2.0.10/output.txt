@@ -1,0 +1,11 @@
+#./bam2fastx 
+Usage: bam2fastx [--fasta|-a|--fastq|-q] [--color] [-Q] [--sam|-s|-t]
+   [-M|--mapped-only|-A|--all] [-o <outfile>] [-P|--paired] [-N] <in.bam>
+   
+Note: By default, reads flagged as not passing quality controls are
+   discarded; the -Q option can be used to ignore the QC flag.
+   
+Use the -N option if the /1 and /2 suffixes should be appended to
+   read names according to the SAM flags
+   
+Use the -O option to ignore the OQ tag, if present, when writing quality values
