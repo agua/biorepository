@@ -1,18 +1,19 @@
-{
-    "package":        "java",
-    "version":        "1.7.0_51",
-    "build":          "",
-    "type":           "application",
-    "installtype":    "ops",
-    "source":         "url",
-    "url":            "https://s3-us-west-1.amazonaws.com/biotools/jdk-$version-linux-x64.tar.gz",
-    "unzipped":       "jdk$version",
-    "checkurl":       "false",
-    "keywords":       ["java", "jdk"],
-    "description":    "Java Development Kit (JDK)",
-    "website":        "http://www.oracle.com/technetwork/java/javase/downloads/index.html",
-    "licensefile":    "LICENSE",
-    "readmefile":     "README",
-    "authors":         [],
-    "publication":    {}
-}
+---
+authors: []
+build: ''
+checkurl: 'false'
+description: 'Java Development Kit (JDK)'
+installtype: ops
+keywords:
+  - java
+  - jdk
+licensefile: LICENSE
+package: java
+publication: {}
+readmefile: README
+source: url
+type: application
+unzipped: jdk$version
+url: https://s3-us-west-1.amazonaws.com/biotools/jdk-$version-linux-x64.tar.gz
+version: 1.7.0_51
+website: http://www.oracle.com/technetwork/java/javase/downloads/index.html

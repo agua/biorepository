@@ -1,12 +1,16 @@
-{
-    "package"		:	"sra",
-    "version"		:	"2.3.5-2",
-    "privacy"		:	"private",
-    "description"	:	"The NCBI SRA Toolkit enables reading/dumping of sequencing files from the SRA database and writing/loading files to and from the .sra file format",
-    "type"			:	"application",
-    "url"			:	"http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/$version/sratoolkit.$version-ubuntu64.tar.gz",
-    "unzipped"		:	"sratoolkit.$version*64",
-    "installtype"	:	"ops",
-    "keywords"		:	[ "SRA Toolkit", "Short Read Archive", "SRA", "conversion", "SRA file conversion"],
-    "website"		:	"http://trace.ncbi.nlm.nih.gov/Traces/sra/?view=software"
-}
+---
+description: 'The NCBI SRA Toolkit enables reading/dumping of sequencing files from the SRA database and writing/loading files to and from the .sra file format'
+installtype: ops
+keywords:
+  - 'SRA Toolkit'
+  - 'Short Read Archive'
+  - SRA
+  - conversion
+  - 'SRA file conversion'
+package: sra
+privacy: private
+type: application
+unzipped: sratoolkit.$version*64
+url: http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/$version/sratoolkit.$version-ubuntu64.tar.gz
+version: 2.3.5-2
+website: http://trace.ncbi.nlm.nih.gov/Traces/sra/?view=software

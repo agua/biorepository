@@ -1,22 +1,30 @@
-{
-    "package"	    :	"bedtools2",
-    "version"	    :	"2.19.1",
-    "versions"      :   ["2.19.0", "2.19.0", "2.18.2", "2.18.1", "2.18.0"],
-    "type"	        :	"application",
-    "installtype"	:	"ops",
-    "source"	    :	"url",
-    "url"           :   "https://github.com/arq5x/bedtools2/releases/download/v$version/bedtools-$version.tar.gz",
-    "unzipped"      :   "bedtools2-$version",
-    "checkurl"      :   "false",
-    "keywords"      :   ["NGS", "converter", "bedtools"],
-    "description"   :   "A swiss army knife for genome arithmetic",
-    "website"       :   "https://github.com/arq5x/cmake2",
-    "licensefile"	:	"LICENSE",
-    "readmefile"	:	"README",
-    "authors"	    :	[ "Quinlan AR", "Hall IM" ],
-    "publication"	:	{
-        "year"	:	"2010",
-        "title"	:	"BEDTools: a flexible suite of utilities for comparing genomic features",
-        "journal"	:	"Bioinformatics. 26, 6, pp. 841-842"
-    }
-}
+---
+authors:
+  - 'Quinlan AR'
+  - 'Hall IM'
+checkurl: 'false'
+description: 'A swiss army knife for genome arithmetic'
+installtype: ops
+keywords:
+  - NGS
+  - converter
+  - bedtools
+licensefile: LICENSE
+package: bedtools2
+publication:
+  journal: 'Bioinformatics. 26, 6, pp. 841-842'
+  title: 'BEDTools: a flexible suite of utilities for comparing genomic features'
+  year: '2010'
+readmefile: README
+source: url
+type: application
+unzipped: bedtools2-$version
+url: https://github.com/arq5x/bedtools2/releases/download/v$version/bedtools-$version.tar.gz
+version: 2.19.1
+versions:
+  - 2.19.0
+  - 2.19.0
+  - 2.18.2
+  - 2.18.1
+  - 2.18.0
+website: https://github.com/arq5x/cmake2

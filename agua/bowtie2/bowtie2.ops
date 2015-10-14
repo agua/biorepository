@@ -1,23 +1,26 @@
-{
-    "package":        "bowtie2",
-    "version":        "2.2.0",
-    "build":          "",
-    "type":           "application",
-    "installtype":    "ops",
-    "source":         "url",
-    "url":            "http://sourceforge.net/projects/bowtie-bio/files/bowtie2/$version/bowtie2-$version-linux-x86_64.zip",
-    "unzipped":       "bowtie2-$version",
-    "keywords":       ["RNA-Seq", "RNASeq", "expression analysis", "alignment", "bowtie2"],
-    "description":    "Ultrafast short read alignment",
-    "website":       "http://bowtie-bio.sourceforge.net/bowtie2/index.shtml",    "licensefile":    "LICENSE",
-    "readmefile":     "README",
-    "authors":         [
-        "Langmead, Ben",
-        "Salzberg, Steven L"
-    ],
-    "publication":    {
-        "year":     "2012",
-        "journal":  "Nature Methods 9, 357–359 (2012)",
-        "title":    "Fast gapped-read alignment with Bowtie 2"
-    }
-}
+---
+authors:
+  - 'Langmead, Ben'
+  - 'Salzberg, Steven L'
+build: ''
+description: 'Ultrafast short read alignment'
+installtype: ops
+keywords:
+  - RNA-Seq
+  - RNASeq
+  - 'expression analysis'
+  - alignment
+  - bowtie2
+licensefile: LICENSE
+package: bowtie2
+publication:
+  journal: "Nature Methods 9, 357â\x80\x93359 (2012)"
+  title: 'Fast gapped-read alignment with Bowtie 2'
+  year: '2012'
+readmefile: README
+source: url
+type: application
+unzipped: bowtie2-$version
+url: http://sourceforge.net/projects/bowtie-bio/files/bowtie2/$version/bowtie2-$version-linux-x86_64.zip
+version: 2.2.0
+website: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml

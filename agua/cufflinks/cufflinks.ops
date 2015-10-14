@@ -1,20 +1,31 @@
-{
-    "package":        "cufflinks",
-    "version":        "2.1.1",
-    "build":          "",
-    "type":           "application",
-    "installtype":    "ops",
-    "source":         "url",
-    "url":            "http://cufflinks.cbcb.umd.edu/downloads/cufflinks-$version.Linux_x86_64.tar.gz",
-    "keywords":       ["RNA-Seq", "RNASeq", "expression analysis", "cufflinks"],
-    "description":    "Isoform assembly and quantitation for RNA-Seq",
-    "website":        "http://cufflinks.cbcb.umd.edu/",
-    "licensefile":    "LICENSE",
-    "readmefile":     "README",
-    "authors":         ["Cole Trapnell", "Brian A Williams", "Geo Pertea", "Ali Mortazavi", "Gordon Kwan", "Marijke J van Baren", "Steven L Salzberg", "Barbara J Wold", "Lior Pachter"],
-    "publication":    {
-        "journal":    "Nature Biotechnology 2010 May;28(5):511-5",
-        "title" :     "Transcript assembly and quantification by RNA-Seq reveals unannotated transcripts and isoform switching during cell differentiation",
-        "year" :      "2010"
-    }
-}
+---
+authors:
+  - 'Cole Trapnell'
+  - 'Brian A Williams'
+  - 'Geo Pertea'
+  - 'Ali Mortazavi'
+  - 'Gordon Kwan'
+  - 'Marijke J van Baren'
+  - 'Steven L Salzberg'
+  - 'Barbara J Wold'
+  - 'Lior Pachter'
+build: ''
+description: 'Isoform assembly and quantitation for RNA-Seq'
+installtype: ops
+keywords:
+  - RNA-Seq
+  - RNASeq
+  - 'expression analysis'
+  - cufflinks
+licensefile: LICENSE
+package: cufflinks
+publication:
+  journal: 'Nature Biotechnology 2010 May;28(5):511-5'
+  title: 'Transcript assembly and quantification by RNA-Seq reveals unannotated transcripts and isoform switching during cell differentiation'
+  year: '2010'
+readmefile: README
+source: url
+type: application
+url: http://cufflinks.cbcb.umd.edu/downloads/cufflinks-$version.Linux_x86_64.tar.gz
+version: 2.1.1
+website: http://cufflinks.cbcb.umd.edu/

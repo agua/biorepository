@@ -1,13 +1,15 @@
-{
-    "package"		:	"setuptools",
-    "version"		:	"2.1",
-    "type"		    :	"application",
-    "installtype"	:	"ops",
-    "source"		:	"url",
-    "url"		    :	"https://pypi.python.org/packages/source/s/setuptools/setuptools-$version.tar.gz",
-    "unzipped"		:	"setuptools-$version",
-    "keywords"		:	["setuptools", "python", "package manager"],
-    "description"	:	"Easily download, build, install, upgrade, and uninstall Python packages",
-    "website"		:	"https://pypi.python.org/pypi/setuptools",
-    "authors"		:	[]
-}
+---
+authors: []
+description: 'Easily download, build, install, upgrade, and uninstall Python packages'
+installtype: ops
+keywords:
+  - setuptools
+  - python
+  - 'package manager'
+package: setuptools
+source: url
+type: application
+unzipped: setuptools-$version
+url: https://pypi.python.org/packages/source/s/setuptools/setuptools-$version.tar.gz
+version: '2.1'
+website: https://pypi.python.org/pypi/setuptools

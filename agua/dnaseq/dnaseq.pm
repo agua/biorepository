@@ -138,16 +138,14 @@ method loadData ($installdir, $version) {
     my $table   =   "samples";
 
     ##### LOAD SAMPLES IDs
-    my $command = qq{$basedir/bin/sample/loadSamples.pl \\
---username $username \\
---project QC \\
---table samples21 \\
---sqlfile /$basedir/apps/dnaseq/data/sql/samples21.sql \\
---tsvfile /$basedir/apps/dnaseq/data/tsv/samples21.tsv \\
---log 4
-};
-    $self->logDebug("command", $command);
-    $self->runCommand($command);
+    #my $command     =   "$basedir/bin/sample/loadSamples.pl --username $username --project $project --workflow loadSamples --workflownumber 1 --file $installdir/$version/data/$table.tsv";
+    #$self->logDebug("command", $command);
+    #$self->runCommand($command);
+    #
+    ##### LOAD SAMPLES FILE NAMES AND SIZES
+    #$command     =   "$basedir/bin/sample/loadTable.pl --table $table --tsvfile $installdir/$version/data/$table.tsv --sqlfile $installdir/$version/data/$table.sql";
+    #$self->logDebug("command", $command);
+    #$self->runCommand($command);
 
     print "Completed loading samples\n\n";
 }

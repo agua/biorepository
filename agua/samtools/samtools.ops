@@ -1,36 +1,34 @@
-{
-    "package":        "samtools",
-    "version":        "0.1.19",
-    "build":          "",
-    "type":           "application",
-    "installtype":    "ops",
-    "owner":          "samtools",
-    "repository":     "samtools",
-    "source":         "git",
-    "hubtype":        "github",
-    "url":            "https://github.com/samtools/samtools.git",
-    "checkurl":       "false",
-    "keywords":       ["samtools", "developer tools"],
-    "description":    "Utilities for manipulating alignments in the SAM format, including sorting, merging, indexing and generating alignments in a per-position format",
-    "website":        "http://samtools.sourceforge.net/",
-    "licensefile":    "LICENSE",
-    "readmefile":     "README",
-    "authors":         [
-        "Li H.*",
-		"Handsaker B.*",
-		"Wysoker A.",
-		"Fennell T.",
-		"Ruan J.",
-		"Homer N.",
-		"Marth G.",
-		"Abecasis G.",
-		"Durbin R",
-		"1000 Genome Project Data Processing Subgroup"
-    ],
-
-    "publication":    {
-        "year":     "2009",
-        "title":    "The Sequence alignment/map (SAM) format and SAMtools",
-        "journal":  "Bioinformatics, 25, 2078-9. [PMID: 19505943]"
-    }
-}
+---
+authors:
+  - 'Li H.*'
+  - 'Handsaker B.*'
+  - 'Wysoker A.'
+  - 'Fennell T.'
+  - 'Ruan J.'
+  - 'Homer N.'
+  - 'Marth G.'
+  - 'Abecasis G.'
+  - 'Durbin R'
+  - '1000 Genome Project Data Processing Subgroup'
+build: ''
+checkurl: 'false'
+description: 'Utilities for manipulating alignments in the SAM format, including sorting, merging, indexing and generating alignments in a per-position format'
+hubtype: github
+installtype: ops
+keywords:
+  - samtools
+  - 'developer tools'
+licensefile: LICENSE
+owner: samtools
+package: samtools
+publication:
+  journal: 'Bioinformatics, 25, 2078-9. [PMID: 19505943]'
+  title: 'The Sequence alignment/map (SAM) format and SAMtools'
+  year: '2009'
+readmefile: README
+repository: samtools
+source: git
+type: application
+url: https://github.com/samtools/samtools.git
+version: 0.1.19
+website: http://samtools.sourceforge.net/

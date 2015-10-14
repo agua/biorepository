@@ -1,16 +1,14 @@
-{
-    "package"		    :	"pythia",
-    "version"       : "1.0.1",
-    "description"   :	"Broad GATK Best Practices DNA-Seq workflow",
-    "keywords"		  :	[
-        "pythia",
-        "primer",
-        "primer design"
-    ],
-    "url"		        :	"http://sourceforge.net/projects/pythia/files/pythia/$versiondir/pythia-$version.tar.gz/download",
-    "unzipped"      : "pythia_$version",
-    "installtype"	  :	"ops",
-    "licensefile"	  :	"LICENSE",
-    "readmefile"	  :	"README",
-    "authors"		    :	[]
-}
+---
+authors: []
+description: 'Broad GATK Best Practices DNA-Seq workflow'
+installtype: ops
+keywords:
+  - pythia
+  - primer
+  - 'primer design'
+licensefile: LICENSE
+package: pythia
+readmefile: README
+unzipped: pythia_$version
+url: http://sourceforge.net/projects/pythia/files/pythia/$versiondir/pythia-$version.tar.gz/download
+version: 1.0.1

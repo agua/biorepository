@@ -1,22 +1,25 @@
-{
-    "package"           :   "libmaus",
-    "repository"        :   "libmaus",
-	"hubtype"		:	"github",
-    "version"           :   "libmaus_experimental_0_0_108",
-    "privacy"           :   "public",
-    "description"       :   "A collection of data structures and algorithms",
-    "type"              :   "application",
-    "source"            :   "git",
-    "repotype"          :   "github",
-    "owner"             :   "gt1",
-    "login"             :   "gt1",
-    "keywords"          :   ["data structures", "algorithm", "libmaus"],
-    "url"               :   "https://github.com/gt1/libmaus.git",
-    "installtype"       :   "ops",
-    "licensefile"       :   "LICENSE",
-    "readmefile"        :   "README",
-    "authors"           :   ["Wellcome Trust Sanger Institute"],
-    "email"             :   "",           
-    "website"           :   "https://github.com/ekg/libmaus",
-    "publication"       :   {}
-}
+---
+authors:
+  - 'Wellcome Trust Sanger Institute'
+description: 'A collection of data structures and algorithms'
+email: ''
+hubtype: github
+installtype: ops
+keywords:
+  - 'data structures'
+  - algorithm
+  - libmaus
+licensefile: LICENSE
+login: gt1
+owner: gt1
+package: libmaus
+privacy: public
+publication: {}
+readmefile: README
+repository: libmaus
+repotype: github
+source: git
+type: application
+url: https://github.com/gt1/libmaus.git
+version: libmaus_experimental_0_0_108
+website: https://github.com/ekg/libmaus

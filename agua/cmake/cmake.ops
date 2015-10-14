@@ -1,20 +1,22 @@
-{
-    "package":        "cmake",
-    "version":        "2.8.12.1",
-    "type":           "application",
-    "installtype":    "ops",
-    "source":         "url",
-    "url":            "http://www.cmake.org/files/v2.8/cmake-$version.tar.gz",
-    "checkurl":       "false",
-    "keywords":       ["cmake", "developer tools"],
-    "description":    "A cross-platform, open-source build system",
-    "website":        "http://www.cmake.org",
-    "licensefile":    "LICENSE",
-    "readmefile":     "README",
-    "authors":         ["Bill Hoffman", "Ken Martin"],
-    "publication":    {
-        "year":     "2007",
-        "title":    "An Open Source Approach to Developing Software in a Small Organization",
-        "journal":  "IEEE Software, Vol. 24 Number 1 IEEE, January 2007"
-    }
-}
+---
+authors:
+  - 'Bill Hoffman'
+  - 'Ken Martin'
+checkurl: 'false'
+description: 'A cross-platform, open-source build system'
+installtype: ops
+keywords:
+  - cmake
+  - 'developer tools'
+licensefile: LICENSE
+package: cmake
+publication:
+  journal: 'IEEE Software, Vol. 24 Number 1 IEEE, January 2007'
+  title: 'An Open Source Approach to Developing Software in a Small Organization'
+  year: '2007'
+readmefile: README
+source: url
+type: application
+url: http://www.cmake.org/files/v2.8/cmake-$version.tar.gz
+version: 2.8.12.1
+website: http://www.cmake.org

@@ -1,49 +1,46 @@
-{
-    "package"		  :	"dnaseq",
-    "repository"	  :	"dnaseq",
-    "hubtype"		  :	"bitbucket",
-    "owner"		      :	"stuartpyoung",
-    "privacy"		  :	"private",
-    "description"     :	"Broad GATK Best Practices DNA-Seq workflow",
-    "type"		      :	"application",
-    "source"		  :	"git",
-    "keywords"		  :	["Broad Best Practices", "DNA-Seq", "DNASeq", "NGS", "GATK", "samtools"],
-    "url"		      :	"git@github.com:syoung/dnaseq.git",
-    "installtype"	  :	"ops",
-    "licensefile"	  :	"LICENSE",
-    "readmefile"	  :	"README",
-    "authors"		  :	[],
-    "website"		  :	"https://bitbucket.org/stuartpyoung/dnaseq/src",
-    "publication"	  :	{},
-    "resources"	      :	{},
-    "dependencies"    : [
-        {
-            "package"	:	 "java",
-            "version"	:	 "1.7.0_51"
-        },
-        {
-            "package"	:	 "samtools",
-            "version"	:	 "0.1.19"
-        },
-        {
-            "package"	:	 "bamtools",
-            "version"	:	 "v2.3.0"
-        },
-        {
-            "package"	:	 "picard",
-            "version"	:	 "1.103"
-        },
-        {
-            "package"	:	 "gatk",
-            "version"	:	 "3.3-0"
-        },
-        {
-            "package"	:	 "fastqc",
-            "version"	:	 "0.9.3"
-        },
-        {
-            "package"	:	 "s3lib",
-            "version"	:	 "0.0.1"
-        }
-    ]
-}
+---
+authors: []
+dependencies:
+  -
+    package: java
+    version: 1.7.0_51
+  -
+    package: samtools
+    version: 0.1.19
+  -
+    package: bamtools
+    version: v2.3.0
+  -
+    package: picard
+    version: '1.103'
+  -
+    package: gatk
+    version: 3.3-0
+  -
+    package: fastqc
+    version: 0.11.4
+  -
+    package: s3lib
+    version: 0.0.1
+description: 'Broad GATK Best Practices DNA-Seq workflow'
+hubtype: bitbucket
+installtype: ops
+keywords:
+  - 'Broad Best Practices'
+  - DNA-Seq
+  - DNASeq
+  - NGS
+  - GATK
+  - samtools
+licensefile: LICENSE
+owner: stuartpyoung
+package: dnaseq
+privacy: private
+publication: {}
+readmefile: README
+repository: dnaseq
+resources: {}
+source: git
+type: application
+url: git@github.com:syoung/dnaseq.git
+website: https://bitbucket.org/stuartpyoung/dnaseq/src

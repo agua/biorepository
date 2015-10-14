@@ -1,32 +1,34 @@
-{
-    "package"           :   "freebayes",
-    "repository"        :   "freebayes",
-	"hubtype"		:	"github",
-    "version"           :   "0.9.14",
-    "privacy"           :   "public",
-    "description"       :   "Bayesian haplotype-based polymorphism discovery and genotyping.",
-    "type"              :   "application",
-    "source"            :   "git",
-    "repotype"          :   "github",
-    "owner"             :   "ekg",
-    "login"             :   "ekg",
-    "keywords"          :   ["NGS", "genotyping", "Bayesian", "polymorphism", "variation"],
-    "url"               :   "git://github.com/ekg/freebayes.git",
-    "installtype"       :   "ops",
-    "licensefile"       :   "LICENSE",
-    "readmefile"        :   "README",
-    "authors"           :   ["Garrison Erik"],
-    "email"             :   "erik.garrison@bc.edu",           
-    "website"           :   "https://github.com/ekg/freebayes",
-    "publication"       :   {
-        "title"         :   "Haplotype-based variant detection from short-read sequencing",
-        "year"          :   "2012",
-        "journal"       :   "arXiv:1207.3907"
-    },
-    "dependencies"	    : 	[
-		{
-			"package"   :   "cmake",
-			"version"   :   "2.8.12.1"
-		}
-	]
-}
+---
+authors:
+  - 'Garrison Erik'
+dependencies:
+  -
+    package: cmake
+    version: 2.8.12.1
+description: 'Bayesian haplotype-based polymorphism discovery and genotyping.'
+email: erik.garrison@bc.edu
+hubtype: github
+installtype: ops
+keywords:
+  - NGS
+  - genotyping
+  - Bayesian
+  - polymorphism
+  - variation
+licensefile: LICENSE
+login: ekg
+owner: ekg
+package: freebayes
+privacy: public
+publication:
+  journal: arXiv:1207.3907
+  title: 'Haplotype-based variant detection from short-read sequencing'
+  year: '2012'
+readmefile: README
+repository: freebayes
+repotype: github
+source: git
+type: application
+url: git://github.com/ekg/freebayes.git
+version: 0.9.14
+website: https://github.com/ekg/freebayes

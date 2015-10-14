@@ -1,22 +1,30 @@
-{
-    "package"           :   "bioapps",
-    "repository"        :   "bioapps",
-    "owner"             :   "agua",
-    "version"           :   "0.8.0",
-    "privacy"           :   "private",
-    "description"       :   "Bioinformatics applications for the Agua cloud workflow platform",
-    "type"              :   "application",
-    "source"            :   "git",
-    "keywords"          :   ["bioinformatics", "workflows", "cloud", "next-generation", "sequencing", "analysis", "alignment", "variation", "SNP"],
-    "url"               :   "http://www.aguadev.org",
-    "installtype"       :   "ops",
-    "licensefile"       :   "LICENSE",
-    "readmefile"        :   "README",
-    "authors"           :   ["Young Stuart"],
-    "website"           :   "http://www.aguadev.org",
-    "publication"       :   {},
-    "resources"         :   {
-        "dataurl"       :   "https://s3-us-west-1.amazonaws.com/aguadev/jbrowse.tar.gz",
-        "description"   :   "JBrowse feature data"
-    }
-}
+---
+authors:
+  - 'Young Stuart'
+description: 'Bioinformatics applications for the Agua cloud workflow platform'
+installtype: ops
+keywords:
+  - bioinformatics
+  - workflows
+  - cloud
+  - next-generation
+  - sequencing
+  - analysis
+  - alignment
+  - variation
+  - SNP
+licensefile: LICENSE
+owner: agua
+package: bioapps
+privacy: private
+publication: {}
+readmefile: README
+repository: bioapps
+resources:
+  dataurl: https://s3-us-west-1.amazonaws.com/aguadev/jbrowse.tar.gz
+  description: 'JBrowse feature data'
+source: git
+type: application
+url: http://www.aguadev.org
+version: 0.8.0
+website: http://www.aguadev.org

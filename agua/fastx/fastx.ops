@@ -1,23 +1,25 @@
-{
-    "name":           "fastx",
-    "version":        "0.9.3",
-    "build":          "",
-    "type":           "application",
-    "source":         "url",
-    "url":            "http://cancan.cshl.edu/labmembers/gordon/fastx_toolkit/fastx_toolkit-$version _linux_amd64_bin.tar.bz2",
-    "unzipped":       "fastx_toolkit-$version _linux_amd64_bin",
-    "type":           "http",
-    "keywords":       ["file processing", "NGS", "sequence data", "fastq", "fastx"],
-    "description":    "The FASTX-Toolkit is a collection of command line tools for Short-Reads FASTA/FASTQ files preprocessing",
-    "website":       "http://hannonlab.cshl.edu/fastx_toolkit",
-    "installtype":    "ops",
-    "licensefile":    "LICENSE",
-    "readmefile":     "README",
-    "installtype":    "ops",
-    "authors":        [],
-    "publication":    {},
-    "organisation":   [],
-    "ISA":            {},
-    "acknowledgements": [],
-    "citations":      []
-}
+---
+ISA: {}
+acknowledgements: []
+authors: []
+build: ''
+citations: []
+description: 'The FASTX-Toolkit is a collection of command line tools for Short-Reads FASTA/FASTQ files preprocessing'
+installtype: ops
+keywords:
+  - 'file processing'
+  - NGS
+  - 'sequence data'
+  - fastq
+  - fastx
+licensefile: LICENSE
+name: fastx
+organisation: []
+publication: {}
+readmefile: README
+source: url
+type: http
+unzipped: 'fastx_toolkit-$version _linux_amd64_bin'
+url: 'http://cancan.cshl.edu/labmembers/gordon/fastx_toolkit/fastx_toolkit-$version _linux_amd64_bin.tar.bz2'
+version: 0.9.3
+website: http://hannonlab.cshl.edu/fastx_toolkit

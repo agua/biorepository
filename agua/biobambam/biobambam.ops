@@ -1,33 +1,31 @@
-{
-    "package":        "biobambam",
-    "version":        "biobambam_0_0_129",
-    "owner":          "gt1",
-    "repository":     "biobambam",
-    "source":         "git",
-    "hubtype":        "github",
-    "url":            "#### NOT USED: https://github.com/gt1/biobambam.git",
-    "checkurl":       "false",
-    "type":           "application",
-    "installtype":    "ops",
-    "keywords":       ["biobambam", "developer tools", "tools", "file processing"],
-    "description":    "Tools for bam file processing",
-    "website":        "http://biobambam.sourceforge.net/",
-    "licensefile":    "LICENSE",
-    "readmefile":     "README",
-    "authors":         [
-        "Tischler German",
-		"Leonard Steven"
-    ],
-
-    "publication":    {
-        "year":     "2013",
-        "title":    "biobambam: tools for read pair collation based algorithms on BAM files",
-        "journal":  "http://science-advisor.net/article/1306.0836"
-    },
-    "dependencies"	    : 	[
-		{
-			"package"   :   "libmaus",
-			"version"   :   "libmaus_0_0_108"
-		}
-	]
-}
+---
+authors:
+  - 'Tischler German'
+  - 'Leonard Steven'
+checkurl: 'false'
+dependencies:
+  -
+    package: libmaus
+    version: libmaus_0_0_108
+description: 'Tools for bam file processing'
+hubtype: github
+installtype: ops
+keywords:
+  - biobambam
+  - 'developer tools'
+  - tools
+  - 'file processing'
+licensefile: LICENSE
+owner: gt1
+package: biobambam
+publication:
+  journal: http://science-advisor.net/article/1306.0836
+  title: 'biobambam: tools for read pair collation based algorithms on BAM files'
+  year: '2013'
+readmefile: README
+repository: biobambam
+source: git
+type: application
+url: '#### NOT USED: https://github.com/gt1/biobambam.git'
+version: biobambam_0_0_129
+website: http://biobambam.sourceforge.net/

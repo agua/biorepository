@@ -1,36 +1,45 @@
-{
-    "package"		:	"cu",
-    "repository"	:	"cu",
-    "hubtype"       :   "bitbucket",
-    "owner"         :   "annaisystems",
-    "description"	:	"Colorado University alignment and variant calling workflow (BWA --> FreeBayes and Mutect) based on PanCancer alignment",
-    "type"		    :	"application",
-    "privacy"		:	"public",
-	"login"			:	"root",
-    "source"		:	"git",
-    "keywords"	    :	["Colorado University", "bladder", "cancer", "TCGA", "PanCancer", "PCAP-core", "PCAP", "alignment", "variant", "bwa_mem", "freebayes"],
-    "url"			:	"git@bitbucket.org:annaisystems/cu.git",
-    "installtype"	:	"ops",
-    "readmefile"	:	"README",
-    "authors"		:	["Costello James", "DeLaVega Francisco", "Jones Kenneth", "Parman Craig", "Young Stuart"],
-    "website"		:	"https://bitbucket.org/annaisystems/cu",
-    "publication"	:	{},
-    "resources"	    :	{},
-    "dependencies"  :   [
-		{
-			"package"   :   "freebayes",
-            "version"   :   "v0.9.9.2",
-			"treeish"   :   "7e198dc"
-		}
-        ,
-		{
-			"package"   :   "pcap",
-            "version"   :   "v1.0.4"
-		}
-        ,
-		{
-			"package"   :   "gt",
-            "version"   :   "0.0.1"
-		}
-	]
-}
+---
+authors:
+  - 'Costello James'
+  - 'DeLaVega Francisco'
+  - 'Jones Kenneth'
+  - 'Parman Craig'
+  - 'Young Stuart'
+dependencies:
+  -
+    package: freebayes
+    treeish: 7e198dc
+    version: v0.9.9.2
+  -
+    package: pcap
+    version: v1.0.4
+  -
+    package: gt
+    version: 0.0.1
+description: 'Colorado University alignment and variant calling workflow (BWA --> FreeBayes and Mutect) based on PanCancer alignment'
+hubtype: bitbucket
+installtype: ops
+keywords:
+  - 'Colorado University'
+  - bladder
+  - cancer
+  - TCGA
+  - PanCancer
+  - PCAP-core
+  - PCAP
+  - alignment
+  - variant
+  - bwa_mem
+  - freebayes
+login: root
+owner: annaisystems
+package: cu
+privacy: public
+publication: {}
+readmefile: README
+repository: cu
+resources: {}
+source: git
+type: application
+url: git@bitbucket.org:annaisystems/cu.git
+website: https://bitbucket.org/annaisystems/cu
