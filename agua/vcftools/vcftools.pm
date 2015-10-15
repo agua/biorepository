@@ -22,6 +22,9 @@ method autogenInstall ($installdir, $version) {
 	#### CHANGE DIR
     $self->changeDir("$installdir/$version");
 	
+    #### INSTALL DEPENDENCIES
+    $self->runCommand("apt-get -y install autoconf autogen intltool pkg-config");
+    
 	#### MAKE
 	$self->runCommand("./autogen.sh");
 	$self->runCommand("./configure");
