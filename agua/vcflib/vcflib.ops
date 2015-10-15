@@ -14,5 +14,5 @@ package: vcflib
 repository: vcflib
 source: git
 type: application
-versions: v1.0.0-rc0
+version: v1.0.0-rc0
 website: https://github.com/ekg/vcflib
