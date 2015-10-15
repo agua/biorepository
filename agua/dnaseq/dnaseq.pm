@@ -138,17 +138,18 @@ method loadData ($installdir, $version) {
     $self->logDebug("basedir", $basedir);
     $self->logDebug("username", $username);
 
-    my $table   =   "samples";
-
-    ##### LOAD SAMPLES IDs
-    #my $command     =   "$basedir/bin/sample/loadSamples.pl --username $username --project $project --workflow loadSamples --workflownumber 1 --file $installdir/$version/data/$table.tsv";
-    #$self->logDebug("command", $command);
-    #$self->runCommand($command);
-    #
-    ##### LOAD SAMPLES FILE NAMES AND SIZES
-    #$command     =   "$basedir/bin/sample/loadTable.pl --table $table --tsvfile $installdir/$version/data/$table.tsv --sqlfile $installdir/$version/data/$table.sql";
-    #$self->logDebug("command", $command);
-    #$self->runCommand($command);
+    my $tables   =   ["sample21", "samples5"];
+    foreach my $table ( @$tables ) {
+        ##### LOAD SAMPLES IDs
+        #my $command     =   "$basedir/bin/sample/loadSamples.pl --username $username --project $project --workflow loadSamples --workflownumber 1 --file $installdir/$version/data/$table.tsv";
+        #$self->logDebug("command", $command);
+        #$self->runCommand($command);
+        #
+        ##### LOAD SAMPLES FILE NAMES AND SIZES
+        #$command     =   "$basedir/bin/sample/loadTable.pl --table $table --tsvfile $installdir/$version/data/$table.tsv --sqlfile $installdir/$version/data/$table.sql";
+        #$self->logDebug("command", $command);
+        #$self->runCommand($command);    
+    }
 
     print "Completed loading samples\n\n";
 }

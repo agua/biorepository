@@ -15,14 +15,12 @@ keywords:
   - 'developer tools'
   - tools
   - 'file processing'
-licensefile: LICENSE
 owner: gt1
 package: biobambam
 publication:
   journal: http://science-advisor.net/article/1306.0836
   title: 'biobambam: tools for read pair collation based algorithms on BAM files'
   year: '2013'
-readmefile: README
 repository: biobambam
 source: git
 type: application

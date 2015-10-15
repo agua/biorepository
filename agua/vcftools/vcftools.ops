@@ -1,0 +1,21 @@
+---
+authors:
+  - 'Adam Auton'
+  - 'Petr Danecek'
+  - 'Anothony Marcketta'
+checkurl: 'false'
+hubtype: github
+installtype: ops
+keywords:
+  - vcf
+  - tools
+  - variant
+  - 'developer tools'
+owner: vcftools
+package: vcftools
+repository: vcftools
+source: git
+tag: ''
+type: application
+version: v0.1.14
+website: https://github.com/vcftools/vcftools
