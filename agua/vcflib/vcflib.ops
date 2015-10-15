@@ -1,0 +1,18 @@
+---
+authors:
+  - 'Erik Garrison'
+checkurl: 'false'
+hubtype: github
+installtype: ops
+keywords:
+  - vcf
+  - vcflib
+  - variant
+  - 'developer tools'
+owner: ekg
+package: vcflib
+repository: vcflib
+source: git
+type: application
+versions: v1.0.0-rc0
+website: https://github.com/ekg/vcflib
