@@ -8,7 +8,7 @@ method doInstall ($installdir, $version) {
     $self->logDebug("installdir", $installdir);
     $version = $self->version() if not defined $version;
    
-    #return 0 if not $self->gitInstall($installdir, $version);
+    return 0 if not $self->gitInstall($installdir, $version);
    
     return 0 if not $self->autogenInstall($installdir, $version);
    
