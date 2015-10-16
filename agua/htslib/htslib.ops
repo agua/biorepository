@@ -1,0 +1,17 @@
+---
+description: 'HTSlib is an implementation of a unified C library for accessing common file formats, such as SAM, CRAM and VCF, used for high-throughput sequencing data, and is the core library used by samtools and bcftools.'
+hubtype: github
+installtype: ops
+keywords:
+  - htslib
+licensefile: LICENSE
+owner: samtools
+package: htslib
+publication: {}
+readmefile: README
+repository: htslib
+source: git
+type: application
+url: https://github.com/samtools/htslib
+version: 1.2.1
+website: ''

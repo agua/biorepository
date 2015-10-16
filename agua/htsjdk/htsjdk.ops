@@ -1,0 +1,14 @@
+---
+hubtype: github
+installtype: ops
+licensefile: LICENSE
+owner: samtools
+package: htsjdk
+privacy: public
+readmefile: README
+repository: htsjdk
+source: git
+tag: ''
+type: application
+versions: '1.138'
+website: https://github.com/samtools/htsjdk

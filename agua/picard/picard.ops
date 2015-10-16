@@ -4,20 +4,21 @@ authors:
   - 'Tibbetts Kathleen'
   - 'McCowan Mike'
   - 'Fennell Tim'
-build: ''
 description: 'Java-based command-line utilities that manipulate SAM files, and a Java API (SAM-JDK) for creating new programs that read and write SAM files'
+hubtype: github
 installtype: ops
 keywords:
   - 'SAM file'
   - 'file manipulation'
   - converter
   - picard
-licensefile: LICENSE
+owner: broadinstitute
 package: picard
-publication: {}
-readmefile: README
-source: url
+repository: picard
+privacy: public
+source: git
 type: application
-url: http://downloads.sourceforge.net/project/picard/picard-tools/$version/picard-tools-$version.zip
-version: '1.107'
-website: http://sourceforge.net/projects/picard
+version: '1.140'
+website: https://github.com/broadinstitute/picard
+
+
