@@ -1,0 +1,28 @@
+---
+authors:
+  - 'Nicholas Clarke'
+  - 'Petr Danecek'
+  - 'Warren Kretzschmar'
+  - 'Heng Li'
+  - 'Shane McCarthy'
+  - 'John Marshall'
+  - 'Joel Martin'
+  - 'Stephan Schiffels'
+description: 'BCFtools is a fast replacement for the vcfcheck, vcfmerge, vcfisec, etc. commands of the htslib repository and the samtools BCF calling commands in the bcftools subdirectory of samtools'
+hubtype: github
+installtype: ops
+keywords:
+  - 'SAM file'
+  - 'file manipulation'
+  - converter
+  - picard
+owner: samtools
+package: bcftools
+repository: bcftools
+privacy: public
+source: git
+type: application
+version: '1.2'
+website: http://samtools.github.io/bcftools
+
+
