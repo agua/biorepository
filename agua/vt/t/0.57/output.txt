@@ -1,0 +1,22 @@
+#./vt
+Help page on http://statgen.sph.umich.edu/wiki/Vt
+
+Useful tools:
+view                      view vcf/vcf.gz/bcf files
+index                     index vcf.gz/bcf files
+normalize                 normalize variants
+uniq                      drop duplicate variants
+cat                       concatenate VCF files
+paste                     paste VCF files
+sort                      sort VCF files
+subset                    subset VCF file to variants polymorphic in a sample
+
+peek                      summary of variants in the vcf file
+partition                 partition variants
+annotate_variants         annotate variants
+annotate_regions          annotate regions
+compute_concordance       compute genotype concordance between 2 call sets
+compute_features          compute genotype likelihood based statistics
+
+discover                  discover variants
+genotype                  genotype variants

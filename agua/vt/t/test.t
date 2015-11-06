@@ -1,5 +1,27 @@
 #!/usr/bin/perl -w
 
+BEGIN {
+    my $arch = $^O;
+    if ( $arch eq "darwin" ) {
+        my $installdir = $ENV{'installdir'} || "/a";
+        unshift(@INC, "$installdir/extlib/osx/lib/perl5");
+        unshift(@INC, "$installdir/extlib/osx/lib/perl5/x86_64-linux-gnu-thread-multi/");
+        unshift(@INC, "$installdir/lib");
+    }
+    elsif ( $arch eq "linux" ) {
+        my $installdir = $ENV{'installdir'} || "/a";
+        unshift(@INC, "$installdir/extlib/linux/lib/perl5");
+        unshift(@INC, "$installdir/extlib/linux/lib/perl5/x86_64-linux-gnu-thread-multi/");
+        unshift(@INC, "$installdir/lib");
+    }
+    elsif ( $arch eq "MSWin32" ) {
+        my $installdir = $ENV{'installdir'} || "/a";
+        unshift(@INC, "$installdir/extlib/win/lib/perl5");
+        unshift(@INC, "$installdir/extlib/win/lib/perl5/MSWin32-x86-multi-thread-64int/");
+        unshift(@INC, "$installdir/lib");
+    }
+}
+
 =head2
 	
 APPLICATION 	Deploy.t
@@ -34,7 +56,7 @@ use_ok('Conf::Yaml');
 use_ok('Agua::Ops');
 
 #### SET CONF FILE
-my $installdir  =   $ENV{'installdir'} || "/agua";
+my $installdir  =   $ENV{'installdir'} || "/a";
 my $configfile	=   "$installdir/conf/config.yaml";
 
 #### SET $Bin
