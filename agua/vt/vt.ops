@@ -1,0 +1,20 @@
+---
+authors:
+  - 'Adrian Tan'
+description: 'vt is a variant tool set that discovers short variants from Next Generation Sequencing data'
+hubtype: github
+installtype: ops
+keywords:
+  - variant
+  - NGS
+  - "Next Generation Sequencing"
+  - vt
+  - picard
+owner: atks
+package: vt
+repository: vt
+privacy: public
+source: git
+type: application
+version: '0.57'
+website: http://genome.sph.umich.edu/wiki/Vt
