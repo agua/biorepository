@@ -1,0 +1,16 @@
+---
+authors:
+  - 'Apache Software Foundation'
+description: 'Java-based build tool'
+hubtype: github
+installtype: ops
+keywords:
+  - 'ant'
+  - 'build'
+owner: apache
+package: ant
+type: application
+unzipped: apache-ant-$version
+url: http://archive.apache.org/dist/ant/binaries/apache-ant-$version-bin.tar.gz
+version: 1.9.6
+website: https://github.com/apache/ant

@@ -146,7 +146,7 @@ method loadData ($installdir, $version) {
         #$self->runCommand($command);
         #
         ##### LOAD SAMPLES FILE NAMES AND SIZES
-        #$command     =   "$basedir/bin/sample/loadTable.pl --table $table --tsvfile $installdir/$version/data/$table.tsv --sqlfile $installdir/$version/data/$table.sql";
+        #$command     =   "$basedir/bin/sample/loadSamples.pl --table $table --tsvfile $installdir/$version/data/$table.tsv --sqlfile $installdir/$version/data/$table.sql";
         #$self->logDebug("command", $command);
         #$self->runCommand($command);    
     }

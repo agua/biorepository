@@ -45,12 +45,6 @@ use Getopt::Long;
 use FindBin qw($Bin);
 use lib "$Bin/..";
 use lib "$Bin/lib";
-BEGIN
-{
-    my $installdir = $ENV{'installdir'} || "/agua";
-    unshift(@INC, "$installdir/lib");
-    unshift(@INC, "$installdir/t/lib");
-}
 
 use_ok('Conf::Yaml');
 use_ok('Agua::Ops');

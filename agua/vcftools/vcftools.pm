@@ -29,7 +29,7 @@ method autogenInstall ($installdir, $version) {
 	$self->runCommand("./autogen.sh");
 	$self->runCommand("./configure");
 	$self->runCommand("make");
-	$self->runCommand("make install");
+	#$self->runCommand("make install");
 	$self->runCommand("cp src/cpp/vcftools .");
 
 	return 1;

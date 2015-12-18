@@ -4,6 +4,10 @@ authors:
   - 'Tibbetts Kathleen'
   - 'McCowan Mike'
   - 'Fennell Tim'
+dependencies:
+  -
+    package: ant
+    version: 1.9.6
 description: 'Java-based command-line utilities that manipulate SAM files, and a Java API (SAM-JDK) for creating new programs that read and write SAM files'
 hubtype: github
 installtype: ops

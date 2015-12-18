@@ -24,7 +24,7 @@ method buildInstall ($installdir, $version) {
     $self->changeDir("$installdir/$version");
 
 	#### DOWNLOAD htsjdk
-	$self->runCommand("git clone git\@github.com:samtools/htsjdk");
+	$self->runCommand("git clone https://github.com/samtools/htsjdk");
 
 	#### INSTALL ant
 	$self->runCommand("apt-get install -y ant");
