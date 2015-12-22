@@ -1,0 +1,13 @@
+---
+authors:
+  - 'Russell Hashimoto'
+hubtype: github
+installtype: ops
+keywords:
+  - go
+  - 'infrastructure as configuration'
+  - devops
+url: https://storage.googleapis.com/golang/go$version.linux-amd64.tar.gz
+unzipped: go
+version: 1.5.2
+website: https://github.com/golang/go

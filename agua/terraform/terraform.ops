@@ -1,0 +1,16 @@
+---
+authors:
+  - 'Russell Hashimoto'
+hubtype: github
+installtype: ops
+keywords:
+  - terraform
+  - 'infrastructure as configuration'
+  - devops
+url: https://releases.hashicorp.com/terraform/$version/terraform_$version_linux_amd64.zip
+owner: hashicorp
+package: terraform
+repository: terraform
+source: git
+version: 0.6.8
+website: https://github.com/hashicorp/terraform

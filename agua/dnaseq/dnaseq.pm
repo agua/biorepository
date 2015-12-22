@@ -120,8 +120,9 @@ method loadWorkflows ($installdir, $version) {
         #### ADD WORKFLOWS TO PROJECT
         my $workflows   =   $project->{workflows};
         my $counter =   1;
+        my $projectdir = lc($projectname);
         foreach my $workflow ( @$workflows ) {
-            $self->runCommand("cd $installdir/$version/conf/work/$projectname && $flow addWorkflow --project $projectname --wkfile $workflow.work --username $username");
+            $self->runCommand("cd $installdir/$version/conf/work/$projectdir && $flow addWorkflow --project $projectname --wkfile $workflow.work --username $username");
             $counter++;
         }
         print "Completed loading workflows for project '$projectname'\n\n";
