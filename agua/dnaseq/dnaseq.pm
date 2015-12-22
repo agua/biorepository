@@ -89,10 +89,7 @@ method loadWorkflows ($installdir, $version) {
         {
             project =>  "QC",
             workflows   =>  [
-                "Download",
-                "QC",
-                "Fork",
-                "Upload"
+                "All"
             ]
         }
         ,
