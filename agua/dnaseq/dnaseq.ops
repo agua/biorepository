@@ -35,7 +35,7 @@ keywords:
 licensefile: LICENSE
 owner: stuartpyoung
 package: dnaseq
-privacy: private
+privacy: public
 publication: {}
 readmefile: README
 repository: dnaseq
@@ -44,3 +44,4 @@ source: git
 type: application
 url: git@github.com:syoung/dnaseq.git
 website: https://bitbucket.org/stuartpyoung/dnaseq/src
+version: 0.0.1

@@ -9,7 +9,6 @@ method doInstall ($installdir, $version) {
     
     return 0 if not $self->gitInstall($installdir, $version);
 
-$self->version("0.0.1");
     $version = $self->version();
     $self->logDebug("AFTER gitInstall    version", $version);
 
@@ -18,13 +17,16 @@ $self->version("0.0.1");
     my $package    =   $self->package();
     my $appdir      =   "$installdir/$version/conf/app";
     my $format      =   "yaml";
+
 	$self->logDebug("Doing loadAppFiles");
 	$self->loadAppFiles($username, $package, $installdir, $appdir, $format);
 	$self->logDebug("Completed loadAppFiles");
 
     return 0 if not $self->loadWorkflows($installdir, $version);
-    
+
     return 0 if not $self->loadData($installdir, $version);
+    
+    return 0 if not $self->loadSamples($installdir, $version);
     
     return $version;
 }
@@ -124,6 +126,42 @@ method loadWorkflows ($installdir, $version) {
     }
 }
 
+method loadSamples ($installdir, $version) {
+    print "Loading samples\n";
+    $self->logDebug("installdir", $installdir);
+    $self->logDebug("version", $version);
+
+    my $basedir =   $self->conf()->getKey("agua", "INSTALLDIR");
+    my $username    =   $self->username();
+    $self->logDebug("basedir", $basedir);
+    $self->logDebug("username", $username);
+
+    my $tables   =   {
+        clinical97    => [
+            {
+                project => "QC",
+                workflow => "All"
+            }
+        ]
+    };
+    foreach my $table ( keys %$tables ) {
+        $self->logDebug("table", $table);
+        
+        my $projects = $tables->{$table};
+        foreach my $project ( @$projects ) {
+            my $projectname = $project->{project};
+            my $workflowname = $project->{workflow};
+            
+            #### LOAD
+            my $command     =   "$basedir/bin/sample/loadSamples.pl --username $username --project $projectname --table $table --tsvfile $installdir/$version/data/tsv/$table.tsv --sqlfile $installdir/$version/data/sql/$table.sql";
+            $self->logDebug("command", $command);
+            $self->runCommand($command);    
+        }
+    }
+
+    print "Completed loading samples\n\n";
+}
+
 method loadData ($installdir, $version) {
     print "Loading samples\n";
     $self->logDebug("installdir", $installdir);
@@ -134,22 +172,23 @@ method loadData ($installdir, $version) {
     $self->logDebug("basedir", $basedir);
     $self->logDebug("username", $username);
 
-    my $tables   =   ["sample21", "samples5"];
+    my $database    =   $self->conf()->getKey("database", "DATABASE");
+    my $tables   =   [
+        "cluster",
+        "instancetype"
+    ];
     foreach my $table ( @$tables ) {
-        ##### LOAD SAMPLES IDs
-        #my $command     =   "$basedir/bin/sample/loadSamples.pl --username $username --project $project --workflow loadSamples --workflownumber 1 --file $installdir/$version/data/$table.tsv";
-        #$self->logDebug("command", $command);
-        #$self->runCommand($command);
-        #
-        ##### LOAD SAMPLES FILE NAMES AND SIZES
-        #$command     =   "$basedir/bin/sample/loadSamples.pl --table $table --tsvfile $installdir/$version/data/$table.tsv --sqlfile $installdir/$version/data/$table.sql";
-        #$self->logDebug("command", $command);
-        #$self->runCommand($command);    
+        $self->logDebug("table", $table);
+        my $tsvfile = "$installdir/$version/data/tsv/$table.tsv";
+        
+        #### LOAD SAMPLES
+        my $command     =   "$basedir/bin/scripts/loadTable.pl --db $database --table $table --tsvfile $installdir/$version/data/tsv/$table.tsv";
+        $self->logDebug("command", $command);
+        $self->runCommand($command);
     }
 
-    print "Completed loading samples\n\n";
+    print "Completed loading data\n\n";
 }
-
 
 
 1;
