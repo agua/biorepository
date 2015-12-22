@@ -12,7 +12,7 @@ dependencies:
     version: v2.3.0
   -
     package: picard
-    version: '1.103'
+    version: latest
   -
     package: gatk
     version: 3.3-0
