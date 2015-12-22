@@ -8,6 +8,9 @@ dependencies:
   -
     package: ant
     version: 1.9.6
+  -
+    package: java
+    version: 1.8.0_65
 description: 'Java-based command-line utilities that manipulate SAM files, and a Java API (SAM-JDK) for creating new programs that read and write SAM files'
 hubtype: github
 installtype: ops

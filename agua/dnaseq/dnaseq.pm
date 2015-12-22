@@ -73,7 +73,6 @@ method loadWorkflows ($installdir, $version) {
         {
             project =>  "FastQC",
             workflows   =>  [
-                "FastQC"
             ]
         }
         ,
@@ -90,11 +89,10 @@ method loadWorkflows ($installdir, $version) {
         {
             project =>  "QC",
             workflows   =>  [
-                "DownloadClinQC",
-                "DownloadQC",
                 "Download",
-                "QCFork",
-                "QC"
+                "QC",
+                "Fork",
+                "Upload"
             ]
         }
         ,
