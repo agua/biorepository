@@ -20,8 +20,8 @@ dependencies:
     package: fastqc
     version: 0.11.4
   -
-    package: s3lib
-    version: 0.0.1
+    package: vcflib
+    version: latest
 description: 'Broad GATK Best Practices DNA-Seq workflow'
 hubtype: bitbucket
 installtype: ops
