@@ -21,7 +21,11 @@ dependencies:
     version: 0.11.4
   -
     package: vcflib
-    version: latest
+    version: v1.0.0-rc0
+    treeish: d453d91
+  -
+    package: vcftools
+    version: v0.1.14
 description: 'Broad GATK Best Practices DNA-Seq workflow'
 hubtype: bitbucket
 installtype: ops
