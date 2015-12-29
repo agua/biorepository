@@ -1,0 +1,16 @@
+---
+authors:
+  - 'Markus "Notch" Persson'
+dependencies:
+  -
+    package: java
+    version: 1.8.0_65
+description: 'Single and multiplayer 3D construction game'
+installtype: ops
+keywords:
+  - minecraft
+package: minecraft
+repository: minecraft
+website: https://minecraft.net/download
+url: https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
+version: latest

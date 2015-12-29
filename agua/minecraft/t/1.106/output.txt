@@ -1,0 +1,57 @@
+#./AddOrReplaceReadGroups.jar
+#java -jar
+ERROR: Option 'INPUT' is required.
+
+Replaces all read groups in the INPUT file with a new read group and assigns all reads to this read group in the OUTPUT BAMVersion: 1.0
+
+Version: 1.106(1655)
+
+
+Options:
+
+--help
+-h                            Displays options specific to this tool.
+
+--stdhelp
+-H                            Displays options specific to this tool AND options common to all Picard command line 
+                              tools.
+
+--version                     Displays program version.
+
+INPUT=File
+I=File                        Input file (bam or sam).  Required. 
+
+OUTPUT=File
+O=File                        Output file (bam or sam).  Required. 
+
+SORT_ORDER=SortOrder
+SO=SortOrder                  Optional sort order to output in. If not supplied OUTPUT is in the same order as INPUT.  
+                              Default value: null. Possible values: {unsorted, queryname, coordinate} 
+
+RGID=String
+ID=String                     Read Group ID  Default value: 1. This option can be set to 'null' to clear the default 
+                              value. 
+
+RGLB=String
+LB=String                     Read Group Library  Required. 
+
+RGPL=String
+PL=String                     Read Group platform (e.g. illumina, solid)  Required. 
+
+RGPU=String
+PU=String                     Read Group platform unit (eg. run barcode)  Required. 
+
+RGSM=String
+SM=String                     Read Group sample name  Required. 
+
+RGCN=String
+CN=String                     Read Group sequencing center name  Default value: null. 
+
+RGDS=String
+DS=String                     Read Group description  Default value: null. 
+
+RGDT=Iso8601Date
+DT=Iso8601Date                Read Group run date  Default value: null. 
+
+RGPI=Integer
+PI=Integer                    Read Group predicted insert size  Default value: null. 
