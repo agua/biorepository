@@ -9,7 +9,7 @@ method doInstall ($installdir, $version) {
    
     return 0 if not $self->downloadInstall($installdir, $version);
    
-    return 0 if not $self->scriptInstall($installdir, $version);
+    return 0 if not $sself->scriptInstall($installdir, $version);
    
 	$self->confirmInstall($installdir, $version);
 
