@@ -9,7 +9,7 @@ method doInstall ($installdir, $version) {
    
     return 0 if not $self->downloadInstall($installdir, $version);
    
-    return 0 if not $sself->scriptInstall($installdir, $version);
+    return 0 if not $self->scriptInstall($installdir, $version);
    
 	$self->confirmInstall($installdir, $version);
 
@@ -26,10 +26,6 @@ method scriptInstall ($installdir, $version) {
     
     #### PRINT SCRIPT
     my $script = qq{#!/bin/sh
-
-cd /usr/bin
-
-export JAVA_HOME=$basedir/apps/java/$javaversion
 
 $basedir/apps/java/$javaversion/bin/java -Xmx1024M -Xms512M -jar $installdir/$version/Minecraft.jar
 };
