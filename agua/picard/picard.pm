@@ -26,6 +26,9 @@ method buildInstall ($installdir, $version) {
     my $export = "export JAVA_HOME=$basedir/apps/java/$javaversion";
     $self->logDebug("export", $export);
     
+    my $antversion = $self->getDependencyVersion("ant");
+    $self->logDebug("antversion", $antversion);
+
 	#### CHANGE DIR
     $self->changeDir("$installdir/$version");
     
@@ -33,10 +36,14 @@ method buildInstall ($installdir, $version) {
 	$self->runCommand("git clone https://github.com/samtools/htsjdk");
 
 	#### INSTALL ant
-	$self->runCommand("apt-get install -y ant");
+	$self->runCommand("apt-get install -y ant=$antversion");
 	
 	#### BUILD
-	$self->runCommand("$export; ant");
+	my ($stdout, $stderr) = $self->runCommand("$export; ant");
+    $self->logDebug("stderr", $stderr);
+
+    return 0 if $stderr =~ /BUILD FAILED/;
+    return 1;
 }
 
 method getDependencyVersion ($package) {

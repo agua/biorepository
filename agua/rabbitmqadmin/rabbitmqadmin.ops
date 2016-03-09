@@ -1,0 +1,10 @@
+---
+description: 'Install RabbitMQ management plugin'
+installtype: ops
+keywords:
+  - rabbitMQ
+  - messenging
+owner: agua
+source: local
+type: application
+version: 0.0.1
