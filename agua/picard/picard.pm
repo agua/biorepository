@@ -39,7 +39,7 @@ method buildInstall ($installdir, $version) {
 	$self->runCommand("apt-get install -y ant=$antversion");
 	
 	#### BUILD
-	my ($stdout, $stderr) = $self->runCommand("$export; ant");
+	my ($stdout, $stderr) = $self->runCommand("$export; $basedir/apps/ant/$antversion/bin/ant");
     $self->logDebug("stderr", $stderr);
 
     return 0 if $stderr =~ /BUILD FAILED/;
